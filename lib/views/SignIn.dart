@@ -1,3 +1,4 @@
+import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/textButton.dart';
@@ -14,7 +15,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+  SignIn({super.key});
+  // finding the controller which has been established in the main 
+    RegistryController control = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,7 @@ class SignIn extends StatelessWidget {
             height: Get.height * 0.03,
           ),
           customTextField(
+            controller: control.emailcontrol,
             name: "Email",
             isPass: false,
             prefixIcon: Icon(
@@ -63,6 +67,7 @@ class SignIn extends StatelessWidget {
           ),
           customTextField(
             name: "Password",
+            controller: control.passcontrol,
             prefixIcon: Icon(
               CupertinoIcons.lock_fill,
               size: 18,
@@ -95,7 +100,7 @@ class SignIn extends StatelessWidget {
           primaryButton(
             title: 'Sign In',
             onPressed: () {
-              Get.to(MainPage());
+              control.SignIn();
             },
           ),
           SizedBox(
