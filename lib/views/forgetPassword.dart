@@ -1,3 +1,4 @@
+import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +11,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class forgetPassword extends StatelessWidget {
-  const forgetPassword({super.key});
+  forgetPassword({super.key});
+// finding the controller which has been established in the main
+  RegistryController control = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class forgetPassword extends StatelessWidget {
             height: Get.height / 9,
           ),
           customTextField(
+            controller: control.resetpasscontrol,
             name: "Email",
             isPass: false,
             prefixIcon: Icon(
@@ -53,6 +57,7 @@ class forgetPassword extends StatelessWidget {
           primaryButton(
             title: 'Send Request',
             onPressed: () {
+              control.ResetPass();
               showDialog<void>(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
