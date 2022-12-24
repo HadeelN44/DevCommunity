@@ -1,7 +1,7 @@
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
 import 'package:community_dev/views/Profile.dart';
-import 'package:community_dev/views/Timeline.dart';
+import 'package:community_dev/views/TimeLine/body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
