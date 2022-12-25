@@ -1,4 +1,3 @@
-
 import 'package:community_dev/views/Teams/body.dart';
 import 'package:community_dev/views/Teams/tapBar.dart';
 import 'package:community_dev/views/TimeLine/post.dart';
@@ -10,13 +9,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-
-
-
-
-
-
-
 class newTeams extends StatelessWidget {
   const newTeams({super.key});
 
@@ -25,7 +17,10 @@ class newTeams extends StatelessWidget {
     return Container(
       child: ListView(
         children: [
-          
+          Container(
+            height: 260,
+            color: Colors.black,
+          ),
         ],
       ),
     );
