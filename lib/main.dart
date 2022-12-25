@@ -1,7 +1,9 @@
 import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/SignIn.dart';
 import 'package:community_dev/views/SignUp.dart';
 import 'package:community_dev/views/Teams.dart';
+import 'package:community_dev/views/TimeLine/body.dart';
 import 'package:community_dev/views/forgetPassword.dart';
 
 import 'package:flutter/material.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       //home: forgetPassword(),
-      home: SignUp(),
+      home: MainPage(),
     );
   }
 }

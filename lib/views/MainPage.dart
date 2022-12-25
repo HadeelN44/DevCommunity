@@ -1,7 +1,8 @@
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
 import 'package:community_dev/views/Profile.dart';
-import 'package:community_dev/views/Timeline.dart';
+import 'package:community_dev/views/Teams/body.dart';
+import 'package:community_dev/views/TimeLine/body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -21,7 +22,7 @@ class _MainPageState extends State<MainPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
     Timeline(),
-    Timeline(),
+    teamss(),
     Profile(),
   ];
 
@@ -49,7 +50,7 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.podcasts_rounded),
-              label: 'Researchs',
+              label: 'Teams',
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person_crop_circle),
