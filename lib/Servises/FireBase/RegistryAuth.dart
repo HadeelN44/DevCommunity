@@ -1,4 +1,5 @@
 //This file contains
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -19,13 +20,18 @@ SignInMethod({required String emailAddress, required String password}) async {
 }
 
 //Sign up method
-SignUpMethod({required String emailAddress, required String password}) async {
+SignUpMethod(
+    {required String emailAddress,
+    required String password,
+    required String userName,
+    required String name}) async {
   try {
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailAddress,
       password: password,
     );
+    await SetProfile(email: emailAddress, name: name, userName: userName);
     Get.to(MainPage());
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
@@ -38,13 +44,52 @@ SignUpMethod({required String emailAddress, required String password}) async {
   }
 }
 
+// add the user to database after sign up
+SetProfile({
+  required String email,
+  required String name,
+  required String userName,
+}) async {
+  String userID = await checkusers();
+  print(userID);
+  var firestore = FirebaseFirestore.instance;
+  await firestore.collection("Users").doc(userID).set({
+    "Name": name,
+    "Email": email,
+    "UserName": userName,
+    "Bio": "",
+   // "ProgrammingLanguages": [],
+  });
+}
+
+
+//Check the user status and return his UID
+checkusers() async {
+  try {
+    final auth = await FirebaseAuth.instance;
+    final users = await auth.currentUser?.uid;
+    print(users);
+    return users;
+  } on FirebaseAuthException catch (e) {
+    switch (e.code) {
+      case "operation-not-allowed":
+        print("Anonymous auth hasn't been enabled for this project.");
+        break;
+      default:
+        print("Unknown error.");
+    }
+  }
+}
+
+
+
+
 //Sign out method
 SignOutMethod() async {
   await FirebaseAuth.instance.signOut();
 }
 
-
-//Reset password method 
+//Reset password method
 ResetPassMethod({required String emailAddress}) async {
   await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress);
 }
