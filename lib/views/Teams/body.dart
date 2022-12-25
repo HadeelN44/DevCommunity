@@ -1,4 +1,5 @@
 import 'package:community_dev/views/Teams/cardTeams.dart';
+import 'package:community_dev/views/Teams/detailsTeam.dart';
 import 'package:community_dev/views/Teams/tapBar.dart';
 import 'package:community_dev/views/TimeLine/post.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +38,9 @@ class teamss extends StatelessWidget {
                   children: [
                     buttonteams(
                       text: 'New Team   +',
-                      press: () {},
+                      press: () {
+                        Get.to(detailsTeam());
+                      },
                     ),
                     buttonteams(
                       text: 'Join Team',
@@ -119,8 +122,6 @@ class teamss extends StatelessWidget {
   }
 }
 
-
-
 class buttonteams extends StatelessWidget {
   const buttonteams({super.key, this.text, required this.press});
   final String? text;
@@ -167,16 +168,15 @@ class logoo extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(color: color, width: 2.5),
           borderRadius: BorderRadius.circular(5)),
-      child: Center(
-        child: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.home,
+      child: Center(child: Image.asset('assets/send.png')
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(
+          //     Icons.home,
+          //   ),
+          //   iconSize: 15,
+          // ),
           ),
-          iconSize: 15,
-        ),
-      ),
     );
   }
 }
-
