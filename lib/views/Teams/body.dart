@@ -38,9 +38,7 @@ class teamss extends StatelessWidget {
                   children: [
                     buttonteams(
                       text: 'New Team   +',
-                      press: () {
-                        Get.to(detailsTeam());
-                      },
+                      press: () {},
                     ),
                     buttonteams(
                       text: 'Join Team',
@@ -66,34 +64,36 @@ class teamss extends StatelessWidget {
                       Row(
                         children: [
                           logoo(
-                            press: () {},
-                            text: "",
-                            color: Colors.yellow,
+                            press: () {
+                             
+                            },
+                            text: "Ruby",
+                            icon: "assets/ruby.png",
                           ),
                           logoo(
                             press: () {},
-                            text: "",
-                            color: Color.fromARGB(255, 255, 108, 59),
+                            text: "My SQL",
+                            icon: "assets/mysql.png",
                           ),
                           logoo(
                             press: () {},
-                            text: "",
-                            color: Color.fromARGB(255, 47, 23, 169),
+                            text: "C++",
+                            icon: "assets/c+.png",
                           ),
                           logoo(
                             press: () {},
-                            text: "",
-                            color: Color.fromARGB(255, 29, 232, 52),
+                            text: "C#",
+                            icon: "assets/cc.png",
                           ),
                           logoo(
                             press: () {},
-                            text: "",
-                            color: Color.fromARGB(255, 16, 212, 121),
+                            text: "Swift",
+                            icon: "assets/swift.png",
                           ),
                           logoo(
                             press: () {},
-                            text: "",
-                            color: Color.fromARGB(255, 212, 96, 224),
+                            text: "HTML",
+                            icon: "assets/html.png",
                           ),
                         ],
                       ),
@@ -103,16 +103,38 @@ class teamss extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
-                cardTeam(),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {
+                     Get.to(detailsTeam());
+                  },
+                ),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {},
+                ),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {},
+                ),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {},
+                ),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {},
+                ),
+                cardTeam(
+                  descriptiontext: "Creat Amizing Application with Mysql",
+                  idTeam: "#7654567",
+                  press: () {},
+                ),
               ],
             ),
           ),
@@ -152,31 +174,35 @@ class buttonteams extends StatelessWidget {
 }
 
 class logoo extends StatelessWidget {
-  const logoo({super.key, this.text, required this.press, required this.color});
+  const logoo({super.key, this.text, required this.press, required this.icon});
   final String? text;
   final Function press;
-  final Color color;
+
+  final String icon;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: 20,
-        top: 20,
-      ),
-      height: 30,
-      width: 80,
-      decoration: BoxDecoration(
-          border: Border.all(color: color, width: 2.5),
-          borderRadius: BorderRadius.circular(5)),
-      child: Center(child: Image.asset('assets/send.png')
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: Icon(
-          //     Icons.home,
-          //   ),
-          //   iconSize: 15,
-          // ),
-          ),
-    );
+        margin: EdgeInsets.only(
+          left: 20,
+          //  top: 20,
+        ),
+        height: 30,
+        width: 80,
+        decoration: BoxDecoration(
+            border: Border.all(color: colors.icons, width: 2.5),
+            borderRadius: BorderRadius.circular(5)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [Text(text!), Image.asset(icon)],
+        )
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: Icon(
+        //     Icons.home,
+        //   ),
+        //   iconSize: 15,
+        // ),
+
+        );
   }
 }

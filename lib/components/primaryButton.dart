@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
+
 class primaryButton extends StatelessWidget {
   const primaryButton({super.key, required this.title, this.onPressed});
   final String title;
@@ -15,7 +16,7 @@ class primaryButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          width: MediaQuery.of(context).size.width / 1.6,
+          width: MediaQuery.of(context).size.width / 1.4,
           height: 45.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
