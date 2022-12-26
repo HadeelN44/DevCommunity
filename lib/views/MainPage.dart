@@ -6,8 +6,7 @@ import 'package:community_dev/views/Timeline.dart';
 import 'package:community_dev/views/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -51,7 +50,7 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.podcasts_rounded),
-              label: 'Researchs',
+              label: 'Teams',
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person_crop_circle),

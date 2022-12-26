@@ -82,7 +82,7 @@ class Timeline extends StatelessWidget {
                                     "@xSara_978",
                                     //textAlign: TextAlign.left,
                                     style: GoogleFonts.openSans(
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       color: colors.icons,
                                       fontWeight: FontWeight.bold,
                                     ),

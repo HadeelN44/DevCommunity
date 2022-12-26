@@ -40,10 +40,11 @@ class SignIn extends StatelessWidget {
                 maxRadius: 100,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      "images/logo.png",
-                      fit: BoxFit.fitWidth,
-                    )),
+                    // child: Image.asset(
+                    //   "images/logo.png",
+                    //   fit: BoxFit.fitWidth,
+                    // )
+                    ),
               ),
             ),
           ),

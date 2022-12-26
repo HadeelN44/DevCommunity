@@ -41,10 +41,11 @@ class Profile extends StatelessWidget {
               maxRadius: 50,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    "images/pic5.jpeg",
-                    fit: BoxFit.fitWidth,
-                  )),
+                  // child: Image.asset(
+                  //   "images/pic5.jpeg",
+                  //   fit: BoxFit.fitWidth,
+                  // )
+                  ),
             ),
           ),
           SizedBox(
