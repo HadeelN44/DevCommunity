@@ -1,3 +1,7 @@
+import 'package:community_dev/Controller/profileController.dart';
+import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,12 +17,13 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.find();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text('Profile',
+        title: Text("${profileController.name}",
             style: GoogleFonts.quicksand(
                 color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
         actions: [
@@ -40,12 +45,12 @@ class Profile extends StatelessWidget {
             child: CircleAvatar(
               maxRadius: 50,
               child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  // child: Image.asset(
-                  //   "images/pic5.jpeg",
-                  //   fit: BoxFit.fitWidth,
-                  // )
-                  ),
+                borderRadius: BorderRadius.circular(100),
+                // child: Image.asset(
+                //   "images/pic5.jpeg",
+                //   fit: BoxFit.fitWidth,
+                // )
+              ),
             ),
           ),
           SizedBox(
@@ -53,7 +58,7 @@ class Profile extends StatelessWidget {
           ),
           profileCard(
             title: "Bio",
-            value: "Beginner Software engineer. Aiming to\nbe pro in flutter ",
+            value: profileController.bio,
           ),
           SizedBox(
             height: Get.height * 0.04,
@@ -80,7 +85,9 @@ class Profile extends StatelessWidget {
             icon: Icons.logout_rounded,
             TileColor: colors.error,
             textColor: colors.fields,
-            onTap: () {},
+            onTap: () {
+              SignOutMethod();
+            },
           ),
         ],
       ),

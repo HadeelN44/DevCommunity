@@ -1,4 +1,5 @@
 import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/Controller/profileController.dart';
 import 'package:community_dev/Router/Router.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/SignIn.dart';
@@ -27,6 +28,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   RegistryController controller = Get.put(RegistryController());
+  ProfileController profileController = Get.put(ProfileController());
   //to put the controller for registry(Sign in , Sign Up ,forget password)
   String? user = FirebaseAuth.instance.currentUser?.uid; // get user uid
 

@@ -1,5 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+getSpecificUser(
+    {bool? name, bool? username, bool? email, required String UID}) async {
+  var firestore = FirebaseFirestore.instance;
+
+  if (name != null && name) {
+    var x = await firestore.collection("Users").doc(UID).get();
+    return x["Name"];
+  } else if (username != null && username) {
+    var x = await firestore.collection("Users").doc(UID).get();
+    print("method ${x["UserName"]}");
+    return x["UserName"];
+  } else if (email != null && email) {
+    var x = await firestore.collection("Users").doc(UID).get();
+    return x["Email"];
+  }
+}
+
 getUsers() async {
   var firestore = FirebaseFirestore.instance;
   var x = await firestore.collection("Users").get();
@@ -16,5 +33,3 @@ getUsers() async {
     print(x["UserName"]);
   }
 }
-
-

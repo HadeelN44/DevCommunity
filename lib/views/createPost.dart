@@ -1,10 +1,12 @@
-// ignore_for_file: file_names, unnecessary_new, avoid_unnecessary_containers, sized_box_for_whitespace, avoid_print
 import 'dart:io';
 import 'dart:math';
+import 'package:community_dev/Controller/profileController.dart';
 import 'package:community_dev/Helper/imagePicker.dart';
 
 import 'package:community_dev/Helper/utils.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -29,6 +31,7 @@ class createPost extends StatefulWidget {
 }
 
 class WritePostPage extends State<createPost> {
+  ProfileController profileController = Get.find();
   final myController = TextEditingController();
   final FocusNode _nodeText1 = FocusNode();
   FocusNode writingTextFocus = FocusNode();
@@ -139,9 +142,11 @@ class WritePostPage extends State<createPost> {
                     }),
               ),
               image != null
-                  ? Image.file(
-                      image!,
-                      fit: BoxFit.fill,
+                  ? Container(
+                      child: Image.file(
+                        image!,
+                        fit: BoxFit.fill,
+                      ),
                     )
                   : Container(),
             ],
@@ -196,8 +201,13 @@ class WritePostPage extends State<createPost> {
       postImageURL =
           (await uploadPostImages(postID: postID, postImageFile: image))!;
     }
-    sendPostInFirebase(postID, content!, postImageURL ?? 'NONE', "widget.Name",
-        "widget.Email");
+    print("postToFB");
+    sendPostInFirebase(
+      postID,
+      content!,
+      postImageURL ?? 'NONE',
+      profileController.username,
+    );
     setState(() {
       _isLoading = false;
     });

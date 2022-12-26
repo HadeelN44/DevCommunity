@@ -57,14 +57,14 @@ SetProfile({
     "Name": name,
     "Email": email,
     "UserName": userName,
-    "Bio": "",
-   // "ProgrammingLanguages": [],
+    "Bio": " ",
+    // "ProgrammingLanguages": [],
   });
 }
 
-
 //Check the user status and return his UID
 checkusers() async {
+  print("checkusers");
   try {
     final auth = await FirebaseAuth.instance;
     final users = await auth.currentUser?.uid;
@@ -80,9 +80,6 @@ checkusers() async {
     }
   }
 }
-
-
-
 
 //Sign out method
 SignOutMethod() async {

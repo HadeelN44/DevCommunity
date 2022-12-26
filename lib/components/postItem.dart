@@ -13,8 +13,7 @@ class PostItem extends StatefulWidget {
   final BuildContext parentContext;
   final DocumentSnapshot data;
   final bool isFromThread;
-  final String couresId;
-  final String sectionId;
+
   final String Name;
 
   const PostItem(
@@ -22,8 +21,6 @@ class PostItem extends StatefulWidget {
       required this.data,
       required this.isFromThread,
       required this.parentContext,
-      required this.couresId,
-      required this.sectionId,
       required this.Name})
       : super(key: key);
   @override
@@ -106,7 +103,7 @@ class _PostItem extends State<PostItem> {
                     child: Utils.cacheNetworkImageWithEvent(
                         context, widget.data['postImage'], 0, 0))
                 : Container(),
-            user.email == widget.data['posterEmail']
+            user.email == widget.data['posterID']
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -180,9 +177,8 @@ class _PostItem extends State<PostItem> {
                                                     Colors.transparent),
                                             onPressed: () {
                                               deletePostFromFirebase(
-                                                  widget.data['postID'],
-                                                  widget.couresId,
-                                                  widget.sectionId);
+                                                widget.data['postID'],
+                                              );
                                               Navigator.pop(context);
                                             },
                                           ),

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/views/createPost.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -16,20 +17,21 @@ Future<String?> uploadPostImages(
   return postImageURL;
 }
 
-Future<void> sendPostInFirebase(String postID, String postContent,
-    String postImageURL, String name, String? email) async {
+Future<void> sendPostInFirebase(
+    String postID, String postContent, String postImageURL, String name) async {
+  print("sendPostInFirebase");
+  var UID = await checkusers();
+  print(UID);
   FirebaseFirestore.instance.collection('Posts').doc(postID).set({
     'postID': postID,
     'postTimeStamp': DateTime.now().millisecondsSinceEpoch,
     'postContent': postContent,
     'postImage': postImageURL,
     'posterName': name,
-    'posterEmail': email
+    'posterID': UID
   });
 }
 
-   Future<void> deletePostFromFirebase(
-      String postID, String courseId, String sectionId) async {
-    FirebaseFirestore.instance.collection('Posts').doc(postID).delete();
-  }
-
+Future<void> deletePostFromFirebase(String postID) async {
+  FirebaseFirestore.instance.collection('Posts').doc(postID).delete();
+}

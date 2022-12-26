@@ -19,37 +19,4 @@ class imagePicker {
     return imageTemp;
   }
 
-  // static showPicker(context) async {
-  //   showModalBottomSheet(
-  //       context: context,
-  //       builder: (BuildContext bc) {
-  //         return SafeArea(
-  //           child: Container(
-  //             child: new Wrap(
-  //               children: <Widget>[
-  //                 new ListTile(
-  //                     leading: const Icon(
-  //                       Icons.photo_library,
-  //                     ),
-  //                     title: const Text('Photo Library'),
-  //                     onTap: () async {
-  //                      createP = await imagePicker.imgFromGallery();
-
-  //                       Navigator.of(context).pop();
-  //                     }),
-  //                 new ListTile(
-  //                   leading: const Icon(Icons.photo_camera),
-  //                   title: const Text('Camera'),
-  //                   onTap: () async {
-  //                     image = await imagePicker.imgFromCamera();
-
-  //                     Navigator.of(context).pop();
-  //                   },
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //       });
-  // }
 }
