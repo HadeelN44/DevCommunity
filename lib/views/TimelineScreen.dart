@@ -16,7 +16,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class TimelineScreen extends StatefulWidget {
   TimelineScreen({
     Key? key,
+    required this.isMyPost,
   }) : super(key: key);
+  final bool isMyPost;
   @override
   TimelineScreenPage createState() => TimelineScreenPage();
 }
@@ -25,7 +27,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
   final auth = FirebaseAuth.instance;
 
   bool _isLoading = false;
-  bool isMyPost = false;
+  //bool isMyPost = false;
 
   ProfileController profileController = Get.find();
 
@@ -48,14 +50,25 @@ class TimelineScreenPage extends State<TimelineScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: widget.isMyPost
+            ? IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: colors.Text,
+                ),
+                onPressed: () {
+                  Get.back();
+                },
+              )
+            : Center(),
         centerTitle: true,
-        title: Text(isMyPost ? "MyPost" : 'Timeline',
+        title: Text(widget.isMyPost ? "MyPost" : 'Timeline',
             style: GoogleFonts.quicksand(
                 color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         actions: [
-          isMyPost
+          widget.isMyPost
               ? Center()
               : SizedBox(
                   width: 40,
@@ -76,7 +89,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: isMyPost ? MyPostStream : timelineStream,
+        stream: widget.isMyPost ? MyPostStream : timelineStream,
         builder: (context, snapshot) {
           if (!snapshot.hasData) return const LinearProgressIndicator();
           return Stack(

@@ -22,7 +22,9 @@ List<GetPage<dynamic>>? routerApp = [
   ),
   GetPage(
     name: NameRoute.timeline,
-    page: () => TimelineScreen(),
+    page: () => TimelineScreen(
+      isMyPost: false,
+    ),
   ),
   GetPage(
     name: NameRoute.newPost,

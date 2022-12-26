@@ -8,7 +8,8 @@ class Mypost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TimelineScreen(
-        // isMyPost: true,
-        );
+      
+      isMyPost: true,
+    );
   }
 }

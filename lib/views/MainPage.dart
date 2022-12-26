@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
   static List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
     Teams(),
-    TimelineScreen(),
+    TimelineScreen(isMyPost: false,),
     Profile(),
   ];
 
