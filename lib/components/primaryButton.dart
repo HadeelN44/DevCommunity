@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
+
 class primaryButton extends StatelessWidget {
-  const primaryButton({super.key, required this.title, this.onPressed});
+  const primaryButton(
+      {super.key, required this.title, this.onPressed, this.width});
   final String title;
+  final double? width;
   final Function()? onPressed;
 
   @override
@@ -15,7 +19,8 @@ class primaryButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          width: MediaQuery.of(context).size.width / 1.6,
+          width:
+              width == null ? MediaQuery.of(context).size.width / 1.6 : width,
           height: 45.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(

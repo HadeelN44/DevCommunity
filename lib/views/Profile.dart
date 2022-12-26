@@ -1,4 +1,5 @@
 import 'package:community_dev/components/ProfileCards.dart';
+import 'package:community_dev/components/profileOptionCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -16,19 +17,13 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(
-          "Profile",
-          style: GoogleFonts.openSans(
-            fontSize: 24,
-            color: colors.Text,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        centerTitle: true,
+        title: Text('Profile',
+            style: GoogleFonts.quicksand(
+                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
-            onPressed: () {
-            
-            },
+            onPressed: () {},
             icon: Icon(CupertinoIcons.pen),
             color: colors.Text,
           )
@@ -56,25 +51,35 @@ class Profile extends StatelessWidget {
             height: Get.height * 0.05,
           ),
           profileCard(
-            title: "Name",
-            value: "HADEEL",
-            icon: CupertinoIcons.person_fill,
+            title: "Bio",
+            value: "Beginner Software engineer. Aiming to\nbe pro in flutter ",
           ),
           SizedBox(
             height: Get.height * 0.04,
           ),
           profileCard(
-            title: "Phone number",
-            value: "0505039838",
-            icon: CupertinoIcons.phone_fill,
+            title: "Programming langauges ",
+            value: "HTML, CSS, PHP, JS",
           ),
           SizedBox(
             height: Get.height * 0.04,
           ),
-          profileCard(
-            title: "Email",
-            value: "HADEEL@mail.com",
-            icon: Icons.alternate_email_rounded,
+          profileOptionCard(
+            title: "Settings",
+            icon: CupertinoIcons.settings,
+            onTap: () {},
+          ),
+          profileOptionCard(
+            title: "My posts",
+            icon: CupertinoIcons.list_bullet_indent,
+            onTap: () {},
+          ),
+          profileOptionCard(
+            title: "Sign out",
+            icon: Icons.logout_rounded,
+            TileColor: colors.error,
+            textColor: colors.fields,
+            onTap: () {},
           ),
         ],
       ),

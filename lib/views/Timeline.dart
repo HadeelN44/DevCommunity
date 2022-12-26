@@ -1,3 +1,4 @@
+import 'package:community_dev/views/createPost.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -26,7 +27,9 @@ class Timeline extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => createPost());
+            },
             icon: Icon(Icons.add),
             color: colors.Text,
           )

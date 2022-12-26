@@ -50,7 +50,7 @@ class profileCard extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Helvetica',
                   fontSize: 18,
-                  color: const Color(0xff606060),
+                  color: colors.icons,
                 ),
                 textAlign: TextAlign.left,
               ),
