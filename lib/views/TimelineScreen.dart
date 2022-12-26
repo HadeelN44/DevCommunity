@@ -91,7 +91,10 @@ class TimelineScreenPage extends State<TimelineScreen> {
       body: StreamBuilder<QuerySnapshot>(
         stream: widget.isMyPost ? MyPostStream : timelineStream,
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return const LinearProgressIndicator();
+          if (!snapshot.hasData)
+            return LinearProgressIndicator(
+              color: colors.primary,
+            );
           return Stack(
             children: <Widget>[
               (snapshot.data!.docs.isNotEmpty)

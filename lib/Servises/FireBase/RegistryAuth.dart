@@ -1,6 +1,7 @@
 //This file contains
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/views/MainPage.dart';
+import 'package:community_dev/views/SignIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -84,6 +85,7 @@ checkusers() async {
 //Sign out method
 SignOutMethod() async {
   await FirebaseAuth.instance.signOut();
+  Get.offAll(()=> SignIn());
 }
 
 //Reset password method

@@ -5,6 +5,8 @@ import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
 import 'package:community_dev/views/Mypost.dart';
+import 'package:community_dev/views/Settings.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -24,9 +26,16 @@ class Profile extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("${profileController.name}",
-            style: GoogleFonts.quicksand(
-                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
+        title: GetBuilder<ProfileController>(
+          init: ProfileController(),
+          builder: (_) {
+            return Text("${profileController.name}",
+                style: GoogleFonts.quicksand(
+                    color: colors.Text,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold));
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -57,9 +66,14 @@ class Profile extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.05,
           ),
-          profileCard(
-            title: "Bio",
-            value: profileController.bio,
+          GetBuilder<ProfileController>(
+            init: ProfileController(),
+            builder: (_) {
+              return profileCard(
+                title: "Bio",
+                value: profileController.bio,
+              );
+            },
           ),
           SizedBox(
             height: Get.height * 0.04,
@@ -74,13 +88,15 @@ class Profile extends StatelessWidget {
           profileOptionCard(
             title: "Settings",
             icon: CupertinoIcons.settings,
-            onTap: () {},
+            onTap: () {
+              Get.to(() => Settings());
+            },
           ),
           profileOptionCard(
             title: "My posts",
             icon: CupertinoIcons.list_bullet_indent,
             onTap: () {
-              Get.to(Mypost());
+              Get.to(() => Mypost());
             },
           ),
           profileOptionCard(
