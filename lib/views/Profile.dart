@@ -4,6 +4,7 @@ import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
+import 'package:community_dev/views/Mypost.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -78,7 +79,9 @@ class Profile extends StatelessWidget {
           profileOptionCard(
             title: "My posts",
             icon: CupertinoIcons.list_bullet_indent,
-            onTap: () {},
+            onTap: () {
+              Get.to(Mypost());
+            },
           ),
           profileOptionCard(
             title: "Sign out",
