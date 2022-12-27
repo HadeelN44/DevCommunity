@@ -4,8 +4,8 @@ import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
-import 'package:community_dev/views/Mypost.dart';
-import 'package:community_dev/views/Settings.dart';
+import 'package:community_dev/views/profile/Mypost.dart';
+import 'package:community_dev/views/profile/Settings.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

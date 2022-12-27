@@ -1,10 +1,10 @@
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
-import 'package:community_dev/views/Profile.dart';
+import 'package:community_dev/views/profile/Profile.dart';
 import 'package:community_dev/views/Teams.dart';
 import 'package:community_dev/views/Teams/body.dart';
-import 'package:community_dev/views/Timeline.dart';
-import 'package:community_dev/views/TimelineScreen.dart';
+import 'package:community_dev/views/Timeline2/Timeline.dart';
+import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

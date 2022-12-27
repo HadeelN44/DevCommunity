@@ -3,7 +3,7 @@ import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/textButton.dart';
 import 'package:community_dev/views/MainPage.dart';
-import 'package:community_dev/views/SignIn.dart';
+import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,12 +42,12 @@ class SignUp extends StatelessWidget {
                   child: CircleAvatar(
                     maxRadius: 100,
                     child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        // child: Image.asset(
-                        //   "images/logo.png",
-                        //   fit: BoxFit.fitWidth,
-                        // )
-                        ),
+                      borderRadius: BorderRadius.circular(100),
+                      // child: Image.asset(
+                      //   "images/logo.png",
+                      //   fit: BoxFit.fitWidth,
+                      // )
+                    ),
                   ),
                 ),
                 SizedBox(

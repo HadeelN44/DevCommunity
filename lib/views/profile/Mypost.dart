@@ -1,4 +1,4 @@
-import 'package:community_dev/views/TimelineScreen.dart';
+import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -8,7 +8,6 @@ class Mypost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TimelineScreen(
-      
       isMyPost: true,
     );
   }

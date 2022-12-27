@@ -195,6 +195,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animated_button:
+    dependency: "direct main"
+    description:
+      name: flutter_animated_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  flutter_blurhash:
+    dependency: transitive
+    description:
+      name: flutter_blurhash
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
+  flutter_cache_manager:
+    dependency: transitive
+    description:
+      name: flutter_cache_manager
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.0"
   flutter_lints:
     dependency: "direct dev"
     description:
