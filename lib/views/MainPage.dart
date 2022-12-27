@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
-    Teams(),
+    teamss(),
     TimelineScreen(
       isMyPost: false,
     ),

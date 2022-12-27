@@ -16,6 +16,7 @@ class Dashboard extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
+        centerTitle: true,
         title: Text(
           "Home",
           style: GoogleFonts.openSans(

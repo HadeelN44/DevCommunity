@@ -68,6 +68,7 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
+            controller: control.nameControl,
             name: "Name",
             prefixIcon: Icon(
               CupertinoIcons.person_fill,
@@ -81,10 +82,11 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
-            name: "Phone number",
-            keyboardType: TextInputType.phone,
+            controller: control.userNamecontrol,
+            name: "Username",
+            keyboardType: TextInputType.text,
             prefixIcon: Icon(
-              CupertinoIcons.phone_fill,
+              CupertinoIcons.person_fill,
               size: 18,
               color: colors.icons,
             ),
