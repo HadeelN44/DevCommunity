@@ -1,27 +1,23 @@
-import 'package:community_dev/views/TimeLine/post.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-
-
-
-class topBar extends StatelessWidget {
-  const topBar({super.key});
-
+class headerName extends StatelessWidget {
+  const headerName({super.key, this.text});
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 15),
       child: Center(
         child: Text(
-          'Teams',
+          text!,
           style: GoogleFonts.openSans(
-            fontSize: 24,
+            fontSize: 20,
             color: colors.Text,
             fontWeight: FontWeight.bold,
           ),

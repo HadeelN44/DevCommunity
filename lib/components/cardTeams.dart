@@ -1,5 +1,5 @@
 import 'package:community_dev/views/Teams/body.dart';
-import 'package:community_dev/views/Teams/tapBar.dart';
+import 'package:community_dev/components/tapBar.dart';
 import 'package:community_dev/views/TimeLine/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class cardTeam extends StatelessWidget {
-  const cardTeam({super.key, required this.press, this.descriptiontext, this.idTeam});
+  const cardTeam(
+      {super.key, required this.press, this.descriptiontext, this.idTeam});
   final Function press;
   final String? descriptiontext;
   final String? idTeam;
@@ -19,14 +20,14 @@ class cardTeam extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20),
-      height: 240,
+      height: 220,
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            backgroundColor: Color.fromARGB(255, 175, 175, 175),
+            backgroundColor: Color.fromARGB(255, 186, 186, 186),
             shadowColor: Colors.transparent),
         onPressed: press as void Function()?,
         child: Column(
@@ -41,7 +42,6 @@ class cardTeam extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: 15, left: 5, right: 15),
-                    padding: EdgeInsets.all(10),
                   ),
                   Container(
                     child: Column(
@@ -93,34 +93,25 @@ class cardTeam extends StatelessWidget {
             ),
             Row(
               children: [
-                logoo(press: () {}, icon: "assets/html.png", text: ""),
-                logoo(
-                  text: "",
-                  icon: "assets/html.png",
-                  press: () {},
-                ),
               ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              height: 5,
-              color: Colors.black,
             ),
             Container(
               padding: EdgeInsets.all(13),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        child: Text('2/4'),
-                      ),
-                      Container(
-                          height: 20, child: Image.asset('assets/group.png')),
-                    ],
+                  Container(
+                    width: 65,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            height: 20, child: Image.asset('assets/group.png')),
+                        Text('4'),
+                        Text('/'),
+                        Text('10'),
+                      ],
+                    ),
                   ),
                   InkWell(
                     onTap: () {},
