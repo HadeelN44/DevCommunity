@@ -97,7 +97,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
             );
           return Stack(
             children: <Widget>[
-              (snapshot.data!.docs.isNotEmpty)
+              (snapshot.data!.docs.isNotEmpty && snapshot.hasData)
                   ? ListView(
                       shrinkWrap: true,
                       children: snapshot.data!.docs.map(
@@ -115,13 +115,13 @@ class TimelineScreenPage extends State<TimelineScreen> {
                       child: Center(
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const <Widget>[
+                        children: <Widget>[
                           Padding(
                             padding: EdgeInsets.all(14.0),
                             child: Text(
                               'There are no posts added.',
-                              style: TextStyle(
-                                  fontSize: 16, color: Color(0xff606060)),
+                              style:
+                                  TextStyle(fontSize: 16, color: colors.icons),
                               textAlign: TextAlign.center,
                             ),
                           ),

@@ -195,7 +195,7 @@ class WritePostPage extends State<createPost> {
     setState(() {
       _isLoading = true;
     });
-    String postID = 'DFPost' + Random().nextInt(500).toString();
+    String postID = 'TLPost' + Random().nextInt(500).toString();
     String? postImageURL;
     if (image != null) {
       postImageURL =

@@ -19,7 +19,8 @@ class primaryButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          width: MediaQuery.of(context).size.width / 1.4,
+          width:
+              width != null ? width : MediaQuery.of(context).size.width / 1.4,
           height: 45.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
