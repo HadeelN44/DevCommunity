@@ -1,6 +1,8 @@
-import 'package:community_dev/views/Teams/cardTeams.dart';
-import 'package:community_dev/views/Teams/detailsTeam.dart';
-import 'package:community_dev/views/Teams/tapBar.dart';
+import 'package:community_dev/components/headerName.dart';
+import 'package:community_dev/components/cardTeams.dart';
+import 'package:community_dev/views/Teams/detailsTeam/detailsTeam.dart';
+import 'package:community_dev/components/tapBar.dart';
+import 'package:community_dev/views/Teams/newTeam/newTeams.dart';
 import 'package:community_dev/views/TimeLine/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +21,15 @@ class teamss extends StatelessWidget {
       color: colors.backgroundcolor,
       child: ListView(
         children: [
-          topBar(),
+          headerName(
+            text: 'Teams',
+          ),
           Container(
             padding: EdgeInsets.only(top: 25, left: 8, right: 8),
             margin: EdgeInsets.only(top: 30),
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(40),
                 topLeft: Radius.circular(40),
@@ -38,7 +42,9 @@ class teamss extends StatelessWidget {
                   children: [
                     buttonteams(
                       text: 'New Team   +',
-                      press: () {},
+                      press: () {
+                        Get.to(newTeam());
+                      },
                     ),
                     buttonteams(
                       text: 'Join Team',
@@ -64,9 +70,7 @@ class teamss extends StatelessWidget {
                       Row(
                         children: [
                           logoo(
-                            press: () {
-                             
-                            },
+                            press: () {},
                             text: "Ruby",
                             icon: "assets/ruby.png",
                           ),
@@ -107,7 +111,7 @@ class teamss extends StatelessWidget {
                   descriptiontext: "Creat Amizing Application with Mysql",
                   idTeam: "#7654567",
                   press: () {
-                     Get.to(detailsTeam());
+                    Get.to(detailsTeam());
                   },
                 ),
                 cardTeam(
