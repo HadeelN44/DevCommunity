@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:community_dev/Controller/profileController.dart';
+
 import 'package:community_dev/Helper/imagePicker.dart';
 
 import 'package:community_dev/Helper/utils.dart';
@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
@@ -31,7 +32,6 @@ class createPost extends StatefulWidget {
 }
 
 class WritePostPage extends State<createPost> {
-  ProfileController profileController = Get.find();
   final myController = TextEditingController();
   final FocusNode _nodeText1 = FocusNode();
   FocusNode writingTextFocus = FocusNode();
@@ -206,7 +206,7 @@ class WritePostPage extends State<createPost> {
       postID,
       content!,
       postImageURL ?? 'NONE',
-      profileController.username,
+      GetStorage().read("username"),
     );
     setState(() {
       _isLoading = false;

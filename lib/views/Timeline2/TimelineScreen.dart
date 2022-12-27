@@ -1,7 +1,6 @@
-import 'package:community_dev/Controller/profileController.dart';
-
 import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/postItem.dart';
+import 'package:community_dev/components/postItem_myPost.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/profile/Mypost.dart';
 import 'package:community_dev/views/Timeline2/createPost.dart';
@@ -9,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,8 +29,6 @@ class TimelineScreenPage extends State<TimelineScreen> {
   bool _isLoading = false;
   //bool isMyPost = false;
 
-  ProfileController profileController = Get.find();
-
   //.orderBy('postTimeStamp', descending: true)
   // FirebaseFirestore.instance
   //     .collection('Posts')
@@ -45,8 +43,26 @@ class TimelineScreenPage extends State<TimelineScreen> {
         .snapshots();
     Stream<QuerySnapshot<Object?>>? MyPostStream = FirebaseFirestore.instance
         .collection('Posts')
-        .where("posterID", isEqualTo: profileController.UID)
+        .where("posterID", isEqualTo: GetStorage().read("UID"))
         .snapshots();
+
+    // List<Map<String, dynamic>> test = [];
+
+    // FirebaseFirestore.instance
+    //     .collection('Posts')
+    //     .where("posterID", isEqualTo: GetStorage().read("UID"))
+    //     .orderBy('postTimeStamp', descending: false)
+    //     .snapshots()
+    //     .listen((event) {
+    //   test.clear();
+    //   event.docs.forEach((element) {
+    //     print("=-=-=-=-=-=--");
+    //     print(element.data());
+
+    //     test.add(element.data());
+    //     print("=-=-=-=-=-=--");
+    //   });
+    // });
 
     return Scaffold(
       appBar: AppBar(

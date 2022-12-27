@@ -3,14 +3,16 @@ import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Members.dart';
 import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
+
 import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
+import 'package:community_dev/views/forgetPassword.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 
 import 'package:community_dev/views/Team.dart';
 import 'package:community_dev/views/Teams.dart';
 
 import 'package:community_dev/views/Timeline2/createPost.dart';
-import 'package:community_dev/views/Registry/forgetPassword.dart';
+
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routerApp = [
@@ -60,6 +62,10 @@ List<GetPage<dynamic>>? routerApp = [
     name: NameRoute.forgetPass,
     page: () => forgetPassword(),
   ),
+  // GetPage(
+  //   name: NameRoute.splash,
+  //   page: () => SplashPage(),
+  // ),
 ];
 
 abstract class NameRoute {
@@ -74,4 +80,5 @@ abstract class NameRoute {
   static String profile = "/profile";
   static String members = "/members";
   static String forgetPass = "/forgetPass";
+  static String splash = "/splash";
 }

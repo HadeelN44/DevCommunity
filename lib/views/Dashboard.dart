@@ -1,14 +1,24 @@
+import 'package:community_dev/Servises/FireBase/challenge.dart';
+import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class Dashboard extends StatefulWidget {
+  Dashboard({super.key});
 
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  late Uri _url;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +71,7 @@ class Dashboard extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            "Help someone with a logical error ",
+                            GetStorage().read("dailyChallenge").toString(),
                             //textAlign: TextAlign.left,
                             style: GoogleFonts.openSans(
                               fontSize: 16,
@@ -101,18 +111,36 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      "The R-CNN model is getting improved ",
-                      textAlign: TextAlign.left,
-                      style: GoogleFonts.openSans(
-                        fontSize: 20,
-                        color: colors.icons,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 5),
+                      child: Text(
+                        GetStorage().read("LatestNews")[0]["title"].toString(),
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.openSans(
+                          fontSize: 14,
+                          color: colors.icons,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     primaryButton(
-                      title: 'Check it out',
-                      onPressed: () {},
+                      title: 'Check',
+                      width: 100,
+                      onPressed: () async {
+                        // getNews();
+                        //await addChallenges();
+                        // var list = await getChallenges();
+                        var list = await generateDailyChallenge();
+                        print(list);
+                        print(GetStorage()
+                            .read("LatestNews")[0]["Link"]
+                            .toString());
+                        _url = Uri.parse(GetStorage()
+                            .read("LatestNews")[0]["Link"]
+                            .toString());
+                        _launchUrl();
+                      },
                     ),
                   ],
                 ),
@@ -126,7 +154,7 @@ class Dashboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "New to Flutter ",
+                "New to Flutter",
                 textAlign: TextAlign.left,
                 style: GoogleFonts.openSans(
                   fontSize: 20,
@@ -247,5 +275,11 @@ class Dashboard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw 'Could not launch $_url';
+    }
   }
 }

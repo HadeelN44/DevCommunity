@@ -52,58 +52,58 @@ class teamss extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                    margin: EdgeInsets.only(top: 30),
-                    child: Text(
-                      'Locking for a Team?',
-                      style: GoogleFonts.openSans(
-                        fontSize: 20,
-                        color: colors.Text,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-                Container(
-                  height: 50,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Row(
-                        children: [
-                          logoo(
-                            press: () {},
-                            text: "Ruby",
-                            icon: "assets/ruby.png",
-                          ),
-                          logoo(
-                            press: () {},
-                            text: "My SQL",
-                            icon: "assets/mysql.png",
-                          ),
-                          logoo(
-                            press: () {},
-                            text: "C++",
-                            icon: "assets/c+.png",
-                          ),
-                          logoo(
-                            press: () {},
-                            text: "C#",
-                            icon: "assets/cc.png",
-                          ),
-                          logoo(
-                            press: () {},
-                            text: "Swift",
-                            icon: "assets/swift.png",
-                          ),
-                          logoo(
-                            press: () {},
-                            text: "HTML",
-                            icon: "assets/html.png",
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                // Container(
+                //     margin: EdgeInsets.only(top: 30),
+                //     child: Text(
+                //       'Locking for a Team?',
+                //       style: GoogleFonts.openSans(
+                //         fontSize: 20,
+                //         color: colors.Text,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     )),
+                // Container(
+                //   height: 50,
+                //   child: ListView(
+                //     scrollDirection: Axis.horizontal,
+                //     children: [
+                //       Row(
+                //         children: [
+                //           logoo(
+                //             press: () {},
+                //             text: "Ruby",
+                //             icon: "assets/ruby.png",
+                //           ),
+                //           logoo(
+                //             press: () {},
+                //             text: "My SQL",
+                //             icon: "assets/mysql.png",
+                //           ),
+                //           logoo(
+                //             press: () {},
+                //             text: "C++",
+                //             icon: "assets/c+.png",
+                //           ),
+                //           logoo(
+                //             press: () {},
+                //             text: "C#",
+                //             icon: "assets/cc.png",
+                //           ),
+                //           logoo(
+                //             press: () {},
+                //             text: "Swift",
+                //             icon: "assets/swift.png",
+                //           ),
+                //           logoo(
+                //             press: () {},
+                //             text: "HTML",
+                //             icon: "assets/html.png",
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 30,
                 ),
