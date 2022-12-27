@@ -148,6 +148,8 @@ class SignUp extends StatelessWidget {
                 name: "Sign In",
                 underline: true,
                 onPressed: () {
+                  control.emailcontrol.clear();
+                  control.passcontrol.clear();
                   Get.off(() => SignIn());
                 },
               )

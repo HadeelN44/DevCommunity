@@ -1,12 +1,12 @@
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
 import 'package:community_dev/views/Profile.dart';
+import 'package:community_dev/views/Teams.dart';
 import 'package:community_dev/views/Teams/body.dart';
-import 'package:community_dev/views/TimeLine/body.dart';
+import 'package:community_dev/views/Timeline.dart';
+import 'package:community_dev/views/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -19,10 +19,12 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
-    Timeline(),
-    teamss(),
+    Teams(),
+    TimelineScreen(
+      isMyPost: false,
+    ),
     Profile(),
   ];
 

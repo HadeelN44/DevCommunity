@@ -1,6 +1,7 @@
 //This file contains
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/views/MainPage.dart';
+import 'package:community_dev/views/SignIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -57,14 +58,14 @@ SetProfile({
     "Name": name,
     "Email": email,
     "UserName": userName,
-    "Bio": "",
-   // "ProgrammingLanguages": [],
+    "Bio": " ",
+    // "ProgrammingLanguages": [],
   });
 }
 
-
 //Check the user status and return his UID
 checkusers() async {
+  print("checkusers");
   try {
     final auth = await FirebaseAuth.instance;
     final users = await auth.currentUser?.uid;
@@ -81,12 +82,10 @@ checkusers() async {
   }
 }
 
-
-
-
 //Sign out method
 SignOutMethod() async {
   await FirebaseAuth.instance.signOut();
+  Get.offAll(()=> SignIn());
 }
 
 //Reset password method

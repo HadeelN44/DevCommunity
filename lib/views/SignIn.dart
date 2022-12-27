@@ -16,8 +16,8 @@ import 'package:community_dev/constants/style.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({super.key});
-  // finding the controller which has been established in the main 
-    RegistryController control = Get.find();
+  // finding the controller which has been established in the main
+  RegistryController control = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +90,8 @@ class SignIn extends StatelessWidget {
                     name: "Forget your password?",
                     underline: false,
                     onPressed: () {
+                      control.emailcontrol.clear();
+
                       Get.to(forgetPassword());
                     },
                   )),
@@ -122,6 +124,8 @@ class SignIn extends StatelessWidget {
                 name: "Create an account",
                 underline: true,
                 onPressed: () {
+                  control.emailcontrol.clear();
+                  control.passcontrol.clear();
                   Get.to(SignUp());
                 },
               )
