@@ -22,9 +22,9 @@ class dropdown extends StatelessWidget {
               children: [
                 Text(
                   dropdownName!,
-                  style: GoogleFonts.openSans(
-                    fontSize: 18,
-                    color: colors.Text,
+                  style: GoogleFonts.abel(
+                    fontSize: 22,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -34,8 +34,9 @@ class dropdown extends StatelessWidget {
                     margin: EdgeInsets.only(top: 15),
                     height: 48,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20),
+                      color: colors.fields,
+                    ),
                     padding: EdgeInsets.only(left: 15, right: 15),
                     width: Get.width,
                     child: Row(

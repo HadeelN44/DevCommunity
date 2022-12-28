@@ -108,8 +108,8 @@ class chaling extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15.0),
                                       gradient: LinearGradient(colors: [
+                                        colors.Text,
                                         colors.primary,
-                                        colors.Text
                                       ])),
                                   padding: const EdgeInsets.all(0),
                                   child: Text(

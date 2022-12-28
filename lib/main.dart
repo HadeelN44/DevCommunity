@@ -28,14 +28,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   RegistryController controller = Get.put(RegistryController());
-  // ProfileController profileController = Get.put(ProfileController());
+  ProfileController profileController = Get.put(ProfileController());
   //to put the controller for registry(Sign in , Sign Up ,forget password)
   String? user = FirebaseAuth.instance.currentUser?.uid; // get user uid
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: colors.background),
+      // theme: ThemeData(scaffoldBackgroundColor: colors.backgroundcolor),
 
       getPages: routerApp,
       initialRoute: user != null

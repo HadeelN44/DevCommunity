@@ -88,49 +88,52 @@ class TimelineScreenPage extends State<TimelineScreen> {
                 ),
         ],
       ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: widget.isMyPost ? MyPostStream : timelineStream,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData)
-            return LinearProgressIndicator(
-              color: colors.primary,
-            );
-          return Stack(
-            children: <Widget>[
-              (snapshot.data!.docs.isNotEmpty && snapshot.hasData)
-                  ? ListView(
-                      shrinkWrap: true,
-                      children: snapshot.data!.docs.map(
-                        (DocumentSnapshot data) {
-                          return PostItem(
-                            data: data,
-                            isFromThread: true,
-                            parentContext: context,
-                            Name: '',
-                          );
-                        },
-                      ).toList(),
-                    )
-                  : Container(
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.all(14.0),
-                            child: Text(
-                              'There are no posts added.',
-                              style:
-                                  TextStyle(fontSize: 16, color: colors.icons),
-                              textAlign: TextAlign.center,
+      body: Container(
+        color: colors.backgroundcolor,
+        child: StreamBuilder<QuerySnapshot>(
+          stream: widget.isMyPost ? MyPostStream : timelineStream,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData)
+              return LinearProgressIndicator(
+                color: colors.primary,
+              );
+            return Stack(
+              children: <Widget>[
+                (snapshot.data!.docs.isNotEmpty && snapshot.hasData)
+                    ? ListView(
+                        shrinkWrap: true,
+                        children: snapshot.data!.docs.map(
+                          (DocumentSnapshot data) {
+                            return PostItem(
+                              data: data,
+                              isFromThread: true,
+                              parentContext: context,
+                              Name: '',
+                            );
+                          },
+                        ).toList(),
+                      )
+                    : Container(
+                        child: Center(
+                            child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(14.0),
+                              child: Text(
+                                'There are no posts added.',
+                                style: TextStyle(
+                                    fontSize: 16, color: colors.icons),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                          ),
-                        ],
-                      )),
-                    ),
-            ],
-          );
-        },
+                          ],
+                        )),
+                      ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

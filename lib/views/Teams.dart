@@ -33,7 +33,7 @@ class Teams extends StatelessWidget {
                 Get.defaultDialog(
                     title: "Create your team",
                     content: Padding(
-                      padding: const EdgeInsets.all(32.0),
+                      padding:  EdgeInsets.all(32.0),
                       child: Column(
                         children: [
                           customTextField(

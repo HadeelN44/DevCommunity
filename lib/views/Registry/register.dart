@@ -16,99 +16,106 @@ class SignUp extends StatelessWidget {
 
     return Scaffold(
       body: Background(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              child: Text(
-                "REGISTER",
-                style: GoogleFonts.alata(
-                  fontSize: 40,
-                  color: colors.Text,
-                  fontWeight: FontWeight.normal,
-                ),
+        child: Container(
+          color: colors.backgroundcolor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: 150,
+                child: Image.asset('assets/logo2.png'),
               ),
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'UserName',
-              controller: control.nameControl,
-              keyboardType: null,
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'NumberPhone',
-              controller: control.userNamecontrol,
-              keyboardType: null,
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'Email',
-              controller: control.emailcontrol,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'Password',
-              controller: control.passcontrol,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            SizedBox(height: size.height * 0.05),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  control.SignUp();
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80.0)),
-                  padding: const EdgeInsets.all(0),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50.0,
-                  width: size.width * 0.5,
-                  decoration: new BoxDecoration(
-                      borderRadius: BorderRadius.circular(80.0),
-                      gradient: new LinearGradient(
-                          colors: [colors.primary, colors.Text])),
-                  padding: const EdgeInsets.all(0),
-                  child: Text(
-                    "SIGN UP",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: Text(
+                  "REGISTER",
+                  style: GoogleFonts.alata(
+                    fontSize: 40,
+                    color: colors.primary,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ),
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-
-              // onTap: () => {
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => LoginScreen()))
-              // },
-              child: TextButton(
-                onPressed: () {
-                  control.emailcontrol.clear();
-                  control.passcontrol.clear();
-                  Get.off(() => SignIn());
-                },
-                child: Text(
-                  "Already Have an Account? Sign in",
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2661FA)),
+              SizedBox(height: size.height * 0.03),
+              primaryTextfiled(
+                textt: 'Name',
+                controller: control.nameControl,
+                keyboardType: null,
+              ),
+              SizedBox(height: size.height * 0.03),
+              primaryTextfiled(
+                textt: 'UserName',
+                controller: control.userNamecontrol,
+                keyboardType: null,
+              ),
+              SizedBox(height: size.height * 0.03),
+              primaryTextfiled(
+                textt: 'Email',
+                controller: control.emailcontrol,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(height: size.height * 0.03),
+              primaryTextfiled(
+                textt: 'Password',
+                controller: control.passcontrol,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              SizedBox(height: size.height * 0.05),
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    control.SignUp();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(80.0)),
+                    padding: const EdgeInsets.all(0),
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 50.0,
+                    width: size.width * 0.5,
+                    decoration: new BoxDecoration(
+                        borderRadius: BorderRadius.circular(80.0),
+                        gradient: new LinearGradient(
+                            colors: [colors.primary, colors.Text])),
+                    padding: const EdgeInsets.all(0),
+                    child: Text(
+                      "SIGN UP",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+
+                // onTap: () => {
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => LoginScreen()))
+                // },
+                child: TextButton(
+                  onPressed: () {
+                    control.emailcontrol.clear();
+                    control.passcontrol.clear();
+                    Get.off(() => SignIn());
+                  },
+                  child: Text(
+                    "Already Have an Account? Sign in",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2661FA)),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

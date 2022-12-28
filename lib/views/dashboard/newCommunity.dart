@@ -20,7 +20,7 @@ class newsUserCard extends StatelessWidget {
       height: 50,
       width: Get.width,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: Color.fromARGB(255, 113, 113, 113)),
           borderRadius: BorderRadius.circular(5)),
       child: Row(
         children: [

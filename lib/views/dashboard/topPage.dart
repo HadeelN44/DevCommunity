@@ -29,19 +29,19 @@ class top extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Hello,',
-                style: GoogleFonts.abel(
+                'Hello, ',
+                style: GoogleFonts.alata(
                   fontSize: 35,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  color: colors.primary,
+                  fontWeight: FontWeight.normal,
                 ),
               ),
               Text(
                 'Abdullah',
                 style: GoogleFonts.abel(
-                  fontSize: 35,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 33,
+                  color: colors.primary,
+                  fontWeight: FontWeight.normal,
                 ),
               ),
             ],

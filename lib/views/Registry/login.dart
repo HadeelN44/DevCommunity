@@ -19,99 +19,110 @@ class SignIn extends StatelessWidget {
     RegistryController control = Get.find();
     return Scaffold(
       body: Background(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              child: Text(
-                "LOGIN",
-                style: GoogleFonts.alata(
-                  fontSize: 40,
-                  color: colors.Text,
-                  fontWeight: FontWeight.normal,
-                ),
+        child: Container(
+          color: colors.backgroundcolor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 180,
+                child: Image.asset('assets/logo2.png'),
               ),
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'UserName',
-              controller: control.emailcontrol,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: size.height * 0.03),
-            primaryTextfiled(
-              textt: 'Password',
-              controller: control.passcontrol,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: TextButton(
-                onPressed: () {
-                  control.emailcontrol.clear();
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    child: Text(
+                      "LOGIN",
+                      style: GoogleFonts.alata(
+                        fontSize: 40,
+                        color: colors.primary,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: size.height * 0.03),
+                  primaryTextfiled(
+                    textt: 'UserName',
+                    controller: control.emailcontrol,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  SizedBox(height: size.height * 0.03),
+                  primaryTextfiled(
+                    textt: 'Password',
+                    controller: control.passcontrol,
+                    keyboardType: TextInputType.visiblePassword,
+                  ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    child: TextButton(
+                      onPressed: () {
+                        control.emailcontrol.clear();
 
-                  Get.to(forgetPassword());
-                },
-                child: Text(
-                  "Forgot your password?",
-                  style: TextStyle(fontSize: 12, color: Color(0XFF2661FA)),
-                ),
-              ),
-            ),
-            SizedBox(height: size.height * 0.05),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  control.SignIn();
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80.0)),
-                  padding: const EdgeInsets.all(0),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50.0,
-                  width: size.width * 0.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(80.0),
-                      gradient: LinearGradient(
-                          colors: [colors.primary, colors.Text])),
-                  padding: const EdgeInsets.all(0),
-                  child: Text(
-                    "LOGIN",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                        Get.to(forgetPassword());
+                      },
+                      child: Text(
+                        "Forgot your password?",
+                        style:
+                            TextStyle(fontSize: 12, color: Color(0XFF2661FA)),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-             
-                child: TextButton(
-                  onPressed: () {
-                    control.emailcontrol.clear();
-                    control.passcontrol.clear();
-                    Get.to(SignUp());
-                  },
-                  child: Text(
-                    "Don't Have an Account? Sign up",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2661FA)),
+                  SizedBox(height: size.height * 0.05),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        control.SignIn();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(80.0)),
+                        padding: const EdgeInsets.all(0),
+                      ),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 50.0,
+                        width: size.width * 0.5,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(80.0),
+                            gradient: LinearGradient(
+                                colors: [colors.primary, colors.Text])),
+                        padding: const EdgeInsets.all(0),
+                        child: Text(
+                          "LOGIN",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    child: TextButton(
+                      onPressed: () {
+                        control.emailcontrol.clear();
+                        control.passcontrol.clear();
+                        Get.to(SignUp());
+                      },
+                      child: Text(
+                        "Don't Have an Account? Sign up",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF2661FA)),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class description extends StatelessWidget {
-  const description({super.key});
+class nameTeam extends StatelessWidget {
+  const nameTeam({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,15 @@ class description extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 15),
-                  height: 150,
+                  height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: colors.fields,
                   ),
-                  padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
                   width: Get.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +45,7 @@ class description extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'Write Your Discription here....',
+                          hintText: 'Write Your Team Name',
                           border: InputBorder.none,
                           hintStyle: GoogleFonts.openSans(
                             fontSize: 13,

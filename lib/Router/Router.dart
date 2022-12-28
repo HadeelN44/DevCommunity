@@ -1,3 +1,4 @@
+import 'package:community_dev/views/NavigatorBar.dart';
 import 'package:community_dev/views/dashboard/Dashboard.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Members.dart';
@@ -63,17 +64,18 @@ List<GetPage<dynamic>>? routerApp = [
     name: NameRoute.forgetPass,
     page: () => forgetPassword(),
   ),
-   GetPage(
+  GetPage(
     name: NameRoute.splash,
-    page: () => splashScreen(),
+    page: () => SplashScreen(
+    ),
   ),
 ];
 
 abstract class NameRoute {
   static String signIn = "/signIn";
-  
   static String signUp = "/signUp";
-    static String splash = "/splash";
+  static String SplashScreen = "/signUp";
+  static String splash = "/splash";
   static String timeline = "/timeline";
   static String newPost = "/newPost";
   static String dashborad = "/dashborad";
