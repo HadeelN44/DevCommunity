@@ -1,5 +1,5 @@
 import 'package:community_dev/constants/style.dart';
-import 'package:community_dev/views/Dashboard.dart';
+import 'package:community_dev/views/dashboard/Dashboard.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 import 'package:community_dev/views/Teams.dart';
 import 'package:community_dev/views/Teams/body.dart';

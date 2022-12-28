@@ -28,7 +28,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   RegistryController controller = Get.put(RegistryController());
-  ProfileController profileController = Get.put(ProfileController());
+  // ProfileController profileController = Get.put(ProfileController());
   //to put the controller for registry(Sign in , Sign Up ,forget password)
   String? user = FirebaseAuth.instance.currentUser?.uid; // get user uid
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       getPages: routerApp,
       initialRoute: user != null
           ? NameRoute.mainScreen
-          : NameRoute.signIn, // check if the user logged in
+          : NameRoute.mainScreen, // check if the user logged in
     );
   }
 }

@@ -92,8 +92,7 @@ class cardTeam extends StatelessWidget {
               ),
             ),
             Row(
-              children: [
-              ],
+              children: [],
             ),
             Container(
               padding: EdgeInsets.all(13),
@@ -111,26 +110,6 @@ class cardTeam extends StatelessWidget {
                         Text('/'),
                         Text('10'),
                       ],
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      height: 30,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: colors.primary, width: 2.5),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Center(
-                          child: Text(
-                        "Join",
-                        style: GoogleFonts.openSans(
-                          fontSize: 14,
-                          color: colors.Text,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
                     ),
                   ),
                 ],

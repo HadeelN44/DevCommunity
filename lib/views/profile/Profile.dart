@@ -20,7 +20,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileController profileController = Get.find();
+ ProfileController profileController = Get.find();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
