@@ -1,5 +1,7 @@
 //This file contains
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:community_dev/Servises/GetStorage/userInfo.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Registry/SignIn.dart';
 
@@ -11,6 +13,8 @@ SignInMethod({required String emailAddress, required String password}) async {
   try {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: emailAddress, password: password);
+
+    GetProfile();
     Get.to(MainPage());
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
@@ -34,6 +38,7 @@ SignUpMethod(
       password: password,
     );
     await SetProfile(email: emailAddress, name: name, userName: userName);
+    GetProfile();
     Get.to(MainPage());
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
@@ -59,7 +64,8 @@ SetProfile({
     "Name": name,
     "Email": email,
     "UserName": userName,
-    "Bio": " ",
+    "Bio": "Enter your bio",
+    "City": "Enter your city"
     // "ProgrammingLanguages": [],
   });
 }
@@ -86,7 +92,7 @@ checkusers() async {
 //Sign out method
 SignOutMethod() async {
   await FirebaseAuth.instance.signOut();
-  Get.offAll(()=> SignIn());
+  Get.offAll(() => SignIn());
 }
 
 //Reset password method

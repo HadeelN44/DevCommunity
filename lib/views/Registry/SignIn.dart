@@ -1,23 +1,25 @@
-import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/textButton.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
-import 'package:community_dev/views/Registry/forgetPassword.dart';
+
+import 'package:community_dev/views/forgetPassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({super.key});
-  // finding the controller which has been established in the main
-  RegistryController control = Get.find();
+  TextEditingController emailcontrol = TextEditingController();
+  TextEditingController passcontrol = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +41,12 @@ class SignIn extends StatelessWidget {
               child: CircleAvatar(
                 maxRadius: 100,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    // child: Image.asset(
-                    //   "images/logo.png",
-                    //   fit: BoxFit.fitWidth,
-                    // )
-                    ),
+                  borderRadius: BorderRadius.circular(100),
+                  // child: Image.asset(
+                  //   "images/logo.png",
+                  //   fit: BoxFit.fitWidth,
+                  // )
+                ),
               ),
             ),
           ),
@@ -52,7 +54,7 @@ class SignIn extends StatelessWidget {
             height: Get.height * 0.03,
           ),
           customTextField(
-            controller: control.emailcontrol,
+            controller: emailcontrol,
             name: "Email",
             isPass: false,
             prefixIcon: Icon(
@@ -68,7 +70,7 @@ class SignIn extends StatelessWidget {
           ),
           customTextField(
             name: "Password",
-            controller: control.passcontrol,
+            controller: passcontrol,
             prefixIcon: Icon(
               CupertinoIcons.lock_fill,
               size: 18,
@@ -90,8 +92,8 @@ class SignIn extends StatelessWidget {
                     name: "Forget your password?",
                     underline: false,
                     onPressed: () {
-                      control.emailcontrol.clear();
-
+                      emailcontrol.clear();
+                      passcontrol.clear();
                       Get.to(forgetPassword());
                     },
                   )),
@@ -102,8 +104,10 @@ class SignIn extends StatelessWidget {
           ),
           primaryButton(
             title: 'Sign In',
-            onPressed: () {
-              control.SignIn();
+            onPressed: () async {
+              GetStorage().write("password", passcontrol.text);
+              await SignInMethod(
+                  emailAddress: emailcontrol.text, password: passcontrol.text);
             },
           ),
           SizedBox(
@@ -124,8 +128,8 @@ class SignIn extends StatelessWidget {
                 name: "Create an account",
                 underline: true,
                 onPressed: () {
-                  control.emailcontrol.clear();
-                  control.passcontrol.clear();
+                  emailcontrol.clear();
+                  passcontrol.clear();
                   Get.to(SignUp());
                 },
               )

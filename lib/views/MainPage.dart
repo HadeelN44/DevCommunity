@@ -1,12 +1,15 @@
+import 'package:community_dev/Servises/FireBase/challenge.dart';
+import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
+import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 import 'package:community_dev/views/Teams.dart';
 import 'package:community_dev/views/Teams/body.dart';
-import 'package:community_dev/views/Timeline2/Timeline.dart';
 import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -21,10 +24,10 @@ class _MainPageState extends State<MainPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
-    teamss(),
     TimelineScreen(
       isMyPost: false,
     ),
+    teamss(),
     Profile(),
   ];
 

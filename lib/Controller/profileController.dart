@@ -27,7 +27,6 @@ class ProfileController extends GetxController {
     name = data["Name"];
     username = data["UserName"];
     bio = data["Bio"];
-
   }
 
   Updateprofile() async {
@@ -38,11 +37,19 @@ class ProfileController extends GetxController {
         Bio: biocontrol.text);
   }
 
-  @override
-  void onInit() {
+
+  void initialize() {
     // TODO: implement onInit
     super.onInit();
     GetProfile();
     GetUID();
   }
+
+  // @override
+  // void onReady() {
+  //   // TODO: implement onReady
+  //   super.onReady();
+  //   GetProfile();
+  //   GetUID();
+  // }
 }

@@ -1,4 +1,4 @@
-import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/textButton.dart';
@@ -11,14 +11,18 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:community_dev/constants/style.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
-  // finding the controller which has been established in the main
-  RegistryController control = Get.find();
+  TextEditingController emailcontrol = TextEditingController();
+  TextEditingController passcontrol = TextEditingController();
+  TextEditingController userNamecontrol = TextEditingController();
+  TextEditingController nameControl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +72,7 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
-            controller: control.nameControl,
+            controller: nameControl,
             name: "Name",
             prefixIcon: Icon(
               CupertinoIcons.person_fill,
@@ -82,7 +86,7 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
-            controller: control.userNamecontrol,
+            controller: userNamecontrol,
             name: "Username",
             keyboardType: TextInputType.text,
             prefixIcon: Icon(
@@ -97,7 +101,7 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
-            controller: control.emailcontrol,
+            controller: emailcontrol,
             name: "Email",
             prefixIcon: Icon(
               Icons.alternate_email_rounded,
@@ -112,7 +116,7 @@ class SignUp extends StatelessWidget {
             height: Get.height * 0.02,
           ),
           customTextField(
-            controller: control.passcontrol,
+            controller: passcontrol,
             name: "Password",
             keyboardType: TextInputType.visiblePassword,
             prefixIcon: Icon(
@@ -128,8 +132,17 @@ class SignUp extends StatelessWidget {
           ),
           primaryButton(
             title: 'Sign Up',
-            onPressed: () {
-              control.SignUp();
+            onPressed: () async {
+              GetStorage().write("password", passcontrol.text);
+              await SignUpMethod(
+                emailAddress: emailcontrol.text,
+                password: passcontrol.text,
+                name: nameControl.text,
+                userName: userNamecontrol.text,
+              );
+
+              emailcontrol.clear();
+              passcontrol.clear();
             },
           ),
           SizedBox(
@@ -150,8 +163,6 @@ class SignUp extends StatelessWidget {
                 name: "Sign In",
                 underline: true,
                 onPressed: () {
-                  control.emailcontrol.clear();
-                  control.passcontrol.clear();
                   Get.off(() => SignIn());
                 },
               )

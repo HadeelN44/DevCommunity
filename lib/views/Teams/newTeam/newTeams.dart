@@ -59,11 +59,11 @@ class _newTeamState extends State<newTeam> {
                 ],
               ),
             ),
-            dropdown(
-              dropdownName: 'Chose Language:',
-              writehere: "Select Your Language",
-              press: () {},
-            ),
+            // dropdown(
+            //   dropdownName: 'Chose Language:',
+            //   writehere: "Select Your Language",
+            //   press: () {},
+            // ),
             dropdown(
               dropdownName: 'Number of Member:',
               writehere: "Select Your Number",
@@ -124,7 +124,7 @@ class _newTeamState extends State<newTeam> {
             ),
             description(),
             primaryButton(
-              title: 'Creat +',
+              title: 'Create +',
               onPressed: () {},
             )
           ],
