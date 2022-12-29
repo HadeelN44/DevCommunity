@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-
-
-
 class topBar extends StatelessWidget {
   const topBar({super.key});
 
@@ -19,11 +16,11 @@ class topBar extends StatelessWidget {
       margin: EdgeInsets.only(top: 30),
       child: Center(
         child: Text(
-          'Teams',
-          style: GoogleFonts.openSans(
-            fontSize: 24,
-            color: colors.Text,
-            fontWeight: FontWeight.bold,
+          'dgdgms',
+          style: GoogleFonts.alata(
+            fontSize: 50,
+            color: colors.primary,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ),

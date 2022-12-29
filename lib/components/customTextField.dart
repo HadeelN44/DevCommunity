@@ -33,7 +33,7 @@ class customTextField extends StatelessWidget {
                 // textAlign: TextAlign.left,
                 "${name.toString()}",
                 style: GoogleFonts.openSans(
-                  fontSize: 22,
+                  fontSize: 18,
                   color: colors.Text,
                   fontWeight: FontWeight.w500,
                 ),
@@ -43,14 +43,14 @@ class customTextField extends StatelessWidget {
               height: 10,
             ),
             Container(
-              height: 40,
-              width: MediaQuery.of(context).size.width / 1.2,
+              height: 60,
+              width: MediaQuery.of(context).size.width / 1.1,
               child: TextFormField(
                   textAlignVertical: TextAlignVertical.center,
                   controller: controller,
                   keyboardType: keyboardType,
                   obscureText: isPass,
-                  cursorColor: colors.feedBack,
+                  cursorColor: Color.fromARGB(99, 158, 158, 158),
                   decoration: InputDecoration(
                     hintText: hint,
                     prefixIcon: prefixIcon,

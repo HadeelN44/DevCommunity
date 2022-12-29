@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:flutter/material.dart';
 
-
 class infoTeams extends StatelessWidget {
   const infoTeams({super.key});
 
@@ -17,47 +16,22 @@ class infoTeams extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Owner : ',
-                style: GoogleFonts.openSans(
-                  fontSize: 16,
-                  color: colors.Text,
+                'Creadt by : ',
+                style: GoogleFonts.abel(
+                  fontSize: 22,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 'Abdullah ',
-                style: GoogleFonts.openSans(
-                  fontSize: 16,
-                  color: colors.Text,
+                style: GoogleFonts.abel(
+                  fontSize: 24,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
-          ),
-          Row(
-            children: [
-              Text(
-                'Language Use: ',
-                style: GoogleFonts.openSans(
-                  fontSize: 16,
-                  color: colors.Text,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              logoo(
-                press: () {},
-                icon: 'assets/mysql.png',
-                text: "My SQL",
-              ),
-              logoo(
-                press: () {},
-                icon: 'assets/c+.png',
-                text: "C++",
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -2,14 +2,15 @@ import 'package:community_dev/components/dropdown.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/views/Teams/newTeam/buttoncolor.dart';
 import 'package:community_dev/views/Teams/newTeam/description.dart';
+import 'package:community_dev/views/Teams/newTeam/nameTeam.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
-
 import 'package:community_dev/constants/style.dart';
+
 import 'package:group_button/group_button.dart';
 
 class newTeam extends StatefulWidget {
@@ -20,18 +21,20 @@ class newTeam extends StatefulWidget {
 }
 
 class _newTeamState extends State<newTeam> {
-  List colors = [Color.fromARGB(255, 65, 65, 65), Colors.transparent];
+  //List colors = [Color.fromARGB(255, 65, 65, 65), Colors.transparent];
 
-  int? index = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       body: Container(
+        color: colors.backgroundcolor,
         padding: EdgeInsets.only(bottom: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
+              margin: EdgeInsets.only(top: 15),
               padding: EdgeInsets.only(left: 15, right: 15, top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,8 +50,8 @@ class _newTeamState extends State<newTeam> {
                   ),
                   Text(
                     'New Team',
-                    style: GoogleFonts.openSans(
-                      fontSize: 18,
+                    style: GoogleFonts.abel(
+                      fontSize: 25,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -64,63 +67,16 @@ class _newTeamState extends State<newTeam> {
             //   writehere: "Select Your Language",
             //   press: () {},
             // ),
+            nameTeam(),
+            dropdown(
+              dropdownName: 'Chose Language:',
+              writehere: "Select Your Language",
+              press: () {},
+            ),
             dropdown(
               dropdownName: 'Number of Member:',
               writehere: "Select Your Number",
               press: () {},
-            ),
-            Container(
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      if (index == 1) {
-                        index = 0;
-                      } else if (index == 0) {
-                        index = 1;
-                      }
-                      setState(() {});
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(8),
-                      height: 60,
-                      width: Get.width / 2.2,
-                      decoration: BoxDecoration(
-                          border: colors[index!] == Colors.black
-                              ? Border.all(color: Colors.transparent)
-                              : Border.all(
-                                  color: Color.fromARGB(255, 96, 96, 96)),
-                          color: colors[index!],
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                          child: Text(
-                        'Public',
-                        style: GoogleFonts.openSans(
-                          fontSize: 17,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(8),
-                    height: 60,
-                    width: Get.width / 2.2,
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: Text('Privet',
-                          style: GoogleFonts.openSans(
-                            fontSize: 17,
-                            color: Color.fromARGB(255, 67, 67, 67),
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ],
-              ),
             ),
             description(),
             primaryButton(
