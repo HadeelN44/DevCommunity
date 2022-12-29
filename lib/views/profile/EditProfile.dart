@@ -93,20 +93,11 @@ class editProfile extends StatelessWidget {
                             //         borderRadius: BorderRadius.circular(100)),
                             //     child: Utils.cacheNetworkImageWithEvent(
                             //         context, doc['imageURL'], 200, 200))
-                            : SizedBox(
-                                width: Get.width * 0.1,
-                                height: Get.height * 0.15,
-                                child: CircleAvatar(
-                                  maxRadius: 50,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(100),
-                                    // child: Image.asset(
-                                    //   "images/pic5.jpeg",
-                                    //   fit: BoxFit.fitWidth,
-                                    // )
-                                  ),
-                                ),
-                              ),
+                            : CircleAvatar(
+                                maxRadius: 70,
+                                backgroundColor: colors.feedBack,
+                                child: Icon(Icons.person,
+                                    color: Colors.white, size: 100)),
                       ),
                       SizedBox(
                         height: Get.height * 0.05,

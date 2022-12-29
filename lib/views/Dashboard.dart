@@ -176,7 +176,7 @@ class _DashboardState extends State<Dashboard> {
                   builder: ((context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: Text("sksj"),
+                        child: Text("No data"),
                       );
                     }
                     return Padding(

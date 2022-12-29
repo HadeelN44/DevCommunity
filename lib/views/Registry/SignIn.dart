@@ -40,13 +40,13 @@ class SignIn extends StatelessWidget {
               height: Get.height * 0.15,
               child: CircleAvatar(
                 maxRadius: 100,
+                backgroundColor: Colors.transparent,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  // child: Image.asset(
-                  //   "images/logo.png",
-                  //   fit: BoxFit.fitWidth,
-                  // )
-                ),
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      "assets/logo2.png",
+                      fit: BoxFit.fitWidth,
+                    )),
               ),
             ),
           ),
