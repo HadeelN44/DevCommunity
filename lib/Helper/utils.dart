@@ -9,7 +9,7 @@ class Utils {
         ? Positioned(
             child: Container(
               // ignore: sort_child_properties_last
-              child:  Center(
+              child: Center(
                 child: SpinKitDoubleBounce(
                   color: colors.Text,
                 ),
@@ -35,10 +35,41 @@ class Utils {
                 height: height,
                 child: Center(child: new CircularProgressIndicator())),
           ),
+          imageBuilder: (context, imageProvider) => Container(
+            width: 200.0,
+            height: 200.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: imageProvider, fit: BoxFit.contain),
+            ),
+          ),
           errorWidget: (context, url, error) => new Icon(Icons.error),
           width: 500,
           height: 300,
           fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  static Widget profileImageWithEvent(
+      context, String imageURL, double width, double height) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100.0),
+        child: CachedNetworkImage(
+          imageUrl: imageURL,
+          placeholder: (context, url) => Container(
+            //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+            child: Container(
+                width: width,
+                height: height,
+                child: Center(child: new CircularProgressIndicator())),
+          ),
+          errorWidget: (context, url, error) => new Icon(Icons.error),
+          width: 200,
+          height: 100,
+          fit: BoxFit.contain,
         ),
       ),
     );

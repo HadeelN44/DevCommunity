@@ -1,14 +1,14 @@
-import 'package:community_dev/Servises/FireBase/challenge.dart';
-import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:community_dev/Controller/dashboardController.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/Teams.dart';
+import 'package:community_dev/components/Slider.dart';
 import 'package:community_dev/components/primaryButton.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({super.key});
@@ -18,29 +18,42 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  late Uri _url;
+  DashboardController controller = Get.put(DashboardController());
+
   @override
   Widget build(BuildContext context) {
+    Stream<QuerySnapshot<Object?>>? newUsersStream =
+        FirebaseFirestore.instance.collection('Users').limit(4).snapshots();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        centerTitle: true,
         title: Text(
-          "Home",
-          style: GoogleFonts.openSans(
-            fontSize: 24,
+          'Home',
+          style: GoogleFonts.quicksand(
+            fontSize: 20,
             color: colors.Text,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
+          textAlign: TextAlign.left,
         ),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
           SizedBox(
             height: Get.height * 0.03,
           ),
+          SizedBox(
+            height: Get.height * 0.03,
+          ),
+          // primaryButton(
+          //   title: "title",
+          //   onPressed: (() {
+          //     SignOutMethod();
+          //   }),
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -48,35 +61,62 @@ class _DashboardState extends State<Dashboard> {
                 width: Get.width * 0.9,
                 height: Get.height * 0.2,
                 decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: Offset(3, 3), // changes position of shadow
+                      ),
+                    ],
                     color: colors.primary,
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Daily challenge",
-                          //textAlign: TextAlign.left,
-                          style: GoogleFonts.openSans(
-                            fontSize: 20,
-                            color: colors.fields,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            GetStorage().read("dailyChallenge").toString(),
-                            //textAlign: TextAlign.left,
-                            style: GoogleFonts.openSans(
-                              fontSize: 16,
-                              color: colors.fields,
-                              fontWeight: FontWeight.bold,
+                          InkWell(
+                            //onTap:
+                            // getUserTeams(UID: "PjGsgSH0bXRwdVC0ZOnsEtlt1TA3"),
+                            child: Text(
+                              "Daily challenge",
+                              //textAlign: TextAlign.left,
+                              style: GoogleFonts.openSans(
+                                fontSize: 20,
+                                color: colors.background,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 15),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: Get.width * 0.7,
+                            child: GetBuilder<DashboardController>(
+                              builder: (controller) {
+                                return Text(
+                                  controller.Challenges != null
+                                      ? controller.Challenges[0].toString()
+                                      : "",
+                                  // GetStorage().read("dailyChallenge").toString(),
+                                  //textAlign: TextAlign.left,
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 16,
+                                    color: colors.background,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  softWrap: true,
+                                );
+                              },
                             ),
                           ),
                         ],
@@ -98,53 +138,16 @@ class _DashboardState extends State<Dashboard> {
                 textAlign: TextAlign.left,
                 style: GoogleFonts.openSans(
                   fontSize: 20,
-                  color: colors.icons,
+                  color: colors.Text,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Container(
-                width: Get.width * 0.9,
-                height: Get.height * 0.15,
-                decoration: BoxDecoration(
-                    color: colors.fields,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 5),
-                      child: Text(
-                        GetStorage().read("LatestNews")[0]["title"].toString(),
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.openSans(
-                          fontSize: 14,
-                          color: colors.icons,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    primaryButton(
-                      title: 'Check',
-                      width: 100,
-                      onPressed: () async {
-                        // getNews();
-                        //await addChallenges();
-                        // var list = await getChallenges();
-                        var list = await generateDailyChallenge();
-                        print(list);
-                        print(GetStorage()
-                            .read("LatestNews")[0]["Link"]
-                            .toString());
-                        _url = Uri.parse(GetStorage()
-                            .read("LatestNews")[0]["Link"]
-                            .toString());
-                        _launchUrl();
-                      },
-                    ),
-                  ],
-                ),
+              SizedBox(
+                height: 15,
               ),
+              GetBuilder<DashboardController>(builder: ((controller) {
+                return DotSlider();
+              }))
             ],
           ),
           SizedBox(
@@ -154,132 +157,140 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "New to Flutter",
+                "New to DevCommunity",
                 textAlign: TextAlign.left,
                 style: GoogleFonts.openSans(
                   fontSize: 20,
-                  color: colors.icons,
+                  color: colors.Text,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Container(
-                width: Get.width * 0.9,
-                height: Get.height * 0.2,
-                decoration: BoxDecoration(
-                    color: colors.fields,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Sara",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 16,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "@xSara_978",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 14,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CircleAvatar(),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Sara",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 16,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "@xSara_978",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 14,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CircleAvatar(),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Sara",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 16,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "@xSara_978",
-                                //textAlign: TextAlign.left,
-                                style: GoogleFonts.openSans(
-                                  fontSize: 14,
-                                  color: colors.icons,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+
+              Divider(
+                indent: 40,
+                endIndent: 40,
+                thickness: 2,
               ),
+              StreamBuilder<QuerySnapshot>(
+                  stream: newUsersStream,
+                  builder: ((context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: Text("sksj"),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                          left: 32, right: 32, bottom: 32, top: 10),
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: snapshot.data?.docs.length,
+                          itemBuilder: ((context, index) {
+                            DocumentSnapshot doc = snapshot.data!.docs[index];
+                            return Container(
+                              margin: EdgeInsets.all(4),
+                              child: InkWell(
+                                onTap: () {
+                                  // userProfile();
+                                },
+                                child: Row(
+                                  children: [
+                                    doc['imageURL'] != ''
+                                        ? CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: NetworkImage(
+                                                doc['imageURL'],
+                                                scale: 100))
+                                        : CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: colors.feedBack,
+                                            child: Icon(Icons.person,
+                                                color: Colors.white, size: 30)),
+                                    SizedBox(
+                                      width: Get.width * 0.02,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          doc["Name"],
+                                          //textAlign: TextAlign.left,
+                                          style: GoogleFonts.openSans(
+                                            fontSize: 16,
+                                            color: colors.Text,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          doc["UserName"],
+                                          //textAlign: TextAlign.left,
+                                          style: GoogleFonts.openSans(
+                                            fontSize: 14,
+                                            color: colors.icons,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          })),
+                    );
+                  })),
+              // Container(
+              //   width: Get.width * 0.9,
+              //   height: Get.height * 0.2,
+              //   decoration: BoxDecoration(
+              //       color: colors.fields,
+              //       borderRadius: BorderRadius.circular(20)),
+              //   child: Padding(
+              //     padding: const EdgeInsets.symmetric(horizontal: 16),
+              //     child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //       children: [
+              //         Row(
+              //           children: [
+              //             CircleAvatar(),
+              //             SizedBox(
+              //               width: Get.width * 0.02,
+              //             ),
+              //             Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text(
+              //                   "Sara",
+              //                   //textAlign: TextAlign.left,
+              //                   style: GoogleFonts.openSans(
+              //                     fontSize: 16,
+              //                     color: colors.icons,
+              //                     fontWeight: FontWeight.bold,
+              //                   ),
+              //                 ),
+              //                 Text(
+              //                   "@xSara_978",
+              //                   //textAlign: TextAlign.left,
+              //                   style: GoogleFonts.openSans(
+              //                     fontSize: 14,
+              //                     color: colors.icons,
+              //                     fontWeight: FontWeight.bold,
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           )
         ],
       ),
     );
-  }
-
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw 'Could not launch $_url';
-    }
   }
 }

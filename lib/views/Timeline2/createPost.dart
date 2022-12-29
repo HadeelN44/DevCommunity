@@ -2,25 +2,16 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:community_dev/Helper/imagePicker.dart';
-
 import 'package:community_dev/Helper/utils.dart';
-import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Servises/FireBase/Timeline.dart';
-import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:flutter/foundation.dart';
 
 class createPost extends StatefulWidget {
   const createPost({

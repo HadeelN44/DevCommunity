@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Servises/FireBase/Timeline.dart';
 import 'package:community_dev/constants/style.dart';
+import 'package:community_dev/views/Timeline2/editPost.dart';
+import 'package:community_dev/views/profile/EditProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Helper/utils.dart';
@@ -13,6 +16,7 @@ class PostItem extends StatefulWidget {
   final BuildContext parentContext;
   final DocumentSnapshot data;
   final bool isFromThread;
+  final String? imageURL;
 
   final String Name;
 
@@ -21,7 +25,8 @@ class PostItem extends StatefulWidget {
       required this.data,
       required this.isFromThread,
       required this.parentContext,
-      required this.Name})
+      required this.Name,
+      this.imageURL})
       : super(key: key);
   @override
   State<StatefulWidget> createState() => _PostItem();
@@ -47,6 +52,7 @@ class _PostItem extends State<PostItem> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Card(
+        color: colors.Timeline,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -58,10 +64,17 @@ class _PostItem extends State<PostItem> {
                   Widget>[
             Row(
               children: [
-                CircleAvatar(
-                    maxRadius: 20,
-                    backgroundColor: colors.feedBack,
-                    child: Icon(Icons.person, color: Colors.white, size: 30)),
+                widget.imageURL != null
+                    ? CircleAvatar(
+                        radius: 70,
+                        backgroundImage: NetworkImage(
+                            widget.imageURL.toString(),
+                            scale: 100))
+                    : CircleAvatar(
+                        maxRadius: 20,
+                        backgroundColor: colors.feedBack,
+                        child:
+                            Icon(Icons.person, color: Colors.white, size: 30)),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -103,7 +116,7 @@ class _PostItem extends State<PostItem> {
                     child: Utils.cacheNetworkImageWithEvent(
                         context, widget.data['postImage'], 0, 0))
                 : Container(),
-            user.email == widget.data['posterID']
+            GetStorage().read("UID") == widget.data['posterID']
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -111,9 +124,15 @@ class _PostItem extends State<PostItem> {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: IconButton(
                             iconSize: 20,
-                            color: const Color(0xffD1D6DB),
+                            color: colors.icons,
                             icon: const Icon(Icons.edit_rounded),
-                            onPressed: () {},
+                            onPressed: () {
+                              //editProfile( widget.data['postID'],);
+                              Get.to(() => EditPost(
+                                    data: widget.data,
+                                    Name: "",
+                                  ));
+                            },
                           )),
                       Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -52,6 +52,8 @@ dependencies:
   get_storage: ^2.0.3
   http: ^0.13.5
   url_launcher: ^6.1.7
+  carousel_slider: ^4.2.1
+  card_swiper: ^2.0.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

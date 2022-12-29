@@ -5,7 +5,7 @@ import 'package:community_dev/components/textButton.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
 
-import 'package:community_dev/views/forgetPassword.dart';
+import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

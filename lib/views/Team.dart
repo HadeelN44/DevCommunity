@@ -28,13 +28,15 @@ class Team extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
+        centerTitle: true,
         title: Text(
-          "Team One",
-          style: GoogleFonts.openSans(
-            fontSize: 24,
+          'Team One',
+          style: GoogleFonts.quicksand(
+            fontSize: 20,
             color: colors.Text,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
+          textAlign: TextAlign.left,
         ),
       ),
       body: ListView(

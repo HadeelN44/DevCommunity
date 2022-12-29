@@ -5,7 +5,7 @@ import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
 
 import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
-import 'package:community_dev/views/forgetPassword.dart';
+import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 
 import 'package:community_dev/views/Team.dart';

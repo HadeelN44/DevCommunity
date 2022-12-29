@@ -11,11 +11,13 @@ class customTextField extends StatelessWidget {
       this.prefixIcon,
       required this.isPass,
       this.keyboardType,
+      this.onChanged,
       this.controller,
       this.hint});
   final String name;
   final String? hint;
   final Icon? prefixIcon;
+  final Function(String)? onChanged;
   bool isPass = false;
   TextInputType? keyboardType = TextInputType.text;
   TextEditingController? controller;
@@ -30,13 +32,13 @@ class customTextField extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Text(
-                // textAlign: TextAlign.left,
                 "${name.toString()}",
-                style: GoogleFonts.openSans(
-                  fontSize: 22,
+                style: GoogleFonts.asap(
+                  fontSize: 18,
                   color: colors.Text,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.normal,
                 ),
+                textAlign: TextAlign.left,
               ),
             ),
             SizedBox(
@@ -46,11 +48,13 @@ class customTextField extends StatelessWidget {
               height: 40,
               width: MediaQuery.of(context).size.width / 1.2,
               child: TextFormField(
+                  onChanged: onChanged,
                   textAlignVertical: TextAlignVertical.center,
                   controller: controller,
                   keyboardType: keyboardType,
                   obscureText: isPass,
                   cursorColor: colors.feedBack,
+                  //initialValue: hint,
                   decoration: InputDecoration(
                     hintText: hint,
                     prefixIcon: prefixIcon,
