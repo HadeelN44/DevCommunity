@@ -1,4 +1,5 @@
 import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/background.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
 
@@ -7,13 +8,15 @@ import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community_dev/constants/style.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({super.key});
   // finding the controller which has been established in the main
- // RegistryController control = Get.find();
-
+  // RegistryController control = Get.find();
+  TextEditingController emailcontrol = TextEditingController();
+  TextEditingController passcontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -46,14 +49,19 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.03),
                   primaryTextfiled(
-                    textt: 'UserName',
+                    ispass: false,
+                    controller: emailcontrol,
+                    textt: 'Email',
                     //controller: control.emailcontrol,
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: size.height * 0.03),
                   primaryTextfiled(
+                    ispass: true,
+                    controller: passcontrol,
                     textt: 'Password',
-                   // controller: control.passcontrol,
+
+                    // controller: control.passcontrol,
                     keyboardType: TextInputType.visiblePassword,
                   ),
                   Container(
@@ -61,7 +69,7 @@ class SignIn extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: TextButton(
                       onPressed: () {
-                       // control.emailcontrol.clear();
+                        // control.emailcontrol.clear();
 
                         Get.to(forgetPassword());
                       },
@@ -77,8 +85,11 @@ class SignIn extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: ElevatedButton(
-                      onPressed: () {
-                  //      control.SignIn();
+                      onPressed: () async {
+                        GetStorage().write("password", passcontrol.text);
+                        await SignInMethod(
+                            emailAddress: emailcontrol.text,
+                            password: passcontrol.text);
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -107,9 +118,7 @@ class SignIn extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: TextButton(
                       onPressed: () {
-                        // control.emailcontrol.clear();
-                        // control.passcontrol.clear();
-                      Get.to(SignUp());
+                        Get.to(SignUp());
                       },
                       child: Text(
                         "Don't Have an Account? Sign up",
@@ -132,10 +141,15 @@ class SignIn extends StatelessWidget {
 
 class primaryTextfiled extends StatelessWidget {
   primaryTextfiled(
-      {super.key, required this.textt, this.keyboardType, this.controller});
+      {super.key,
+      required this.textt,
+      required this.ispass,
+      this.keyboardType,
+      this.controller});
   TextInputType? keyboardType = TextInputType.text;
   final TextEditingController? controller;
   final String textt;
+  bool ispass = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -144,6 +158,7 @@ class primaryTextfiled extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
+        obscureText: ispass,
         decoration: InputDecoration(labelText: textt),
       ),
     );

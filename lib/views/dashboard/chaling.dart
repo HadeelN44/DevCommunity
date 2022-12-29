@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class chaling extends StatelessWidget {
@@ -60,7 +61,7 @@ class chaling extends StatelessWidget {
                             height: 15,
                           ),
                           Text(
-                              "wright a simpple app use language what you want be craitf is ui withot use backend",
+                              GetStorage().read("dailyChallenge").toString(),
                               style: TextStyle(fontSize: 15)),
                         ],
                       ),

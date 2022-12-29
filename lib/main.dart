@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         getPages: routerApp,
         initialRoute: user != null
-            ? NameRoute.mainScreen
+            ? NameRoute.splash
             : NameRoute.splash // check if the user logged in
         );
   }

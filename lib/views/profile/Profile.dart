@@ -25,7 +25,6 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -43,67 +42,68 @@ class Profile extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        children: [
-          SizedBox(
-            height: Get.height * 0.05,
-          ),
-          Container(
-            width: Get.width * 0.1,
-            height: Get.height * 0.15,
-            child: CircleAvatar(
-              maxRadius: 50,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                // child: Image.asset(
-                //   "images/pic5.jpeg",
-                //   fit: BoxFit.fitWidth,
-                // )
+      body: Container(
+        child: Column(
+          children: [
+            SizedBox(
+              height: Get.height * 0.05,
+            ),
+            Container(
+              width: Get.width * 0.1,
+              height: Get.height * 0.15,
+              child: CircleAvatar(
+                radius: 50,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  // child: Image.asset(
+                  //   "images/pic5.jpeg",
+                  //   fit: BoxFit.fitWidth,
+                  // )
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: Get.height * 0.05,
-          ),
-          profileCard(
-            title: "Bio",
-            value: GetStorage().read("bio"),
-          ),
-          SizedBox(
-            height: Get.height * 0.04,
-          ),
-          profileCard(
-            title: "Programming langauges ",
-            value: "HTML, CSS, PHP, JS",
-          ),
-          SizedBox(
-            height: Get.height * 0.04,
-          ),
-          profileOptionCard(
-            title: "Settings",
-            icon: CupertinoIcons.settings,
-            onTap: () {
-              Get.to(() => Settings());
-            },
-          ),
-          profileOptionCard(
-            title: "My posts",
-            icon: CupertinoIcons.list_bullet_indent,
-            onTap: () {
-              Get.to(() => Mypost());
-            },
-          ),
-          profileOptionCard(
-            title: "Sign out",
-            icon: Icons.logout_rounded,
-            TileColor: colors.error,
-            textColor: colors.fields,
-            onTap: () {
-              GetStorage().erase();
-              SignOutMethod();
-            },
-          ),
-        ],
+            SizedBox(
+              height: Get.height * 0.05,
+            ),
+            profileCard(
+              title: "Bio",
+              value: GetStorage().read("bio"),
+            ),
+            SizedBox(
+              height: Get.height * 0.04,
+            ),
+            profileCard(
+              title: "Programming langauges ",
+              value: "HTML, CSS, PHP, JS",
+            ),
+            SizedBox(
+              height: Get.height * 0.04,
+            ),
+            profileOptionCard(
+              title: "Settings",
+              icon: CupertinoIcons.settings,
+              onTap: () {
+                Get.to(() => Settings());
+              },
+            ),
+            profileOptionCard(
+              title: "My posts",
+              icon: CupertinoIcons.list_bullet_indent,
+              onTap: () {
+                Get.to(() => Mypost());
+              },
+            ),
+            profileOptionCard(
+              title: "Sign out",
+              icon: Icons.logout_rounded,
+              TileColor: colors.error,
+              textColor: colors.fields,
+              onTap: () {
+                GetStorage().erase();
+                SignOutMethod();
+              },
+            ),
+          ],
 
 //abdullah page
 //       resizeToAvoidBottomInset: false,
@@ -252,6 +252,7 @@ class Profile extends StatelessWidget {
 //           ],
 //         ),
 // >>>>>>> origin/abdullah2
+        ),
       ),
     );
   }

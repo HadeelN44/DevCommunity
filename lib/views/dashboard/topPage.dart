@@ -13,7 +13,7 @@ class top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      ProfileController profileController = Get.find();
+     // ProfileController profileController = Get.find();
     return Container(
       padding: EdgeInsets.only(left: 15, right: 15, top: 15),
       height: 150,
@@ -38,20 +38,20 @@ class top extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
               ),
-               GetBuilder<ProfileController>(
-              init: ProfileController(),
-              builder: (_) {
-                return Text(
-                  "${profileController.name}",
-                   style: GoogleFonts.abel(
-                  fontSize: 33,
-                  color: colors.primary,
-                  fontWeight: FontWeight.normal,
+            //    GetBuilder<ProfileController>(
+            //   init: ProfileController(),
+            //   builder: (_) {
+            //     return Text(
+            //       "${profileController.name}",
+            //        style: GoogleFonts.abel(
+            //       fontSize: 33,
+            //       color: colors.primary,
+            //       fontWeight: FontWeight.normal,
                 
-                  ),
-                );
-              },
-            ),
+            //       ),
+            //     );
+            //   },
+            // ),
              
             ],
           ),

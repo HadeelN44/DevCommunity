@@ -40,24 +40,30 @@ class SignUp extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
+                ispass: false,
+
                 textt: 'Name',
                 //  controller: control.nameControl,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
+                ispass: false,
+
                 textt: 'UserName',
                 //  controller: control.userNamecontrol,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
+                ispass: false,
                 textt: 'Email',
                 //  controller: control.emailcontrol,
                 keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
+                ispass: true,
                 textt: 'Password',
                 //  controller: control.passcontrol,
                 keyboardType: TextInputType.visiblePassword,

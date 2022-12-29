@@ -156,125 +156,125 @@
 //     );
 //   }
 // }
-// // class SignIn extends StatelessWidget {
-// //   SignIn({super.key});
-// //   // finding the controller which has been established in the main
-// //   RegistryController control = Get.find();
+// class SignIn extends StatelessWidget {
+//   SignIn({super.key});
+//   // finding the controller which has been established in the main
+//   RegistryController control = Get.find();
 
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       body: ListView(
-// //         children: [
-// //           Padding(
-// //             padding: EdgeInsets.only(
-// //               top: Get.height * 0.05,
-// //             ),
-// //           ),
-// //           Padding(
-// //             padding: EdgeInsets.symmetric(
-// //               vertical: Get.height * 0.03,
-// //             ),
-// //             child: Container(
-// //               width: Get.width * 0.1,
-// //               height: Get.height * 0.15,
-// //               child: CircleAvatar(
-// //                 maxRadius: 100,
-// //                 child: ClipRRect(
-// //                   borderRadius: BorderRadius.circular(100),
-// //                   // child: Image.asset(
-// //                   //   "images/logo.png",
-// //                   //   fit: BoxFit.fitWidth,
-// //                   // )
-// //                 ),
-// //               ),
-// //             ),
-// //           ),
-// //           SizedBox(
-// //             height: Get.height * 0.03,
-// //           ),
-// //           customTextField(
-// //             controller: control.emailcontrol,
-// //             name: "Email",
-// //             isPass: false,
-// //             prefixIcon: Icon(
-// //               Icons.alternate_email_rounded,
-// //               size: 15,
-// //               color: colors.icons,
-// //             ),
-// //             keyboardType: TextInputType.emailAddress,
-// //             hint: "Enter your email",
-// //           ),
-// //           SizedBox(
-// //             height: Get.height * 0.03,
-// //           ),
-// //           customTextField(
-// //             name: "Password",
-// //             controller: control.passcontrol,
-// //             prefixIcon: Icon(
-// //               CupertinoIcons.lock_fill,
-// //               size: 18,
-// //               color: colors.icons,
-// //             ),
-// //             isPass: true,
-// //             keyboardType: TextInputType.visiblePassword,
-// //             hint: "Enter your password",
-// //           ),
-// //           SizedBox(
-// //             height: Get.height * 0.01,
-// //           ),
-// //           Row(
-// //             mainAxisAlignment: MainAxisAlignment.start,
-// //             children: [
-// //               Container(
-// //                   width: Get.width * 0.6,
-// //                   child: textButton(
-// //                     name: "Forget your password?",
-// //                     underline: false,
-// //                     onPressed: () {
-// //                       control.emailcontrol.clear();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView(
+//         children: [
+//           Padding(
+//             padding: EdgeInsets.only(
+//               top: Get.height * 0.05,
+//             ),
+//           ),
+//           Padding(
+//             padding: EdgeInsets.symmetric(
+//               vertical: Get.height * 0.03,
+//             ),
+//             child: Container(
+//               width: Get.width * 0.1,
+//               height: Get.height * 0.15,
+//               child: CircleAvatar(
+//                 maxRadius: 100,
+//                 child: ClipRRect(
+//                   borderRadius: BorderRadius.circular(100),
+//                   // child: Image.asset(
+//                   //   "images/logo.png",
+//                   //   fit: BoxFit.fitWidth,
+//                   // )
+//                 ),
+//               ),
+//             ),
+//           ),
+//           SizedBox(
+//             height: Get.height * 0.03,
+//           ),
+//           customTextField(
+//             controller: control.emailcontrol,
+//             name: "Email",
+//             isPass: false,
+//             prefixIcon: Icon(
+//               Icons.alternate_email_rounded,
+//               size: 15,
+//               color: colors.icons,
+//             ),
+//             keyboardType: TextInputType.emailAddress,
+//             hint: "Enter your email",
+//           ),
+//           SizedBox(
+//             height: Get.height * 0.03,
+//           ),
+//           customTextField(
+//             name: "Password",
+//             controller: control.passcontrol,
+//             prefixIcon: Icon(
+//               CupertinoIcons.lock_fill,
+//               size: 18,
+//               color: colors.icons,
+//             ),
+//             isPass: true,
+//             keyboardType: TextInputType.visiblePassword,
+//             hint: "Enter your password",
+//           ),
+//           SizedBox(
+//             height: Get.height * 0.01,
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             children: [
+//               Container(
+//                   width: Get.width * 0.6,
+//                   child: textButton(
+//                     name: "Forget your password?",
+//                     underline: false,
+//                     onPressed: () {
+//                       control.emailcontrol.clear();
 
-// //                       Get.to(forgetPassword());
-// //                     },
-// //                   )),
-// //             ],
-// //           ),
-// //           SizedBox(
-// //             height: Get.height * 0.05,
-// //           ),
-// //           primaryButton(
-// //             title: 'Sign In',
-// //             onPressed: () {
-// //               control.SignIn();
-// //             },
-// //           ),
-// //           SizedBox(
-// //             height: Get.height * 0.02,
-// //           ),
-// //           Row(
-// //             mainAxisAlignment: MainAxisAlignment.center,
-// //             children: [
-// //               Text(
-// //                 "New to DevCommunity?",
-// //                 style: GoogleFonts.openSans(
-// //                   fontSize: 16,
-// //                   color: colors.hyperlinks,
-// //                   fontWeight: FontWeight.normal,
-// //                 ),
-// //               ),
-// //               textButton(
-// //                 name: "Create an account",
-// //                 underline: true,
-// //                 onPressed: () {
-// //                   control.emailcontrol.clear();
-// //                   control.passcontrol.clear();
-// //                   Get.to(SignUp());
-// //                 },
-// //               )
-// //             ],
-// //           ),
-// //         ],
-// //       ),
-// //     );
-// //   }
-// // }
+//                       Get.to(forgetPassword());
+//                     },
+//                   )),
+//             ],
+//           ),
+//           SizedBox(
+//             height: Get.height * 0.05,
+//           ),
+//           primaryButton(
+//             title: 'Sign In',
+//             onPressed: () {
+//               control.SignIn();
+//             },
+//           ),
+//           SizedBox(
+//             height: Get.height * 0.02,
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Text(
+//                 "New to DevCommunity?",
+//                 style: GoogleFonts.openSans(
+//                   fontSize: 16,
+//                   color: colors.hyperlinks,
+//                   fontWeight: FontWeight.normal,
+//                 ),
+//               ),
+//               textButton(
+//                 name: "Create an account",
+//                 underline: true,
+//                 onPressed: () {
+//                   control.emailcontrol.clear();
+//                   control.passcontrol.clear();
+//                   Get.to(SignUp());
+//                 },
+//               )
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
