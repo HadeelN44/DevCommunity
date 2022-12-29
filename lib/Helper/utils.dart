@@ -11,7 +11,7 @@ class Utils {
               // ignore: sort_child_properties_last
               child: Center(
                 child: SpinKitDoubleBounce(
-                  color: colors.Text,
+                  color: colors.primary,
                 ),
               ),
               color: Colors.white.withOpacity(0.7),

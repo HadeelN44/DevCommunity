@@ -5,7 +5,7 @@ class colors {
   static Color background = Color(0xffEEECFF);
 
   static Color icons = Color.fromARGB(255, 138, 135, 135);
-  static Color Text = Color(0xff002524);
+  static Color Text = Color(0xff141414);
   static Color hyperlinks = Color.fromARGB(255, 138, 135, 135);
   static Color feedBack = Color.fromARGB(255, 163, 146, 201);
   static Color fields = Color.fromARGB(128, 205, 193, 232);
