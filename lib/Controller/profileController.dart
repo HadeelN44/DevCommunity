@@ -27,7 +27,6 @@ class ProfileController extends GetxController {
     name = data["Name"];
     username = data["UserName"];
     bio = data["Bio"];
-
   }
 
   Updateprofile() async {

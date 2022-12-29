@@ -38,6 +38,8 @@ class chaling extends StatelessWidget {
             child: Swiper(
               autoplay: false,
               loop: true,
+              onTap:((index) => null),
+             // autoplayDisableOnInteraction: false,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   padding: EdgeInsets.all(15),

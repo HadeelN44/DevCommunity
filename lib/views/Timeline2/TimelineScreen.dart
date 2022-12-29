@@ -14,7 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TimelineScreen extends StatefulWidget {
-  TimelineScreen({
+  const TimelineScreen({
     Key? key,
     required this.isMyPost,
   }) : super(key: key);

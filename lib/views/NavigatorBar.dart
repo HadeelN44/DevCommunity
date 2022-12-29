@@ -23,10 +23,9 @@ class MainPageState extends State<MainPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
     teamss(),
-    teamss(),
-    //  TimelineScreen(
-    //   isMyPost: false,
-    // ),
+    const TimelineScreen(
+      isMyPost: false,
+    ),
     Profile(),
   ];
 

@@ -1,3 +1,4 @@
+import 'package:community_dev/Controller/profileController.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/views/dashboard/chaling.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      ProfileController profileController = Get.find();
     return Container(
       padding: EdgeInsets.only(left: 15, right: 15, top: 15),
       height: 150,
@@ -36,14 +38,21 @@ class top extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
               ),
-              Text(
-                'Abdullah',
-                style: GoogleFonts.abel(
+               GetBuilder<ProfileController>(
+              init: ProfileController(),
+              builder: (_) {
+                return Text(
+                  "${profileController.name}",
+                   style: GoogleFonts.abel(
                   fontSize: 33,
                   color: colors.primary,
                   fontWeight: FontWeight.normal,
-                ),
-              ),
+                
+                  ),
+                );
+              },
+            ),
+             
             ],
           ),
         ],
