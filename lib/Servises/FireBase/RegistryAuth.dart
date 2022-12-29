@@ -2,7 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:community_dev/Servises/GetStorage/userInfo.dart';
-import 'package:community_dev/views/MainPage.dart';
+
 import 'package:community_dev/views/NavigatorBar.dart';
 import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:community_dev/views/Registry/login.dart';

@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // theme: ThemeData(scaffoldBackgroundColor: colors.backgroundcolor),
+        // theme: ThemeData(scaffoldBackgroundColor: colors.backgroundcolor),
 
-      getPages: routerApp,
-      initialRoute: user != null
-          ? NameRoute.mainScreen,
-          : NameRoute.splash // check if the user logged in
-    );
+        getPages: routerApp,
+        initialRoute: user != null
+            ? NameRoute.mainScreen
+            : NameRoute.splash // check if the user logged in
+        );
   }
 }
 

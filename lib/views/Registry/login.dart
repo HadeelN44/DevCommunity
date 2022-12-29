@@ -1,8 +1,9 @@
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/background.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
-import 'package:community_dev/views/Registry/forgetPassword.dart';
+
 import 'package:community_dev/views/Registry/register.dart';
+import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community_dev/constants/style.dart';
@@ -11,12 +12,12 @@ import 'package:google_fonts/google_fonts.dart';
 class SignIn extends StatelessWidget {
   SignIn({super.key});
   // finding the controller which has been established in the main
-  RegistryController control = Get.find();
+ // RegistryController control = Get.find();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    RegistryController control = Get.find();
+    // RegistryController control = Get.find();
     return Scaffold(
       body: Background(
         child: Container(
@@ -46,13 +47,13 @@ class SignIn extends StatelessWidget {
                   SizedBox(height: size.height * 0.03),
                   primaryTextfiled(
                     textt: 'UserName',
-                    controller: control.emailcontrol,
+                    //controller: control.emailcontrol,
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: size.height * 0.03),
                   primaryTextfiled(
                     textt: 'Password',
-                    controller: control.passcontrol,
+                   // controller: control.passcontrol,
                     keyboardType: TextInputType.visiblePassword,
                   ),
                   Container(
@@ -60,7 +61,7 @@ class SignIn extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: TextButton(
                       onPressed: () {
-                        control.emailcontrol.clear();
+                       // control.emailcontrol.clear();
 
                         Get.to(forgetPassword());
                       },
@@ -77,7 +78,7 @@ class SignIn extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: ElevatedButton(
                       onPressed: () {
-                        control.SignIn();
+                  //      control.SignIn();
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -106,9 +107,9 @@ class SignIn extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: TextButton(
                       onPressed: () {
-                        control.emailcontrol.clear();
-                        control.passcontrol.clear();
-                        Get.to(SignUp());
+                        // control.emailcontrol.clear();
+                        // control.passcontrol.clear();
+                      Get.to(SignUp());
                       },
                       child: Text(
                         "Don't Have an Account? Sign up",

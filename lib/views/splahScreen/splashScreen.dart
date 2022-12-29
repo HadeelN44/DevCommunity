@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/background.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
-import 'package:community_dev/views/Registry/forgetPassword.dart';
+
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/views/Registry/register.dart';
 import 'package:flutter/material.dart';

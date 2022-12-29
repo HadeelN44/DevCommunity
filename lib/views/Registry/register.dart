@@ -1,5 +1,6 @@
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/background.dart';
+import 'package:community_dev/views/NavigatorBar.dart';
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 class SignUp extends StatelessWidget {
   SignUp({super.key});
   // finding the controller which has been established in the main
-  RegistryController control = Get.find();
+  // RegistryController control = Get.find();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,25 +41,25 @@ class SignUp extends StatelessWidget {
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Name',
-                controller: control.nameControl,
+                //  controller: control.nameControl,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'UserName',
-                controller: control.userNamecontrol,
+                //  controller: control.userNamecontrol,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Email',
-                controller: control.emailcontrol,
+                //  controller: control.emailcontrol,
                 keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Password',
-                controller: control.passcontrol,
+                //  controller: control.passcontrol,
                 keyboardType: TextInputType.visiblePassword,
               ),
               SizedBox(height: size.height * 0.05),
@@ -67,7 +68,8 @@ class SignUp extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    control.SignUp();
+                    Get.to(MainPage());
+                    //  control.SignUp();//register page goto
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -101,8 +103,8 @@ class SignUp extends StatelessWidget {
                 // },
                 child: TextButton(
                   onPressed: () {
-                    control.emailcontrol.clear();
-                    control.passcontrol.clear();
+                    // control.emailcontrol.clear();
+                    //control.passcontrol.clear();
                     Get.off(() => SignIn());
                   },
                   child: Text(
