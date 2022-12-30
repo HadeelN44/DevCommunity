@@ -33,7 +33,7 @@ class customTextField extends StatelessWidget {
               padding: const EdgeInsets.only(left: 4.0),
               child: Text(
                 "${name.toString()}",
-                style: GoogleFonts.asap(
+                style: GoogleFonts.openSans(
                   fontSize: 18,
                   color: colors.Text,
                   fontWeight: FontWeight.normal,
@@ -45,8 +45,8 @@ class customTextField extends StatelessWidget {
               height: 10,
             ),
             Container(
-              height: 40,
-              width: MediaQuery.of(context).size.width / 1.2,
+              height: 60,
+              width: MediaQuery.of(context).size.width / 1.1,
               child: TextFormField(
                   onChanged: onChanged,
                   textAlignVertical: TextAlignVertical.center,

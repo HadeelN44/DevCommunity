@@ -16,10 +16,10 @@ class headerName extends StatelessWidget {
       child: Center(
         child: Text(
           text!,
-          style: GoogleFonts.openSans(
-            fontSize: 20,
-            color: colors.Text,
-            fontWeight: FontWeight.bold,
+          style: GoogleFonts.alata(
+            fontSize: 35,
+            color: colors.primary,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ),

@@ -1,9 +1,11 @@
-import 'package:community_dev/views/Dashboard.dart';
+import 'package:community_dev/views/NavigatorBar.dart';
+import 'package:community_dev/views/dashboard/Dashboard.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Members.dart';
 import 'package:community_dev/views/Registry/SignIn.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
-
+import 'package:community_dev/views/Registry/login.dart';
+import 'package:community_dev/views/Registry/register.dart';
 import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
 import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:community_dev/views/profile/Profile.dart';
@@ -12,7 +14,8 @@ import 'package:community_dev/views/Team.dart';
 import 'package:community_dev/views/Teams.dart';
 
 import 'package:community_dev/views/Timeline2/createPost.dart';
-
+import 'package:community_dev/views/Registry/forgetPassword.dart';
+import 'package:community_dev/views/splahScreen/splashScreen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routerApp = [
@@ -62,15 +65,18 @@ List<GetPage<dynamic>>? routerApp = [
     name: NameRoute.forgetPass,
     page: () => forgetPassword(),
   ),
-  // GetPage(
-  //   name: NameRoute.splash,
-  //   page: () => SplashPage(),
-  // ),
+  GetPage(
+    name: NameRoute.splash,
+    page: () => SplashScreen(
+    ),
+  ),
 ];
 
 abstract class NameRoute {
   static String signIn = "/signIn";
   static String signUp = "/signUp";
+  static String SplashScreen = "/signUp";
+  static String splash = "/splash";
   static String timeline = "/timeline";
   static String newPost = "/newPost";
   static String dashborad = "/dashborad";
@@ -80,5 +86,5 @@ abstract class NameRoute {
   static String profile = "/profile";
   static String members = "/members";
   static String forgetPass = "/forgetPass";
-  static String splash = "/splash";
+ 
 }

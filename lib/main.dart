@@ -39,5 +39,12 @@ class MyApp extends StatelessWidget {
             ? NameRoute.mainScreen
             : NameRoute.signIn // check if the user logged in
         );
+      // theme: ThemeData(scaffoldBackgroundColor: colors.backgroundcolor),
+
+    //   getPages: routerApp,
+    //   initialRoute: user != null
+    //       ? NameRoute.splash
+    //       : NameRoute.mainScreen, // check if the user logged in
+    // );
   }
 }

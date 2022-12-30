@@ -1,4 +1,4 @@
-import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+  import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/textButton.dart';
@@ -13,8 +13,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'package:google_fonts/google_fonts.dart';
-import 'package:community_dev/constants/style.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:community_dev/constants/style.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({super.key});

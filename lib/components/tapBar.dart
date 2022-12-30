@@ -8,10 +8,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class topBar extends StatelessWidget {
-  const topBar({super.key, this.press1, this.press2, required this.icon1,required this.icon2});
+  const topBar(
+      {super.key,
+      this.press1,
+      this.press2,
+      required this.icon1,
+      required this.icon2, required this.title});
   final Function()? press1;
   final Function()? press2;
   final String icon1;
+  final String title;
   final String icon2;
   @override
   Widget build(BuildContext context) {
@@ -21,16 +27,20 @@ class topBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: 
-              press1,
-          
+            onTap: press1,
             child: Container(
               height: 25,
               child: Image.asset(icon1),
             ),
           ),
-         
-       
+          Text(
+            title,
+            style: GoogleFonts.alata(
+              fontSize: 22,
+              color: colors.primary,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
           InkWell(
             onTap: press2,
             child: Container(

@@ -12,12 +12,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+// class MainPage extends StatefulWidget {
+//   const MainPage({super.key});
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
+//   @override
+//   State<MainPage> createState() => _MainPageState();
+// }
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
@@ -33,11 +33,11 @@ class _MainPageState extends State<MainPage> {
     Profile(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
 
   @override
   Widget build(BuildContext context) {

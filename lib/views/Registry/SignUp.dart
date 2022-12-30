@@ -14,7 +14,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:community_dev/constants/style.dart';
+// import 'package:community_dev/constants/style.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
