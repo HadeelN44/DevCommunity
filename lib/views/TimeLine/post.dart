@@ -53,7 +53,6 @@ class post extends StatelessWidget {
                 ],
               ),
               voit()
-              
             ],
           ),
         ),

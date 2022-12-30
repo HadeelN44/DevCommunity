@@ -1,11 +1,10 @@
+import 'package:community_dev/Controller/profileController.dart';
 import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
 import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Servises/FireBase/UsersAuth.dart';
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/logo.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
-import 'package:community_dev/views/profile/EditProfile.dart';
-import 'package:community_dev/views/edit-profile.dart';
 import 'package:community_dev/views/profile/Mypost.dart';
 import 'package:community_dev/views/profile/Settings.dart';
 import 'package:community_dev/views/profile/detailsProfile.dart';
@@ -15,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
@@ -24,6 +22,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.find();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -32,68 +31,58 @@ class Profile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: Get.height / 2.8,
-              decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.7),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              child: Column(
+              padding: EdgeInsets.only(right: 10, top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(right: 10, top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              Get.to(() => editProfile());
-                            },
-                            child: Container(
-                                height: 35,
-                                child: Image.asset('assets/edit.png'))),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: CircleAvatar(
-                      radius: 60,
-                      child: Image.asset(
-                        'assets/user2.png',
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "${GetStorage().read("username")}",
-                    style: GoogleFonts.alata(
-                      fontSize: 30,
-                      color: colors.primary,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.05,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      logoo(
-                        icon: 'assets/kotlin.png',
-                        press: () {},
-                        text: "KOTLIN",
-                      ),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      logoo(
-                        icon: 'assets/swift.png',
-                        press: () {},
-                        text: "SWIFT",
-                      ),
-                    ],
-                  ),
+                  InkWell(
+                      onTap: () {},
+                      child: Container(
+                          height: 35, child: Image.asset('assets/edit.png'))),
                 ],
               ),
+            ),
+            Container(
+              child: CircleAvatar(
+                radius: 60,
+                child: Image.asset(
+                  'assets/user2.png',
+                ),
+              ),
+            ),
+            GetBuilder<ProfileController>(
+              init: ProfileController(),
+              builder: (_) {
+                return Text(
+                  "${profileController.name}",
+                  style: GoogleFonts.alata(
+                    fontSize: 30,
+                    color: colors.primary,
+                    fontWeight: FontWeight.normal,
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: Get.height * 0.05,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                logoo(
+                  icon: 'assets/kotlin.png',
+                  press: () {},
+                  text: "KOTLIN",
+                ),
+                SizedBox(
+                  width: 25,
+                ),
+                logoo(
+                  icon: 'assets/swift.png',
+                  press: () {},
+                  text: "SWIFT",
+                ),
+              ],
             ),
             SizedBox(
               height: Get.height * 0.05,
@@ -118,7 +107,7 @@ class Profile extends StatelessWidget {
                         Text(
                           'comments',
                           style: GoogleFonts.alata(
-                            fontSize: 17,
+                            fontSize: 20,
                             color: Colors.black,
                             fontWeight: FontWeight.normal,
                           ),
@@ -129,7 +118,7 @@ class Profile extends StatelessWidget {
                         Text(
                           '56',
                           style: GoogleFonts.alata(
-                            fontSize: 15,
+                            fontSize: 17,
                             color: Colors.black,
                             fontWeight: FontWeight.normal,
                           ),
@@ -143,9 +132,14 @@ class Profile extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.05,
             ),
-            profileCard(
-              title: "Bio",
-              value: GetStorage().read("bio"),
+            GetBuilder<ProfileController>(
+              init: ProfileController(),
+              builder: (_) {
+                return profileCard(
+                  title: "Bio",
+                  value: profileController.bio,
+                );
+              },
             ),
             SizedBox(
               height: Get.height * 0.04,
@@ -167,6 +161,8 @@ class Profile extends StatelessWidget {
             profileOptionCard(
               title: "Sign out",
               icon: Icons.logout_rounded,
+              TileColor: colors.error.withOpacity(0.9),
+              textColor: Colors.white,
               onTap: () {
                 SignOutMethod();
               },

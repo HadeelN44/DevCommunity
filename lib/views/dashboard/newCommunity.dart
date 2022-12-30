@@ -12,8 +12,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
 class newsUserCard extends StatelessWidget {
-  const newsUserCard({super.key});
-
+   newsUserCard({super.key, required this.userName, required this.userID});
+  final String userName;
+   final String userID;
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +39,7 @@ class newsUserCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "UserName",
+                  userName,
                   //textAlign: TextAlign.left,
                   style: GoogleFonts.openSans(
                     fontSize: 16,
@@ -46,7 +48,7 @@ class newsUserCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "@asdf234",
+                 userID,
                   //textAlign: TextAlign.left,
                   style: GoogleFonts.openSans(
                     fontSize: 12,

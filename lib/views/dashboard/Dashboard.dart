@@ -78,13 +78,34 @@ class Dashboard extends StatelessWidget {
                     child: ListView(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        newsUserCard(),
-                        newsUserCard(),
-                        newsUserCard(),
-                        newsUserCard(),
-                        newsUserCard(),
-                        newsUserCard(),
-                        newsUserCard(),
+                        newsUserCard(
+                          userID: "@asd234",
+                          userName: "Abdullah",
+                        ),
+                        newsUserCard(
+                          userID: "@kkkk234",
+                          userName: "khalid",
+                        ),
+                        newsUserCard(
+                          userID: "@ff1234",
+                          userName: "Faisl",
+                        ),
+                        newsUserCard(
+                          userID: "@hytr5",
+                          userName: "Hamza",
+                        ),
+                        newsUserCard(
+                          userID: "@asd234",
+                          userName: "Abdullah",
+                        ),
+                        newsUserCard(
+                          userID: "@asd234",
+                          userName: "Abdullah",
+                        ),
+                        newsUserCard(
+                          userID: "@asd234",
+                          userName: "Abdullah",
+                        ),
                       ],
                     ),
                   ),

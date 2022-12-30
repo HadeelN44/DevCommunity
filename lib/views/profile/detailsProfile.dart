@@ -26,7 +26,7 @@ class detailsProfile extends StatelessWidget {
           Text(
             infoName,
             style: GoogleFonts.alata(
-              fontSize: 20,
+              fontSize: 17,
               color: Colors.black,
               fontWeight: FontWeight.normal,
             ),
@@ -37,7 +37,7 @@ class detailsProfile extends StatelessWidget {
           Text(
             nump,
             style: GoogleFonts.alata(
-              fontSize: 17,
+              fontSize: 15,
               color: Colors.black,
               fontWeight: FontWeight.normal,
             ),

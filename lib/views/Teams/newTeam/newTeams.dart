@@ -1,6 +1,6 @@
 import 'package:community_dev/components/dropdown.dart';
 import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/Teams/newTeam/buttoncolor.dart';
+
 import 'package:community_dev/views/Teams/newTeam/description.dart';
 import 'package:community_dev/views/Teams/newTeam/nameTeam.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +26,7 @@ class _newTeamState extends State<newTeam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: colors.backgroundcolor,
         padding: EdgeInsets.only(bottom: 30),
@@ -81,7 +81,9 @@ class _newTeamState extends State<newTeam> {
             description(),
             primaryButton(
               title: 'Create +',
-              onPressed: () {},
+              onPressed: () {
+                Get.to(newTeam());
+              },
             )
           ],
         ),
