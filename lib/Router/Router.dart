@@ -1,9 +1,8 @@
 import 'package:community_dev/components/logo.dart';
-import 'package:community_dev/views/HouseScreen.dart';
+import 'package:community_dev/views/HouseScreen%202.dart';
+
 import 'package:community_dev/views/dashboard/DashboardSec.dart';
-
 import 'package:community_dev/views/Members.dart';
-
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/views/Registry/register.dart';
 import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
@@ -14,8 +13,9 @@ import 'package:community_dev/views/Team.dart';
 import 'package:community_dev/views/Teams.dart';
 
 import 'package:community_dev/views/Timeline2/createPost.dart';
-
 import 'package:community_dev/views/splahScreen/splashScreen.dart';
+
+
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routerApp = [

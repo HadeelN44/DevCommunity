@@ -1,34 +1,42 @@
+// ignore_for_file: file_names, unnecessary_new, avoid_unnecessary_containers, sized_box_for_whitespace, avoid_print
 import 'dart:io';
-import 'dart:math';
-
-import 'package:community_dev/Helper/imagePicker.dart';
-import 'package:community_dev/Helper/utils.dart';
 import 'package:community_dev/Servises/FireBase/Timeline.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/constants/style.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 
-class createPost extends StatefulWidget {
-  const createPost({
-    Key? key,
-  }) : super(key: key);
+import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import '../../../Helper/utils.dart';
+import 'package:community_dev/Helper/imagePicker.dart';
+
+class EditPost extends StatefulWidget {
+  final String Name;
+  final DocumentSnapshot data;
+  const EditPost({Key? key, required this.data, required this.Name})
+      : super(key: key);
 
   @override
-  WritePostPage createState() => WritePostPage();
+  EditPostPage createState() => EditPostPage();
 }
 
-class WritePostPage extends State<createPost> {
+class EditPostPage extends State<EditPost> {
   final myController = TextEditingController();
   final FocusNode _nodeText1 = FocusNode();
   FocusNode writingTextFocus = FocusNode();
   File? image;
   bool _isLoading = false;
-  String text = '';
+  late String text;
+
+  @override
+  void initState() {
+    text = widget.data['postContent'];
+  }
 
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
@@ -66,6 +74,28 @@ class WritePostPage extends State<createPost> {
     );
   }
 
+  void _updateFB() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    String? postImageURL;
+    if (image != null) {
+      postImageURL = (await uploadPostImages(
+          postID: widget.data['postID'], postImageFile: image))!;
+    }
+
+    updatePostInFirebase(
+        postID: widget.data['postID'],
+        postContent: text,
+        postImageURL: postImageURL ?? "NONE",
+        name: "name");
+    setState(() {
+      _isLoading = false;
+    });
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,28 +103,28 @@ class WritePostPage extends State<createPost> {
         toolbarHeight: MediaQuery.of(context).size.width / 10,
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: Icon(Icons.close_rounded, color: colors.Text, size: 30),
-          onPressed: () {
-            Get.back();
-          },
+        leading: SizedBox(
+          width: MediaQuery.of(context).size.width / 1.2,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              //padding: EdgeInsets.all(2),
+              elevation: 0,
+              primary: Colors.transparent,
+              shadowColor: Colors.transparent,
+            ),
+            child: Icon(Icons.close_rounded, color: colors.Text, size: 30),
+            onPressed: () {
+              Get.back();
+            },
+          ),
         ),
         actions: [
           Container(
             margin: EdgeInsets.only(right: 10),
             child: primaryButton(
-              width: Get.width * 0.2,
-              title: 'Post',
-              onPressed: () {
-                setState(() {
-                  _isLoading = true;
-                  postToFB(image: image, content: myController.text);
-                  _isLoading = false;
-                });
-
-                Navigator.pop(context);
-              },
-            ),
+                width: Get.width * 0.2,
+                title: 'Save',
+                onPressed: () => _updateFB()),
           ),
         ],
       ),
@@ -109,17 +139,18 @@ class WritePostPage extends State<createPost> {
                 child: TextFormField(
                     focusNode: writingTextFocus,
                     autofocus: true,
-                    controller: myController,
-                    textInputAction: TextInputAction.done,
+                    //  controller: myController,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                     cursorHeight: 18,
-                    decoration: InputDecoration(
-                      hintText: '  What are you thinking about?',
-                      hintStyle: GoogleFonts.lato(
-                        color: colors.icons,
-                        fontSize: 16,
-                      ),
+                    initialValue: widget.data['postContent'],
+                    decoration: const InputDecoration(
+                      // hintText: '  ' + widget.data['postContent'],
+                      // hintStyle: const TextStyle(
+                      //   color: Color(0xffD1D6DB),
+                      //   fontFamily: 'Helvetica',
+                      //   fontSize: 16,
+                      // ),
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       labelStyle:
                           TextStyle(color: Color(0xffD1D6DB), fontSize: 15),
@@ -132,11 +163,9 @@ class WritePostPage extends State<createPost> {
                     }),
               ),
               image != null
-                  ? Container(
-                      child: Image.file(
-                        image!,
-                        fit: BoxFit.fill,
-                      ),
+                  ? Image.file(
+                      image!,
+                      fit: BoxFit.fill,
                     )
                   : Container(),
             ],
@@ -162,7 +191,6 @@ class WritePostPage extends State<createPost> {
                       title: const Text('Photo Library'),
                       onTap: () async {
                         image = await imagePicker.imgFromGallery();
-
                         Navigator.of(context).pop();
                       }),
                   new ListTile(
@@ -170,7 +198,6 @@ class WritePostPage extends State<createPost> {
                     title: const Text('Camera'),
                     onTap: () async {
                       image = await imagePicker.imgFromCamera();
-
                       Navigator.of(context).pop();
                     },
                   ),
@@ -179,27 +206,5 @@ class WritePostPage extends State<createPost> {
             ),
           );
         });
-  }
-
-  void postToFB({File? image, String? content}) async {
-    setState(() {
-      _isLoading = true;
-    });
-    String postID = 'TLPost' + Random().nextInt(500).toString();
-    String? postImageURL;
-    if (image != null) {
-      postImageURL =
-          (await uploadPostImages(postID: postID, postImageFile: image))!;
-    }
-    print("postToFB");
-    sendPostInFirebase(
-      postID,
-      content!,
-      postImageURL ?? 'NONE',
-      GetStorage().read("username"),
-    );
-    setState(() {
-      _isLoading = false;
-    });
   }
 }

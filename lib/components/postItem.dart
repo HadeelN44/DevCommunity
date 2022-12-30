@@ -3,6 +3,7 @@ import 'package:community_dev/Servises/FireBase/Timeline.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Timeline2/editPost.dart';
 import 'package:community_dev/views/profile/EditProfile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -18,14 +19,11 @@ class PostItem extends StatefulWidget {
   final DocumentSnapshot data;
   final bool isFromThread;
 
-  final String Name;
-
   const PostItem({
     Key? key,
     required this.data,
     required this.isFromThread,
     required this.parentContext,
-    required this.Name,
   }) : super(key: key);
   @override
   State<StatefulWidget> createState() => _PostItem();
@@ -33,18 +31,6 @@ class PostItem extends StatefulWidget {
 
 class _PostItem extends State<PostItem> {
   final auth = FirebaseAuth.instance;
-
-  // String? User = userEmail;
-
-  dynamic user;
-  String? userEmail;
-
-  @override
-  void initState() {
-    getCurrentUserInfo();
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,20 +63,16 @@ class _PostItem extends State<PostItem> {
                       horizontal: 20,
                     ),
                     child: Text(widget.data['posterName'],
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.lato(
                             fontSize: 16,
                             color: colors.Text,
                             fontWeight: FontWeight.bold)),
                   ),
                   Container(
                     alignment: Alignment.topRight,
-                    /* padding: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width / 3.3,
-                                bottom: MediaQuery.of(context).size.width / 14,
-                                top: MediaQuery.of(context).size.width / 14),*/
                     child: Text(
                         Utils.readTimestamp(widget.data['postTimeStamp']),
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.lato(
                             color: colors.icons,
                             fontSize: 16,
                             fontWeight: FontWeight.bold)),
@@ -104,7 +86,7 @@ class _PostItem extends State<PostItem> {
                 (widget.data['postContent'] as String).length > 200
                     ? '${widget.data['postContent'].substring(0, 132)} ...'
                     : widget.data['postContent'],
-                style: const TextStyle(
+                style: GoogleFonts.lato(
                   fontSize: 16,
                 ),
                 //maxLines: 10,
@@ -124,7 +106,10 @@ class _PostItem extends State<PostItem> {
                           child: IconButton(
                             iconSize: 20,
                             color: colors.icons,
-                            icon: const Icon(Icons.edit_rounded),
+                            icon: const Icon(
+                              CupertinoIcons.pen,
+                              size: 20,
+                            ),
                             onPressed: () {
                               //editProfile( widget.data['postID'],);
                               Get.to(() => EditPost(
@@ -136,7 +121,7 @@ class _PostItem extends State<PostItem> {
                       Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: IconButton(
-                              color: const Color(0xffCF3B60),
+                              color: colors.error,
                               iconSize: 20,
                               icon: const Icon(
                                 Icons.delete_rounded,
@@ -148,85 +133,21 @@ class _PostItem extends State<PostItem> {
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     content: Text(
                                         'Are you sure you want to delete your post?',
-                                        style: GoogleFonts.asap(
-                                            color: const Color(0xff606060),
+                                        style: GoogleFonts.lato(
+                                            color: colors.icons,
                                             fontSize: 17,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.w600)),
                                     actions: [
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            MainAxisAlignment.end,
                                         children: [
-                                          ElevatedButton(
-                                            child: Text(
-                                              'Delete',
-                                              style: GoogleFonts.asap(
-                                                fontSize: 21,
-                                                color: const Color(0xffffffff),
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            style: ElevatedButton.styleFrom(
-                                                //alignment: Alignment.bottomCenter,
-                                                fixedSize: Size(
-                                                    MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                        2.7,
-                                                    MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                        10),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100.0),
-                                                ),
-                                                //padding: EdgeInsets.all(2),
-                                                elevation: 0,
-                                                primary:
-                                                    const Color(0xffCF3B60),
-                                                shadowColor:
-                                                    Colors.transparent),
-                                            onPressed: () {
-                                              deletePostFromFirebase(
-                                                widget.data['postID'],
-                                              );
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              fixedSize: (Size(
-                                                  MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      4,
-                                                  MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      10)),
-                                              padding: const EdgeInsets.all(2),
-                                              elevation: 0,
-                                              primary: Colors.transparent,
-                                              shadowColor: Colors.transparent,
-                                            ),
-                                            child: Text('Cancel',
-                                                style: GoogleFonts.asap(
-                                                    color:
-                                                        const Color(0xff455e89),
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                          ),
+                                          ErrorButton(widget: widget),
+                                          customTextButton(),
                                         ],
                                       )
                                     ],
@@ -241,11 +162,74 @@ class _PostItem extends State<PostItem> {
       ),
     );
   }
+}
 
-  void getCurrentUserInfo() async {
-    // user.reload();
-    user = auth.currentUser;
-    userEmail = user.email;
-    //  userPhoneNumber = user.phoneNumber;
+class customTextButton extends StatelessWidget {
+  const customTextButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        fixedSize: (Size(MediaQuery.of(context).size.width / 4,
+            MediaQuery.of(context).size.width / 10)),
+        padding: const EdgeInsets.all(2),
+        elevation: 0,
+        primary: Colors.transparent,
+        shadowColor: Colors.transparent,
+      ),
+      child: Text('Cancel',
+          style: GoogleFonts.lato(
+              color: colors.primary,
+              fontSize: 18,
+              fontWeight: FontWeight.w500)),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+  }
+}
+
+class ErrorButton extends StatelessWidget {
+  const ErrorButton({
+    Key? key,
+    required this.widget,
+  }) : super(key: key);
+
+  final PostItem widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(
+        'Delete',
+        style: GoogleFonts.lato(
+          fontSize: 21,
+          color: colors.white,
+          fontWeight: FontWeight.w700,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      style: ElevatedButton.styleFrom(
+          //alignment: Alignment.bottomCenter,
+          fixedSize: Size(Get.width * 0.3, Get.height * 0.01),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 0,
+          primary: colors.error,
+          shadowColor: Colors.transparent),
+      onPressed: () {
+        deletePostFromFirebase(
+          widget.data['postID'],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('Your Post was Deleted Successfully 🎉'),
+            backgroundColor: colors.primary));
+        Navigator.pop(context);
+      },
+    );
   }
 }

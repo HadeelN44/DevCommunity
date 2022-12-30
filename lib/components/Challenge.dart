@@ -1,6 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:community_dev/components/ChallengeTime.dart';
-import 'package:community_dev/components/ChallengeButton.dart';
 import 'package:flutter/material.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:get/get.dart';
@@ -17,8 +16,8 @@ class Challenge extends StatelessWidget {
       children: [
         Text(
           "Daily Challenge",
-          style: GoogleFonts.abel(
-            fontSize: 25,
+          style: GoogleFonts.merriweather(
+            fontSize: 22,
             color: colors.Text,
             fontWeight: FontWeight.bold,
           ),
@@ -46,18 +45,51 @@ class Challenge extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      child: Text(title.toString(),
-                          style: TextStyle(fontSize: 15)),
+                      child: Text(
+                        title.toString(),
+                        style: GoogleFonts.lato(
+                          fontSize: 14,
+                          color: colors.Text,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ChallengeTime(),
-                      ChallengeButton(),
+                      Container(
+                        height: 40,
+                        width: 120,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(80.0)),
+                            padding: const EdgeInsets.all(0),
+                          ),
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 50.0,
+                            width: 130,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.0),
+                                gradient: LinearGradient(colors: [
+                                  colors.Text,
+                                  colors.primary,
+                                ])),
+                            padding: const EdgeInsets.all(0),
+                            child: Text(
+                              "Complete",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 )

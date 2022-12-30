@@ -29,10 +29,10 @@ class teamss extends StatelessWidget {
           centerTitle: true,
           title: Text(
             "Teams",
-            style: GoogleFonts.alata(
+            style: GoogleFonts.merriweather(
               fontSize: 22,
-              color: colors.primary,
-              fontWeight: FontWeight.normal,
+              color: colors.Text,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Controller/dashboardController.dart';
 import 'package:community_dev/components/Slider.dart';
-import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/dashboard/Challenge.dart';
-import 'package:community_dev/views/dashboard/newCommunity.dart';
-import 'package:community_dev/views/dashboard/news.dart';
-import 'package:community_dev/views/dashboard/topPage.dart';
+
+import 'package:community_dev/components/Challenge.dart';
+import 'package:community_dev/views/dashboard/newUserCard.dart';
+
+import 'package:community_dev/components/WelcomeCard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
@@ -24,11 +23,10 @@ class DashboardSecond extends StatelessWidget {
       body: Container(
         child: ListView(
           children: [
-            top(),
+            WelocmeCard(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //Challenge(title: ,),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: GetBuilder<DashboardController>(
@@ -44,7 +42,7 @@ class DashboardSecond extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: Get.height * 0.02,
+              height: Get.height * 0.03,
             ),
             Container(
               child: Column(
@@ -53,8 +51,8 @@ class DashboardSecond extends StatelessWidget {
                   Text(
                     "Latest News",
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.abel(
-                      fontSize: 25,
+                    style: GoogleFonts.merriweather(
+                      fontSize: 22,
                       color: colors.Text,
                       fontWeight: FontWeight.bold,
                     ),
@@ -76,9 +74,9 @@ class DashboardSecond extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "New to Community ",
-                    style: GoogleFonts.abel(
-                      fontSize: 25,
+                    "New to DevCommunity",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 22,
                       color: colors.Text,
                       fontWeight: FontWeight.bold,
                     ),
@@ -101,7 +99,7 @@ class DashboardSecond extends StatelessWidget {
                               itemBuilder: ((context, index) {
                                 DocumentSnapshot doc =
                                     snapshot.data!.docs[index];
-                                return newsUserCard(
+                                return newUserCard(
                                   userID: doc["UserName"],
                                   userName: doc["Name"],
                                   imageURL: doc["imageURL"],

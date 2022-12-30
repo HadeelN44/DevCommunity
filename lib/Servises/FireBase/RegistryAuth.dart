@@ -2,8 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:community_dev/Servises/GetStorage/userInfo.dart';
+import 'package:community_dev/views/HouseScreen%202.dart';
 
-import 'package:community_dev/views/HouseScreen.dart';
+
 
 import 'package:community_dev/views/Registry/login.dart';
 

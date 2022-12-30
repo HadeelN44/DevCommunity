@@ -7,7 +7,7 @@ import 'package:community_dev/views/Teams/detailsTeam/memberTeam.dart';
 import 'package:community_dev/views/Teams/detailsTeam/nameTeam.dart';
 import 'package:community_dev/components/tapBar.dart';
 
-import 'package:community_dev/views/dashboard/newCommunity.dart';
+import 'package:community_dev/views/dashboard/newUserCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

@@ -1,3 +1,4 @@
+import 'package:community_dev/components/TeamNumberCard.dart';
 import 'package:community_dev/views/Teams/Teams.dart';
 import 'package:community_dev/components/tapBar.dart';
 
@@ -54,25 +55,25 @@ class cardTeam extends StatelessWidget {
                         children: [
                           Text(
                             nameTeam!,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900,
+                            style: GoogleFonts.merriweather(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
                               color: colors.Text,
                             ),
                           ),
                           Text(
                             descriptiontext!,
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.lato(
                               fontSize: 14,
                               color: colors.Text,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           Text(idTeam!,
-                              style: GoogleFonts.openSans(
-                                fontSize: 11,
-                                color: colors.Text,
-                                fontWeight: FontWeight.bold,
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                                color: colors.icons,
+                                fontWeight: FontWeight.normal,
                               ))
                         ],
                       ),
@@ -84,38 +85,7 @@ class cardTeam extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 65,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          height: 20,
-                          child: Icon(
-                            CupertinoIcons.person_3_fill,
-                            color: colors.Text,
-                          )),
-                      Text(
-                        '4',
-                        style: TextStyle(
-                          color: colors.Text,
-                        ),
-                      ),
-                      Text(
-                        '/',
-                        style: TextStyle(
-                          color: colors.Text,
-                        ),
-                      ),
-                      Text(
-                        '10',
-                        style: TextStyle(
-                          color: colors.Text,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                TeamNumberCard(),
               ],
             ),
           ],

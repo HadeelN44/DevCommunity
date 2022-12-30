@@ -34,10 +34,10 @@ class primaryButton extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               title.toString(),
-              style: GoogleFonts.openSans(
+              style: GoogleFonts.merriweather(
                 fontSize: 20,
                 color: Color.fromARGB(255, 255, 255, 255),
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
               ),
               textAlign: TextAlign.center,
             ),

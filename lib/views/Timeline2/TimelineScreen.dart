@@ -28,14 +28,6 @@ class TimelineScreenPage extends State<TimelineScreen> {
   final auth = FirebaseAuth.instance;
 
   bool _isLoading = false;
-  //bool isMyPost = false;
-
-  //.orderBy('postTimeStamp', descending: true)
-  // FirebaseFirestore.instance
-  //     .collection('Posts')
-  //     .where("posterID", isEqualTo: "gDPag4TBPQVOzWZq5vgOOXWQrf32")
-  //     .orderBy('postTimeStamp', descending: true)
-  //     .snapshots();
   @override
   Widget build(BuildContext context) {
     Stream<QuerySnapshot<Object?>>? timelineStream = FirebaseFirestore.instance
@@ -47,24 +39,6 @@ class TimelineScreenPage extends State<TimelineScreen> {
         .where("posterID", isEqualTo: GetStorage().read("UID"))
         .snapshots();
     var user = FirebaseAuth.instance.currentUser?.uid;
-
-    // List<Map<String, dynamic>> test = [];
-
-    // FirebaseFirestore.instance
-    //     .collection('Posts')
-    //     .where("posterID", isEqualTo: GetStorage().read("UID"))
-    //     .orderBy('postTimeStamp', descending: false)
-    //     .snapshots()
-    //     .listen((event) {
-    //   test.clear();
-    //   event.docs.forEach((element) {
-    //     print("=-=-=-=-=-=--");
-    //     print(element.data());
-
-    //     test.add(element.data());
-    //     print("=-=-=-=-=-=--");
-    //   });
-    // });
 
     return Scaffold(
       appBar: AppBar(
@@ -83,8 +57,8 @@ class TimelineScreenPage extends State<TimelineScreen> {
             : Center(),
         centerTitle: true,
         title: Text(widget.isMyPost ? "MyPost" : 'Timeline',
-            style: GoogleFonts.quicksand(
-                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
+            style: GoogleFonts.merriweather(
+                color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
       ),
       floatingActionButton: widget.isMyPost
           ? Center()
@@ -117,7 +91,6 @@ class TimelineScreenPage extends State<TimelineScreen> {
                               data: data,
                               isFromThread: true,
                               parentContext: context,
-                              Name: '',
                             );
                           },
                         ).toList(),

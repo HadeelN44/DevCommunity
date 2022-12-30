@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:community_dev/components/primaryButton.dart';
 
-import 'package:community_dev/views/dashboard/topPage.dart';
+import 'package:community_dev/components/WelcomeCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class newsUserCard extends StatelessWidget {
-  newsUserCard(
+class newUserCard extends StatelessWidget {
+  newUserCard(
       {super.key,
       required this.userName,
       required this.userID,
@@ -29,10 +29,12 @@ class newsUserCard extends StatelessWidget {
       contentPadding: EdgeInsets.symmetric(horizontal: 16),
       leading: imageURL != ''
           ? CircleAvatar(
-              radius: 20, backgroundImage: NetworkImage(imageURL!, scale: 100))
+              backgroundColor: colors.primary,
+              radius: 20,
+              backgroundImage: NetworkImage(imageURL!, scale: 100))
           : CircleAvatar(
               maxRadius: 20,
-              backgroundColor: colors.feedBack,
+              backgroundColor: colors.Text,
               child: Image.asset(
                 'assets/user2.png',
               ),
@@ -43,24 +45,27 @@ class newsUserCard extends StatelessWidget {
           Text(
             userName,
             //textAlign: TextAlign.left,
-            style: GoogleFonts.openSans(
-              fontSize: 16,
+            style: GoogleFonts.libreBaskerville(
+              fontSize: 14,
               color: colors.Text,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
           Text(
             userID,
             //textAlign: TextAlign.left,
-            style: GoogleFonts.openSans(
+            style: GoogleFonts.lato(
               fontSize: 12,
               color: colors.icons,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ],
       ),
-      trailing: Icon(Icons.arrow_forward_ios_rounded),
+      trailing: Icon(
+        Icons.arrow_forward_ios_rounded,
+        color: colors.Text,
+      ),
     );
   }
 }

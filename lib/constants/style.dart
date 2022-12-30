@@ -21,4 +21,5 @@ class colors {
   static Color fields = Color(0xffB4AEE8).withOpacity(0.3);
   static Color backgroundcolor = colors.primary.withOpacity(0.1);
   static Color error = Color(0xffB00020);
+  static Color white = Color(0xfff5f5f5);
 }

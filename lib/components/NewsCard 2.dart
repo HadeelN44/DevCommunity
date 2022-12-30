@@ -30,7 +30,7 @@ class NewsCard extends StatelessWidget {
               child: Text(
                 title.toString(),
                 textAlign: TextAlign.left,
-                style: GoogleFonts.openSans(
+                style: GoogleFonts.lato(
                   fontSize: 14,
                   color: colors.Text,
                   fontWeight: FontWeight.w500,

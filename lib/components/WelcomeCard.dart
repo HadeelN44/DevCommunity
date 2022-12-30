@@ -1,6 +1,6 @@
 import 'package:community_dev/Controller/profileController.dart';
 import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/dashboard/Challenge.dart';
+import 'package:community_dev/components/Challenge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -9,14 +9,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class top extends StatelessWidget {
-  const top({super.key});
+class WelocmeCard extends StatelessWidget {
+  const WelocmeCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-      height: 100,
+      height: 80,
       child: Column(
         children: [
           SizedBox(
@@ -26,9 +26,9 @@ class top extends StatelessWidget {
             children: [
               Text(
                 'Hello, ',
-                style: GoogleFonts.asap(
-                  fontSize: 35,
-                  color: colors.primary,
+                style: GoogleFonts.merriweather(
+                  fontSize: 30,
+                  color: colors.Text,
                   fontWeight: FontWeight.normal,
                 ),
               ),
@@ -37,10 +37,10 @@ class top extends StatelessWidget {
                 builder: (_) {
                   return Text(
                     "${GetStorage().read("name")}",
-                    style: GoogleFonts.abel(
-                      fontSize: 33,
+                    style: GoogleFonts.lato(
+                      fontSize: 26,
                       color: colors.primary,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w500,
                     ),
                   );
                 },
