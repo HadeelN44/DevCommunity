@@ -29,14 +29,13 @@ class ProfileController extends GetxController {
     bio = data["Bio"];
   }
 
-  Updateprofile() async {
-    await UpdateProfileMethod(
-        email: emailcontrol.text,
-        name: nameControl.text,
-        userName: userNamecontrol.text,
-        Bio: biocontrol.text);
-  }
-
+  // Updateprofile() async {
+  //   await UpdateProfileMethod(
+  //       email: emailcontrol.text,
+  //       name: nameControl.text,
+  //       userName: userNamecontrol.text,
+  //       Bio: biocontrol.text);
+  // }
 
   void initialize() {
     // TODO: implement onInit

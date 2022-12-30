@@ -3,6 +3,7 @@ import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Dashboard.dart';
 import 'package:community_dev/views/Registry/SignIn.dart';
+import 'package:community_dev/views/Team.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 import 'package:community_dev/views/Teams.dart';
 import 'package:community_dev/views/Teams/body.dart';
@@ -27,7 +28,8 @@ class _MainPageState extends State<MainPage> {
     TimelineScreen(
       isMyPost: false,
     ),
-    teamss(),
+    //teamss(),
+    Teams(),
     Profile(),
   ];
 
@@ -44,9 +46,12 @@ class _MainPageState extends State<MainPage> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.house_fill),
+              icon: Icon(Icons.home_rounded),
               label: 'Dashboard',
             ),
             BottomNavigationBarItem(
@@ -54,7 +59,7 @@ class _MainPageState extends State<MainPage> {
               label: 'Timeline',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.podcasts_rounded),
+              icon: Icon(CupertinoIcons.person_3_fill),
               label: 'Teams',
             ),
             BottomNavigationBarItem(
@@ -66,6 +71,7 @@ class _MainPageState extends State<MainPage> {
           selectedItemColor: colors.primary,
           unselectedItemColor: colors.icons,
           onTap: _onItemTapped,
+          
         ));
   }
 }

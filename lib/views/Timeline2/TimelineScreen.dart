@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:community_dev/constants/style.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TimelineScreen extends StatefulWidget {
@@ -45,6 +45,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
         .collection('Posts')
         .where("posterID", isEqualTo: GetStorage().read("UID"))
         .snapshots();
+    var user = FirebaseAuth.instance.currentUser?.uid;
 
     // List<Map<String, dynamic>> test = [];
 
@@ -90,8 +91,8 @@ class TimelineScreenPage extends State<TimelineScreen> {
                   width: 40,
                   height: 55.0,
                   child: ElevatedButton(
-                    child: const Icon(Icons.add_rounded,
-                        color: Color(0xff35424A), size: 35),
+                    child:
+                        Icon(Icons.add_rounded, color: colors.Text, size: 35),
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(2),
                         elevation: 0,

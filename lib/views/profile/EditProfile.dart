@@ -1,6 +1,10 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:community_dev/Helper/utils.dart';
 import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/Timeline.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,113 +19,163 @@ import 'package:image_picker/image_picker.dart';
 import 'package:community_dev/Helper/imagePicker.dart';
 
 class editProfile extends StatelessWidget {
-  editProfile({super.key});
-  TextEditingController bioControl = TextEditingController();
-  TextEditingController cityControl = TextEditingController();
+  editProfile({
+    super.key,
+  });
   File? image;
 
   @override
   Widget build(BuildContext context) {
+    String bio = "";
+    String city = "";
+    Stream<QuerySnapshot<Object?>>? userStream = FirebaseFirestore.instance
+        .collection('Users')
+        .where("userID", isEqualTo: GetStorage().read("UID"))
+        .snapshots();
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: colors.Text,
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Text("Edit profile",
-            style: GoogleFonts.quicksand(
-                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
-      ),
-      body: ListView(
-        children: [
-          SizedBox(
-            height: Get.height * 0.05,
-          ),
-          InkWell(
-            onTap: () async {
-              image = await imagePicker.imgFromGallery();
-            },
-            child: Container(
-              width: Get.width * 0.1,
-              height: Get.height * 0.15,
-              child: CircleAvatar(
-                maxRadius: 50,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  // child: Image.asset(
-                  //   "images/pic5.jpeg",
-                  //   fit: BoxFit.fitWidth,
-                  // )
-                ),
-              ),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: colors.Text,
             ),
-          ),
-          SizedBox(
-            height: Get.height * 0.05,
-          ),
-          customTextField(
-            controller: bioControl,
-            name: "Bio",
-            prefixIcon: Icon(
-              CupertinoIcons.person_fill,
-              size: 18,
-              color: colors.icons,
-            ),
-            isPass: false,
-            hint: GetStorage().read("bio"),
-          ),
-          SizedBox(
-            height: Get.height * 0.03,
-          ),
-          customTextField(
-            name: "Programming langauges",
-            isPass: false,
-            prefixIcon: Icon(
-              Icons.alternate_email_rounded,
-              size: 18,
-              color: colors.icons,
-            ),
-            keyboardType: TextInputType.emailAddress,
-            hint: "Enter your lanagues",
-          ),
-          SizedBox(
-            height: Get.height * 0.03,
-          ),
-          customTextField(
-            controller: cityControl,
-            name: "City",
-            isPass: false,
-            prefixIcon: Icon(
-              Icons.alternate_email_rounded,
-              size: 18,
-              color: colors.icons,
-            ),
-            keyboardType: TextInputType.emailAddress,
-            hint: GetStorage().read("city"),
-          ),
-          SizedBox(
-            height: Get.height * 0.07,
-          ),
-          primaryButton(
-            title: 'Save',
             onPressed: () {
-              if (bioControl.text.isNotEmpty)
-                UpdateProfileMethod(Bio: bioControl.text);
-              if (cityControl.text.isNotEmpty)
-                UpdateProfileMethod(city: cityControl.text);
               Get.back();
             },
           ),
-        ],
-      ),
-    );
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          title: Text("Edit profile",
+              style: GoogleFonts.quicksand(
+                  color: colors.Text,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
+        ),
+        body: StreamBuilder<QuerySnapshot>(
+            stream: userStream,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center();
+              }
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot doc = snapshot.data!.docs[index];
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.05,
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          image = await imagePicker.imgFromGallery();
+                          String? postImageURL;
+                          if (image != null) {
+                            postImageURL = (await uploadProfileImage(
+                                userID: GetStorage().read("UID"),
+                                postImageFile: image))!;
+                          }
+                          updateImage(
+                            imageURL: postImageURL ?? '',
+                          );
+                        },
+                        child: doc['imageURL'] != ''
+                            ? CircleAvatar(
+                                radius: 70,
+                                backgroundImage:
+                                    NetworkImage(doc['imageURL'], scale: 100))
+
+                            // Container(
+                            //     width: Get.width * 0.2,
+                            //     height: Get.height * 0.2,
+                            //     decoration: BoxDecoration(
+                            //         borderRadius: BorderRadius.circular(100)),
+                            //     child: Utils.cacheNetworkImageWithEvent(
+                            //         context, doc['imageURL'], 200, 200))
+                            : CircleAvatar(
+                                maxRadius: 70,
+                                backgroundColor: colors.feedBack,
+                                child: Icon(Icons.person,
+                                    color: Colors.white, size: 100)),
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.05,
+                      ),
+                      customTextField(
+                        name: "Bio",
+                        prefixIcon: Icon(
+                          CupertinoIcons.person_fill,
+                          size: 18,
+                          color: colors.icons,
+                        ),
+                        isPass: false,
+                        hint: doc["Bio"],
+                        onChanged: (value) {
+                          bio = value;
+                        },
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.03,
+                      ),
+                      customTextField(
+                        name: "Programming langauges",
+                        isPass: false,
+                        prefixIcon: Icon(
+                          Icons.alternate_email_rounded,
+                          size: 18,
+                          color: colors.icons,
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        hint: "Enter your lanagues",
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.03,
+                      ),
+                      customTextField(
+                        name: "City",
+                        isPass: false,
+                        prefixIcon: Icon(
+                          Icons.alternate_email_rounded,
+                          size: 18,
+                          color: colors.icons,
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        onChanged: (value) {
+                          city = value;
+                        },
+                        hint: doc["City"],
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.07,
+                      ),
+                      primaryButton(
+                        title: 'Save',
+                        onPressed: () {
+                          if (city.trim() != "") {
+                            updateCity(city: city);
+
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                    'Your Information Updated Successfully 🎉'),
+                                backgroundColor: colors.primary));
+                          }
+                          if (bio.trim() != "") {
+                            updateBio(Bio: bio);
+
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                    'Your Information Updated Successfully 🎉'),
+                                backgroundColor: colors.primary));
+                          }
+
+                          Get.back();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            }));
   }
 }

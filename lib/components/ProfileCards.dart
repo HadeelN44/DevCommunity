@@ -11,10 +11,11 @@ class profileCard extends StatelessWidget {
   final String? title;
   final String? value;
   final IconData? icon;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 32.0),
+      padding: const EdgeInsets.only(left: 12.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,28 +34,31 @@ class profileCard extends StatelessWidget {
                 title.toString(),
                 style: GoogleFonts.openSans(
                   fontSize: 18,
-                  color: colors.primary,
+                  color: colors.Text,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: Get.height * 0.01,
+            height: Get.height * 0.02,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                value.toString(),
-                style: TextStyle(
-                  fontFamily: 'Helvetica',
-                  fontSize: 18,
-                  color: colors.icons,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 55),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  value.toString(),
+                  style: TextStyle(
+                    fontFamily: 'Helvetica',
+                    fontSize: 18,
+                    color: colors.icons,
+                  ),
+                  textAlign: TextAlign.right,
                 ),
-                textAlign: TextAlign.left,
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),

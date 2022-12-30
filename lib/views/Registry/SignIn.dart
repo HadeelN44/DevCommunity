@@ -5,7 +5,7 @@ import 'package:community_dev/components/textButton.dart';
 import 'package:community_dev/views/MainPage.dart';
 import 'package:community_dev/views/Registry/SignUp.dart';
 
-import 'package:community_dev/views/forgetPassword.dart';
+import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -35,18 +35,18 @@ class SignIn extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: Get.height * 0.03,
             ),
-            child: Container(
+            child: SizedBox(
               width: Get.width * 0.1,
               height: Get.height * 0.15,
               child: CircleAvatar(
                 maxRadius: 100,
+                backgroundColor: Colors.transparent,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  // child: Image.asset(
-                  //   "images/logo.png",
-                  //   fit: BoxFit.fitWidth,
-                  // )
-                ),
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      "assets/logo2.png",
+                      fit: BoxFit.fitWidth,
+                    )),
               ),
             ),
           ),

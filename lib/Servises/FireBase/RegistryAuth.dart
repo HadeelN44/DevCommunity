@@ -65,7 +65,10 @@ SetProfile({
     "Email": email,
     "UserName": userName,
     "Bio": "Enter your bio",
-    "City": "Enter your city"
+    "City": "Enter your city", "imageURL": "",
+    "Teams": [],
+    "CreationDate": DateTime.now(),
+    "userID": userID,
     // "ProgrammingLanguages": [],
   });
 }
