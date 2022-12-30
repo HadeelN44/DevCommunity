@@ -1,4 +1,4 @@
-import 'package:community_dev/views/Teams/newTeam/newTeams.dart';
+import 'package:community_dev/views/Teams/newTeamScreen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

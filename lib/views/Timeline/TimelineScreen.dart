@@ -4,7 +4,7 @@ import 'package:community_dev/components/postItem.dart';
 import 'package:community_dev/components/postItem_myPost.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/profile/Mypost.dart';
-import 'package:community_dev/views/Timeline2/createPost.dart';
+import 'package:community_dev/views/Timeline/createPost.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -49,6 +49,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
                 icon: Icon(
                   Icons.arrow_back_ios_new_rounded,
                   color: colors.Text,
+                  size: 25,
                 ),
                 onPressed: () {
                   Get.back();
@@ -56,7 +57,7 @@ class TimelineScreenPage extends State<TimelineScreen> {
               )
             : Center(),
         centerTitle: true,
-        title: Text(widget.isMyPost ? "MyPost" : 'Timeline',
+        title: Text(widget.isMyPost ? "My Posts" : 'Timeline',
             style: GoogleFonts.merriweather(
                 color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
       ),

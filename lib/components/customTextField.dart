@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
@@ -24,54 +26,60 @@ class customTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 4.0),
-              child: Text(
-                "${name.toString()}",
-                style: GoogleFonts.openSans(
-                  fontSize: 18,
-                  color: colors.Text,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.left,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 4.0),
+            child: Text(
+              "${name.toString()}",
+              style: GoogleFonts.merriweather(
+                fontSize: 18,
+                color: colors.Text,
+                fontWeight: FontWeight.normal,
               ),
+              textAlign: TextAlign.left,
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 60,
-              width: MediaQuery.of(context).size.width / 1.1,
-              child: TextFormField(
-                  onChanged: onChanged,
-                  textAlignVertical: TextAlignVertical.center,
-                  controller: controller,
-                  keyboardType: keyboardType,
-                  obscureText: isPass,
-                  cursorColor: colors.feedBack,
-                  //initialValue: hint,
-                  decoration: InputDecoration(
-                    hintText: hint,
-                    prefixIcon: prefixIcon,
-                    isCollapsed: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: prefixIcon != null ? 60 : 50,
+            width: Get.width * 0.9,
+            child: TextFormField(
+                onChanged: onChanged,
+                textAlignVertical: prefixIcon != null
+                    ? TextAlignVertical.center
+                    : TextAlignVertical.bottom,
+                controller: controller,
+                keyboardType: keyboardType,
+                obscureText: isPass,
+                cursorColor: colors.primary,
+                //initialValue: hint,
+                style: GoogleFonts.lato(
+                  color: colors.Text,
+                ),
+                decoration: InputDecoration(
+                  hintText: hint,
+                  hintStyle: GoogleFonts.lato(
+                    color: colors.icons,
+                  ),
+                  prefixIcon: prefixIcon,
+                  isCollapsed: prefixIcon != null ? true : false,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
                     ),
-                    filled: true,
-                    fillColor: colors.fields,
-                  )),
-            ),
-          ],
-        ),
+                  ),
+                  filled: true,
+                  fillColor: colors.fields,
+                )),
+          ),
+        ],
       ),
     );
   }

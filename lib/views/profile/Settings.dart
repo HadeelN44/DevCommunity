@@ -30,6 +30,7 @@ class SettingsScreen extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: colors.Text,
+              size: 25,
             ),
             onPressed: () {
               Get.back();
@@ -39,9 +40,9 @@ class SettingsScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: Text("Settings",
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.merriweather(
                   color: colors.Text,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold)),
         ),
         body: StreamBuilder<QuerySnapshot>(
@@ -110,6 +111,7 @@ class SettingsScreen extends StatelessWidget {
                         height: Get.height * 0.07,
                       ),
                       primaryButton(
+                        width: Get.width * 0.3,
                         title: 'Save',
                         onPressed: () async {
                           if (name != "") {

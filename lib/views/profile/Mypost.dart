@@ -1,4 +1,4 @@
-import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
+import 'package:community_dev/views/Timeline/TimelineScreen.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 

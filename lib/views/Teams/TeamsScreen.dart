@@ -5,7 +5,7 @@ import 'package:community_dev/components/cardTeams.dart';
 import 'package:community_dev/views/Teams/detailsTeam/detailsTeam.dart';
 import 'package:community_dev/components/tapBar.dart';
 import 'package:community_dev/views/Teams/joinTeam.dart';
-import 'package:community_dev/views/Teams/newTeam/newTeams.dart';
+import 'package:community_dev/views/Teams/newTeamScreen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Servises/FireBase/Timeline.dart';
 import 'package:community_dev/constants/style.dart';
-import 'package:community_dev/views/Timeline2/editPost.dart';
+import 'package:community_dev/views/Timeline/editPost.dart';
 import 'package:community_dev/views/profile/EditProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

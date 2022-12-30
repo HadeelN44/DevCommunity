@@ -3,7 +3,7 @@ import 'package:community_dev/Controller/dashboardController.dart';
 import 'package:community_dev/components/Slider.dart';
 
 import 'package:community_dev/components/Challenge.dart';
-import 'package:community_dev/views/dashboard/newUserCard.dart';
+import 'package:community_dev/components/newUserCard.dart';
 
 import 'package:community_dev/components/WelcomeCard.dart';
 import 'package:flutter/material.dart';

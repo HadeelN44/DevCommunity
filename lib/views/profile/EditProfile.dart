@@ -38,6 +38,7 @@ class editProfile extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: colors.Text,
+              size: 25,
             ),
             onPressed: () {
               Get.back();
@@ -47,9 +48,9 @@ class editProfile extends StatelessWidget {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: Text("Edit profile",
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.merriweather(
                   color: colors.Text,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold)),
         ),
         body: StreamBuilder<QuerySnapshot>(
@@ -80,10 +81,9 @@ class editProfile extends StatelessWidget {
                             imageURL: postImageURL ?? '',
                           );
                         },
-                        child:
-                     doc['imageURL'] != ''
+                        child: doc['imageURL'] != ''
                             ? CircleAvatar(
-                                radius: 70,
+                                radius: 50,
                                 backgroundImage:
                                     NetworkImage(doc['imageURL'], scale: 100))
 
@@ -95,7 +95,7 @@ class editProfile extends StatelessWidget {
                             //     child: Utils.cacheNetworkImageWithEvent(
                             //         context, doc['imageURL'], 200, 200))
                             : CircleAvatar(
-                                maxRadius: 70,
+                                maxRadius: 50,
                                 backgroundColor: colors.feedBack,
                                 child: Image.asset(
                                   'assets/user2.png',
@@ -139,6 +139,7 @@ class editProfile extends StatelessWidget {
                         height: Get.height * 0.07,
                       ),
                       primaryButton(
+                        width: Get.width * 0.3,
                         title: 'Save',
                         onPressed: () {
                           if (city.trim() != "") {

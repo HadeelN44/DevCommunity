@@ -1,11 +1,11 @@
+import 'package:community_dev/views/Teams/TeamsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:community_dev/constants/style.dart';
-import 'package:community_dev/views/dashboard/DashboardSec.dart';
+import 'package:community_dev/views/DashboardScreen.dart';
 import 'package:community_dev/views/profile/Profile.dart';
 import 'package:community_dev/views/Teams.dart';
-import 'package:community_dev/views/Teams/body.dart';
 
-import 'package:community_dev/views/Timeline2/TimelineScreen.dart';
+import 'package:community_dev/views/Timeline/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';

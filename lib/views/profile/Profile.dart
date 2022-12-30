@@ -10,7 +10,6 @@ import 'package:community_dev/views/profile/EditProfile.dart';
 
 import 'package:community_dev/views/profile/Mypost.dart';
 import 'package:community_dev/views/profile/Settings.dart';
-import 'package:community_dev/views/profile/detailsProfile.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,14 +34,18 @@ class Profile extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text("${GetStorage().read("username")}",
-            style: GoogleFonts.quicksand(
-                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
+            style: GoogleFonts.merriweather(
+                color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
             onPressed: () {
               Get.to(() => editProfile());
             },
-            icon: Icon(CupertinoIcons.pen),
+            icon: Icon(
+              CupertinoIcons.pen,
+              color: colors.Text,
+              size: 25,
+            ),
             color: colors.Text,
           )
         ],
@@ -79,16 +82,19 @@ class Profile extends StatelessWidget {
                                 'assets/user2.png',
                               ),
                             ),
+                      SizedBox(
+                        height: Get.height * 0.01,
+                      ),
                       Text(
                         doc['Name'],
-                        style: GoogleFonts.alata(
-                          fontSize: 30,
+                        style: GoogleFonts.lato(
+                          fontSize: 22,
                           color: colors.primary,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(
-                        height: Get.height * 0.05,
+                        height: Get.height * 0.03,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -109,10 +115,7 @@ class Profile extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: Get.height * 0.007,
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.05,
+                        height: Get.height * 0.02,
                       ),
                       profileCard(
                         title: "Bio",
@@ -138,8 +141,6 @@ class Profile extends StatelessWidget {
                       profileOptionCard(
                         title: "Sign out",
                         icon: Icons.logout_rounded,
-                        TileColor: colors.error.withOpacity(0.9),
-                        textColor: Colors.white,
                         onTap: () {
                           SignOutMethod();
                         },

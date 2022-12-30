@@ -1,4 +1,4 @@
-import 'package:community_dev/views/Teams/Teams.dart';
+import 'package:community_dev/views/Teams/TeamsScreen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
