@@ -35,7 +35,7 @@ class SignIn extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: Get.height * 0.03,
             ),
-            child: Container(
+            child: SizedBox(
               width: Get.width * 0.1,
               height: Get.height * 0.15,
               child: CircleAvatar(
