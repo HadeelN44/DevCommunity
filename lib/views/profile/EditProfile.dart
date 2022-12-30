@@ -80,7 +80,8 @@ class editProfile extends StatelessWidget {
                             imageURL: postImageURL ?? '',
                           );
                         },
-                        child: doc['imageURL'] != ''
+                        child:
+                     doc['imageURL'] != ''
                             ? CircleAvatar(
                                 radius: 70,
                                 backgroundImage:
@@ -96,8 +97,10 @@ class editProfile extends StatelessWidget {
                             : CircleAvatar(
                                 maxRadius: 70,
                                 backgroundColor: colors.feedBack,
-                                child: Icon(Icons.person,
-                                    color: Colors.white, size: 100)),
+                                child: Image.asset(
+                                  'assets/user2.png',
+                                ),
+                              ),
                       ),
                       SizedBox(
                         height: Get.height * 0.05,
@@ -114,20 +117,6 @@ class editProfile extends StatelessWidget {
                         onChanged: (value) {
                           bio = value;
                         },
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.03,
-                      ),
-                      customTextField(
-                        name: "Programming langauges",
-                        isPass: false,
-                        prefixIcon: Icon(
-                          Icons.alternate_email_rounded,
-                          size: 18,
-                          color: colors.icons,
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        hint: "Enter your lanagues",
                       ),
                       SizedBox(
                         height: Get.height * 0.03,

@@ -55,7 +55,7 @@ dependencies:
   url_launcher: ^6.1.7
   carousel_slider: ^4.2.1
   card_swiper: ^2.0.4
-  card_swiper: ^2.0.4
+
   google_nav_bar: ^5.0.6
 dev_dependencies:
   flutter_test:

@@ -11,23 +11,22 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Helper/utils.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:community_dev/constants/style.dart';
 
 class PostItem extends StatefulWidget {
   final BuildContext parentContext;
   final DocumentSnapshot data;
   final bool isFromThread;
-  final String? imageURL;
 
   final String Name;
 
-  const PostItem(
-      {Key? key,
-      required this.data,
-      required this.isFromThread,
-      required this.parentContext,
-      required this.Name,
-      this.imageURL})
-      : super(key: key);
+  const PostItem({
+    Key? key,
+    required this.data,
+    required this.isFromThread,
+    required this.parentContext,
+    required this.Name,
+  }) : super(key: key);
   @override
   State<StatefulWidget> createState() => _PostItem();
 }
@@ -52,7 +51,7 @@ class _PostItem extends State<PostItem> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Card(
-        color: colors.Timeline,
+        color: colors.fields,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -62,42 +61,42 @@ class _PostItem extends State<PostItem> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
                   Widget>[
-            Row(
-              children: [
-                widget.imageURL != null
-                    ? CircleAvatar(
-                        radius: 70,
-                        backgroundImage: NetworkImage(
-                            widget.imageURL.toString(),
-                            scale: 100))
-                    : CircleAvatar(
-                        maxRadius: 20,
-                        backgroundColor: colors.feedBack,
-                        child:
-                            Icon(Icons.person, color: Colors.white, size: 30)),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    maxRadius: 20,
+                    backgroundColor: colors.feedBack,
+                    child: Image.asset(
+                      'assets/user2.png',
+                    ),
                   ),
-                  child: Text(widget.data['posterName'],
-                      style: GoogleFonts.quicksand(
-                          fontSize: 16,
-                          color: colors.Text,
-                          fontWeight: FontWeight.bold)),
-                ),
-                Container(
-                  alignment: Alignment.topRight,
-                  /* padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width / 3.3,
-                              bottom: MediaQuery.of(context).size.width / 14,
-                              top: MediaQuery.of(context).size.width / 14),*/
-                  child: Text(Utils.readTimestamp(widget.data['postTimeStamp']),
-                      style: GoogleFonts.quicksand(
-                          color: colors.icons,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
-                )
-              ],
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: Text(widget.data['posterName'],
+                        style: GoogleFonts.quicksand(
+                            fontSize: 16,
+                            color: colors.Text,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                    alignment: Alignment.topRight,
+                    /* padding: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.width / 3.3,
+                                bottom: MediaQuery.of(context).size.width / 14,
+                                top: MediaQuery.of(context).size.width / 14),*/
+                    child: Text(
+                        Utils.readTimestamp(widget.data['postTimeStamp']),
+                        style: GoogleFonts.quicksand(
+                            color: colors.icons,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  )
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 10, 4, 10),

@@ -20,7 +20,7 @@ class nameTeam extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Discription:',
+                  'Team name:',
                   style: GoogleFonts.abel(
                     fontSize: 22,
                     color: Colors.black,
@@ -45,6 +45,7 @@ class nameTeam extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(left: 10),
                           hintText: 'Write Your Team Name',
                           border: InputBorder.none,
                           hintStyle: GoogleFonts.openSans(

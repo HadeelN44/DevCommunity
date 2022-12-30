@@ -1,7 +1,7 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/dashboard/chaling.dart';
+import 'package:community_dev/views/dashboard/Challenge.dart';
 import 'package:community_dev/views/dashboard/topPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

@@ -1,12 +1,12 @@
 import 'package:community_dev/components/logo.dart';
 import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/Teams/body.dart';
+import 'package:community_dev/views/Teams/Teams.dart';
 import 'package:community_dev/components/cardTeams.dart';
 import 'package:community_dev/views/Teams/detailsTeam/infoTeam.dart';
 import 'package:community_dev/views/Teams/detailsTeam/memberTeam.dart';
 import 'package:community_dev/views/Teams/detailsTeam/nameTeam.dart';
 import 'package:community_dev/components/tapBar.dart';
-import 'package:community_dev/views/TimeLine/post.dart';
+
 import 'package:community_dev/views/dashboard/newCommunity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +59,6 @@ class detailsTeam extends StatelessWidget {
                       )
                     ],
                   ),
-                  
                   infoTeams(),
                 ],
               ),

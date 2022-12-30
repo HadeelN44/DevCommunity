@@ -1,15 +1,22 @@
 import 'package:community_dev/Controller/RegistryController.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/background.dart';
+import 'package:community_dev/components/newTextFieldAuth.dart';
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({super.key});
+class Register extends StatelessWidget {
+  Register({super.key});
   // finding the controller which has been established in the main
-  RegistryController control = Get.find();
+  TextEditingController emailcontrol = TextEditingController();
+  TextEditingController passcontrol = TextEditingController();
+  TextEditingController userNamecontrol = TextEditingController();
+  TextEditingController nameControl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,25 +47,25 @@ class SignUp extends StatelessWidget {
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Name',
-                controller: control.nameControl,
+                controller: nameControl,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'UserName',
-                controller: control.userNamecontrol,
+                controller: userNamecontrol,
                 keyboardType: null,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Email',
-                controller: control.emailcontrol,
+                controller: emailcontrol,
                 keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(height: size.height * 0.03),
               primaryTextfiled(
                 textt: 'Password',
-                controller: control.passcontrol,
+                controller: passcontrol,
                 keyboardType: TextInputType.visiblePassword,
               ),
               SizedBox(height: size.height * 0.05),
@@ -66,8 +73,14 @@ class SignUp extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: ElevatedButton(
-                  onPressed: () {
-                    control.SignUp();
+                  onPressed: () async {
+                    GetStorage().write("password", passcontrol.text);
+                    await SignUpMethod(
+                      emailAddress: emailcontrol.text,
+                      password: passcontrol.text,
+                      name: nameControl.text,
+                      userName: userNamecontrol.text,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -95,15 +108,11 @@ class SignUp extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
 
-                // onTap: () => {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) => LoginScreen()))
-                // },
+               
                 child: TextButton(
                   onPressed: () {
-                    control.emailcontrol.clear();
-                    control.passcontrol.clear();
-                    Get.off(() => SignIn());
+       
+                    Get.off(() => LogIn());
                   },
                   child: Text(
                     "Already Have an Account? Sign in",

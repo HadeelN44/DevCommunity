@@ -1,4 +1,5 @@
 import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/components/cutsomFloatingActionButton.dart';
 import 'package:community_dev/components/postItem.dart';
 import 'package:community_dev/components/postItem_myPost.dart';
 import 'package:community_dev/constants/style.dart';
@@ -67,6 +68,8 @@ class TimelineScreenPage extends State<TimelineScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         leading: widget.isMyPost
             ? IconButton(
                 icon: Icon(
@@ -82,31 +85,20 @@ class TimelineScreenPage extends State<TimelineScreen> {
         title: Text(widget.isMyPost ? "MyPost" : 'Timeline',
             style: GoogleFonts.quicksand(
                 color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        actions: [
-          widget.isMyPost
-              ? Center()
-              : SizedBox(
-                  width: 40,
-                  height: 55.0,
-                  child: ElevatedButton(
-                    child:
-                        Icon(Icons.add_rounded, color: colors.Text, size: 35),
-                    style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(2),
-                        elevation: 0,
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
-                    onPressed: () {
-                      Get.to(() => createPost());
-                    },
-                  ),
-                ),
-        ],
       ),
+      floatingActionButton: widget.isMyPost
+          ? Center()
+          : FloatingActionButton(
+              onPressed: () {
+                Get.to(() => createPost());
+              },
+              backgroundColor: colors.primary,
+              child: Icon(
+                Icons.add,
+                size: 30,
+              ),
+            ),
       body: Container(
-        color: colors.backgroundcolor,
         child: StreamBuilder<QuerySnapshot>(
           stream: widget.isMyPost ? MyPostStream : timelineStream,
           builder: (context, snapshot) {

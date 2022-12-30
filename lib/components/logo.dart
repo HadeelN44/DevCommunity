@@ -1,5 +1,5 @@
 import 'package:community_dev/views/Teams/newTeam/newTeams.dart';
-import 'package:community_dev/views/TimeLine/post.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -25,6 +25,10 @@ class logoo extends StatelessWidget {
         height: 30,
         child: Row(
           children: [
+            Image.asset(icon),
+            SizedBox(
+              width: 5,
+            ),
             Text(
               text,
               style: GoogleFonts.almarai(
@@ -33,7 +37,6 @@ class logoo extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Image.asset(icon)
           ],
         )
         // IconButton(

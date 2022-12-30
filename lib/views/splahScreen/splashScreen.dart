@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/components/background.dart';
-import 'package:community_dev/views/Registry/SignUp.dart';
+
 import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/views/Registry/register.dart';
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _SplashScreenState() {
     new Timer(const Duration(milliseconds: 10000), () {
       setState(() {
-        Get.to(SignIn());
+        Get.to(LogIn());
       });
     });
 

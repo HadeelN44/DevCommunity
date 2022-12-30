@@ -32,8 +32,8 @@ class NewsCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: GoogleFonts.openSans(
                   fontSize: 14,
-                  color: colors.icons,
-                  fontWeight: FontWeight.bold,
+                  color: colors.Text,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

@@ -2,9 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:community_dev/Servises/GetStorage/userInfo.dart';
-import 'package:community_dev/views/MainPage.dart';
-import 'package:community_dev/views/NavigatorBar.dart';
-import 'package:community_dev/views/Registry/SignIn.dart';
+
+import 'package:community_dev/views/HouseScreen.dart';
+
 import 'package:community_dev/views/Registry/login.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,7 +17,7 @@ SignInMethod({required String emailAddress, required String password}) async {
         .signInWithEmailAndPassword(email: emailAddress, password: password);
 
     GetProfile();
-    Get.to(MainPage());
+    Get.to(HouseScreen());
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       print('No user found for that email.');
@@ -41,7 +41,7 @@ SignUpMethod(
     );
     await SetProfile(email: emailAddress, name: name, userName: userName);
     GetProfile();
-    Get.to(MainPage());
+    Get.to(HouseScreen());
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
       print('The password provided is too weak.');
@@ -97,7 +97,7 @@ checkusers() async {
 //Sign out method
 SignOutMethod() async {
   await FirebaseAuth.instance.signOut();
-  Get.offAll(() => SignIn());
+  Get.offAll(() => LogIn());
 }
 
 //Reset password method
