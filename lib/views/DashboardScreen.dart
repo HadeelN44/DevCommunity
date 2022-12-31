@@ -6,6 +6,7 @@ import 'package:community_dev/components/Challenge.dart';
 import 'package:community_dev/components/newUserCard.dart';
 
 import 'package:community_dev/components/WelcomeCard.dart';
+import 'package:community_dev/views/profile/MemberProfile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -17,8 +18,11 @@ class DashboardSecond extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Stream<QuerySnapshot<Object?>>? newUsersStream =
-        FirebaseFirestore.instance.collection('Users').limit(3).snapshots();
+    Stream<QuerySnapshot<Object?>>? newUsersStream = FirebaseFirestore.instance
+        .collection('Users')
+        .orderBy("CreationDate", descending: true)
+        .limit(3)
+        .snapshots();
     return Scaffold(
       body: Container(
         child: ListView(
@@ -103,7 +107,12 @@ class DashboardSecond extends StatelessWidget {
                                   userID: doc["UserName"],
                                   userName: doc["Name"],
                                   imageURL: doc["imageURL"],
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() => MemberProfile(
+                                          memberID: doc["userID"],
+                                          username: doc["UserName"],
+                                        ));
+                                  },
                                 );
                               })),
                         );

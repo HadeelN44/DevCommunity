@@ -5,6 +5,7 @@ import 'package:community_dev/views/DashboardScreen.dart';
 import 'package:community_dev/views/Members.dart';
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/views/Registry/register.dart';
+import 'package:community_dev/views/Teams/TeamsScreen.dart';
 import 'package:community_dev/views/Timeline/TimelineScreen.dart';
 import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:community_dev/views/profile/Profile.dart';
@@ -42,7 +43,7 @@ List<GetPage<dynamic>>? routerApp = [
   ),
   GetPage(
     name: NameRoute.teams,
-    page: () => Teams(),
+    page: () => TeamsScreen(),
   ),
   GetPage(
     name: NameRoute.team,

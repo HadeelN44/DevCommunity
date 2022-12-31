@@ -12,29 +12,32 @@ class logoo extends StatelessWidget {
   const logoo(
       {super.key, required this.text, required this.press, required this.icon});
   final String text;
-  final Function press;
+  final Function()? press;
 
   final String icon;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          icon,
-          height: 30,
-        ),
-        SizedBox(
-          width: 5,
-        ),
-        Text(
-          text,
-          style: GoogleFonts.lato(
-            fontSize: 16,
-            color: colors.Text,
-            fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: press,
+      child: Row(
+        children: [
+          Image.asset(
+            icon,
+            height: 30,
           ),
-        ),
-      ],
+          SizedBox(
+            width: 5,
+          ),
+          Text(
+            text,
+            style: GoogleFonts.lato(
+              fontSize: 16,
+              color: colors.Text,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

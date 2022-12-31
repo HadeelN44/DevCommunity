@@ -34,6 +34,10 @@ class _PostItem extends State<PostItem> {
 
   @override
   Widget build(BuildContext context) {
+    Stream<QuerySnapshot<Object?>>? userStream = FirebaseFirestore.instance
+        .collection('Users')
+        .where("userID", isEqualTo: widget.data['posterID'])
+        .snapshots();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Card(

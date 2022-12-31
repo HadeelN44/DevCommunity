@@ -11,6 +11,12 @@ getProfileMethod() async {
   var x = await firestore.collection("Users").doc(id).get();
   return x;
 }
+
+getOtherUserProfile({required String id}) async {
+  var firestore = FirebaseFirestore.instance;
+  var x = await firestore.collection("Users").doc(id).get();
+  return x;
+}
 // //updating the profile in database
 // UpdateProfileMethod(
 //     {String? email,

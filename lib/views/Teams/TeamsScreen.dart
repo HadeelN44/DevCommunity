@@ -62,7 +62,10 @@ class TeamsScreen extends StatelessWidget {
                           idTeam: doc["TeamID"],
                           fileed: colors.fields,
                           press: () {
-                            Get.to(() => SpecificTeamScreen());
+                            Get.to(() => SpecificTeamScreen(
+                                  TeamID: doc["TeamID"],
+                                  TeamName: doc["TeamName"],
+                                ));
                           },
                         );
                       }));
