@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/DashboardScreen.dart';
 import 'package:community_dev/views/profile/Profile.dart';
-import 'package:community_dev/views/Teams.dart';
 
 import 'package:community_dev/views/Timeline/TimelineScreen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HouseScreen extends StatefulWidget {
   @override

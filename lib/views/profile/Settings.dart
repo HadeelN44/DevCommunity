@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Services/FireBase/ProfileAuth.dart';
+import 'package:community_dev/components/OkButton.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -114,7 +115,36 @@ class SettingsScreen extends StatelessWidget {
                         width: Get.width * 0.3,
                         title: 'Save',
                         onPressed: () async {
-                          if (name != "") {
+                          print(name.trim());
+                          print(email);
+                          print(password);
+                          if (name.trim() == "" &&
+                              email.trim() == "" &&
+                              password.trim() == "")
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                content: Text("Enter the updated information",
+                                    style: GoogleFonts.lato(
+                                        color: colors.icons,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600)),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      OkButton(),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+
+                          if (name.trim() != "") {
                             updateName(name: name);
 
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -123,7 +153,7 @@ class SettingsScreen extends StatelessWidget {
                                 backgroundColor: colors.primary));
                           }
 
-                          if (email != "") {
+                          if (email.trim() != "") {
                             updateEmail(email: email);
 
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -131,7 +161,7 @@ class SettingsScreen extends StatelessWidget {
                                     'Your Information Updated Successfully 🎉'),
                                 backgroundColor: colors.primary));
                           }
-                          if (password != "") {
+                          if (password.trim() != "") {
                             updateEmail(email: email);
 
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(

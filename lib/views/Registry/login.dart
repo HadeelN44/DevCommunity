@@ -1,5 +1,6 @@
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/components/OkButton.dart';
 import 'package:community_dev/components/background.dart';
 import 'package:community_dev/components/newTextFieldAuth.dart';
 
@@ -88,9 +89,34 @@ class LogIn extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () async {
                         GetStorage().write("password", passcontrol.text);
-                        await SignInMethod(
+
+                        String result = await SignInMethod(
                             emailAddress: emailcontrol.text,
                             password: passcontrol.text);
+
+                        if (result != "Success")
+                          return showDialog<void>(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              content: Text(result,
+                                  style: GoogleFonts.lato(
+                                      color: colors.icons,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600)),
+                              actions: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    OkButton(),
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(

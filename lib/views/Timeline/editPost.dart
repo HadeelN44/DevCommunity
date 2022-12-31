@@ -120,7 +120,7 @@ class EditPostPage extends State<EditPost> {
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(right: 16, top: 10),
             child: primaryButton(
                 width: Get.width * 0.2,
                 title: 'Save',

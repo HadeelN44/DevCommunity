@@ -1,4 +1,5 @@
 import 'package:community_dev/Services/FireBase/Teams.dart';
+import 'package:community_dev/components/OkButton.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/nameTeam.dart';
 
@@ -61,7 +62,7 @@ class _newTeamState extends State<newTeam> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 customTextField(
-                  name: "Team name:",
+                  name: "Team name:*",
                   isPass: false,
                   hint: "Enter the team's name",
                   onChanged: (value) {
@@ -70,6 +71,25 @@ class _newTeamState extends State<newTeam> {
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
+                ),
+                customTextField(
+                  name: "Description:*",
+                  isPass: false,
+                  hint: "Enter a simple description ",
+                  onChanged: (value) {
+                    teamDescription = value;
+                  },
+                ),
+                SizedBox(
+                  height: Get.height * 0.03,
+                ),
+                customTextField(
+                  name: "Number of Members:",
+                  isPass: false,
+                  hint: "Enter the number of members ",
+                ),
+                SizedBox(
+                  height: Get.height * 0.05,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,30 +146,35 @@ class _newTeamState extends State<newTeam> {
                 SizedBox(
                   height: Get.height * 0.05,
                 ),
-                customTextField(
-                  name: "Number of Members:",
-                  isPass: false,
-                  hint: "Enter the number of members ",
-                ),
-                SizedBox(
-                  height: Get.height * 0.05,
-                ),
-                customTextField(
-                  name: "Description:",
-                  isPass: false,
-                  hint: "Enter a simple description ",
-                  onChanged: (value) {
-                    teamDescription = value;
-                  },
-                ),
-                SizedBox(
-                  height: Get.height * 0.05,
-                ),
                 primaryButton(
                   width: Get.width * 0.3,
                   title: 'Create',
                   onPressed: () async {
-                    if (teamName != "" && teamDescription != null) {
+                    if (teamName == "" && teamDescription == "")
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          content: Text("Enter the required information",
+                              style: GoogleFonts.lato(
+                                  color: colors.icons,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600)),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                OkButton(),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+
+                    if (teamName.trim() != "" && teamDescription.trim() != "") {
                       await SetTeam(name: teamName, Desc: teamDescription);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text('Your Team is Created Successfully 🎉'),

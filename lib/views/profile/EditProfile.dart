@@ -7,6 +7,7 @@ import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
 import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
+import 'package:community_dev/components/OkButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -158,7 +159,29 @@ class editProfile extends StatelessWidget {
                                     'Your Information Updated Successfully 🎉'),
                                 backgroundColor: colors.primary));
                           }
-
+                          if (city.trim() == "" && bio.trim() == "")
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                content: Text("Enter the updated information",
+                                    style: GoogleFonts.lato(
+                                        color: colors.icons,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600)),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      OkButton(),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
                           Get.back();
                         },
                       ),
