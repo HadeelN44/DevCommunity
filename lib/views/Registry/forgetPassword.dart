@@ -21,17 +21,18 @@ class forgetPassword extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_outlined, color: colors.Text),
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: colors.Text,
+            size: 25,
+          ),
           onPressed: () => Get.back(),
         ),
         centerTitle: true,
         title: Text(
           'Reset Password',
-          style: GoogleFonts.quicksand(
-            fontSize: 20,
-            color: colors.Text,
-            fontWeight: FontWeight.w700,
-          ),
+          style: GoogleFonts.merriweather(
+              color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold),
           textAlign: TextAlign.left,
         ),
       ),
@@ -56,6 +57,7 @@ class forgetPassword extends StatelessWidget {
             height: Get.height * 0.03,
           ),
           primaryButton(
+            width: Get.width * 0.5,
             title: 'Send Request',
             onPressed: () async {
               await ResetPassMethod(emailAddress: emailcontrol.text);

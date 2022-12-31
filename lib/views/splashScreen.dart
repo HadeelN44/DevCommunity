@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   bool _isVisible = false;
 
   _SplashScreenState() {
-    new Timer(const Duration(milliseconds: 10000), () {
+    new Timer(const Duration(milliseconds: 700), () {
       setState(() {
         Get.to(LogIn());
       });

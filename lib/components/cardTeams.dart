@@ -1,6 +1,5 @@
 import 'package:community_dev/components/TeamNumberCard.dart';
 import 'package:community_dev/views/Teams/TeamsScreen.dart';
-import 'package:community_dev/components/tapBar.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,11 +1,9 @@
 import 'package:community_dev/components/logo.dart';
-import 'package:community_dev/components/primaryButton.dart';
-import 'package:community_dev/views/Teams/TeamsScreen.dart';
-import 'package:community_dev/components/cardTeams.dart';
+
 import 'package:community_dev/views/Teams/detailsTeam/infoTeam.dart';
 import 'package:community_dev/views/Teams/detailsTeam/memberTeam.dart';
 import 'package:community_dev/views/Teams/detailsTeam/nameTeam.dart';
-import 'package:community_dev/components/tapBar.dart';
+
 
 import 'package:community_dev/components/newUserCard.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,14 +14,42 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class detailsTeam extends StatelessWidget {
-  const detailsTeam({super.key});
+class SpecificTeamScreen extends StatelessWidget {
+  const SpecificTeamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: colors.Text,
+            size: 25,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text("Team name",
+            style: GoogleFonts.merriweather(
+                color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
+        actions: [
+          IconButton(
+            icon: Image.asset(
+              'assets/plus.png',
+              height: 25,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+        ],
+      ),
       body: Container(
-        color: colors.backgroundcolor,
         child: ListView(
           children: [
             Container(
@@ -33,14 +59,6 @@ class detailsTeam extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  topBar(
-                      icon1: 'assets/arrow-left.png',
-                      press1: () {
-                        Get.back();
-                      },
-                      title: "Flutter App",
-                      icon2: 'assets/plus.png',
-                      press2: () {}),
                   nameTeam(),
                   Row(
                     children: [
@@ -59,7 +77,7 @@ class detailsTeam extends StatelessWidget {
                       )
                     ],
                   ),
-                  infoTeams(),
+                  TeamCreationInfo(),
                 ],
               ),
             ),

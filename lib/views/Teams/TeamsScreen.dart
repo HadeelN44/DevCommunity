@@ -1,16 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/components/cutsomFloatingActionButton.dart';
-import 'package:community_dev/components/headerName.dart';
+
 import 'package:community_dev/components/cardTeams.dart';
-import 'package:community_dev/views/Teams/detailsTeam/detailsTeam.dart';
-import 'package:community_dev/components/tapBar.dart';
-import 'package:community_dev/views/Teams/joinTeam.dart';
+import 'package:community_dev/views/Teams/detailsTeam/SpecificTeamScreen.dart';
+
 import 'package:community_dev/views/Teams/newTeamScreen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
@@ -65,7 +62,7 @@ class teamss extends StatelessWidget {
                           idTeam: doc["TeamID"],
                           fileed: colors.fields,
                           press: () {
-                            Get.to(detailsTeam());
+                            Get.to(() => SpecificTeamScreen());
                           },
                         );
                       }));

@@ -1,5 +1,6 @@
 import 'package:community_dev/Controller/RegistryController.dart';
 import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/components/ChallengeButton.dart';
 import 'package:community_dev/components/background.dart';
 import 'package:community_dev/components/newTextFieldAuth.dart';
 import 'package:community_dev/views/Registry/login.dart';
@@ -28,47 +29,59 @@ class Register extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 150,
-                child: Image.asset('assets/logo2.png'),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  "REGISTER",
-                  style: GoogleFonts.alata(
-                    fontSize: 40,
-                    color: colors.primary,
-                    fontWeight: FontWeight.normal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 60,
+                    child: Image.asset('assets/logo2.png'),
                   ),
-                ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Create New Account",
+                      style: GoogleFonts.merriweather(
+                        fontSize: 18,
+                        color: colors.Text,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: size.height * 0.03),
-              primaryTextfiled(
-                textt: 'Name',
+              SizedBox(height: size.height * 0.02),
+              customTextFieldAuth(
+                name: "Name",
+                isPass: false,
+                hint: "Enter your name",
+                keyboardType: TextInputType.text,
                 controller: nameControl,
-                keyboardType: null,
               ),
-              SizedBox(height: size.height * 0.03),
-              primaryTextfiled(
-                textt: 'UserName',
+              SizedBox(height: size.height * 0.02),
+              customTextFieldAuth(
+                name: "Username",
+                isPass: false,
+                hint: "Enter your username",
+                keyboardType: TextInputType.text,
                 controller: userNamecontrol,
-                keyboardType: null,
               ),
-              SizedBox(height: size.height * 0.03),
-              primaryTextfiled(
-                textt: 'Email',
-                controller: emailcontrol,
+              SizedBox(height: size.height * 0.02),
+              customTextFieldAuth(
+                name: "Email",
+                isPass: false,
+                hint: "Enter your email",
                 keyboardType: TextInputType.emailAddress,
+                controller: emailcontrol,
+              ),
+              SizedBox(height: size.height * 0.02),
+              customTextFieldAuth(
+                name: "Password",
+                isPass: true,
+                hint: "Enter your password",
+                keyboardType: TextInputType.visiblePassword,
+                controller: passcontrol,
               ),
               SizedBox(height: size.height * 0.03),
-              primaryTextfiled(
-                textt: 'Password',
-                controller: passcontrol,
-                keyboardType: TextInputType.visiblePassword,
-              ),
-              SizedBox(height: size.height * 0.05),
               Container(
                 alignment: Alignment.centerRight,
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -97,9 +110,13 @@ class Register extends StatelessWidget {
                             colors: [colors.primary, colors.Text])),
                     padding: const EdgeInsets.all(0),
                     child: Text(
-                      "SIGN UP",
+                      "Sign Up",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.merriweather(
+                        fontSize: 18,
+                        color: colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -107,19 +124,16 @@ class Register extends StatelessWidget {
               Container(
                 alignment: Alignment.centerRight,
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-
-               
                 child: TextButton(
                   onPressed: () {
-       
                     Get.off(() => LogIn());
                   },
                   child: Text(
                     "Already Have an Account? Sign in",
                     style: TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2661FA)),
+                        fontWeight: FontWeight.w400,
+                        color: colors.hyperlinks),
                   ),
                 ),
               ),

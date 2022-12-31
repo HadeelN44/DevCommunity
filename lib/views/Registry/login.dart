@@ -28,7 +28,7 @@ class LogIn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: 180,
+                height: 100,
                 child: Image.asset('assets/logo2.png'),
               ),
               Column(
@@ -36,27 +36,33 @@ class LogIn extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Text(
                       "LOGIN",
-                      style: GoogleFonts.alata(
-                        fontSize: 40,
-                        color: colors.primary,
-                        fontWeight: FontWeight.normal,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 22,
+                        color: colors.Text,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.03),
-                  primaryTextfiled(
-                    textt: 'UserName',
+                  SizedBox(height: size.height * 0.05),
+                  customTextFieldAuth(
                     controller: emailcontrol,
+                    name: "Email",
+                    isPass: false,
+                    hint: "Enter your email",
                     keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {},
                   ),
                   SizedBox(height: size.height * 0.03),
-                  primaryTextfiled(
-                    textt: 'Password',
+                  customTextFieldAuth(
                     controller: passcontrol,
+                    name: "Password",
+                    isPass: true,
+                    hint: "Enter your username",
                     keyboardType: TextInputType.visiblePassword,
+                    onChanged: (value) {},
                   ),
                   Container(
                     alignment: Alignment.centerRight,
@@ -67,12 +73,15 @@ class LogIn extends StatelessWidget {
                       },
                       child: Text(
                         "Forgot your password?",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0XFF2661FA)),
+                        style: GoogleFonts.lato(
+                          fontSize: 12,
+                          color: colors.hyperlinks,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.05),
+                  SizedBox(height: size.height * 0.03),
                   Container(
                     alignment: Alignment.centerRight,
                     margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -98,9 +107,13 @@ class LogIn extends StatelessWidget {
                                 colors: [colors.primary, colors.Text])),
                         padding: const EdgeInsets.all(0),
                         child: Text(
-                          "LOGIN",
+                          "Sign In",
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: GoogleFonts.merriweather(
+                            fontSize: 18,
+                            color: colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -113,11 +126,12 @@ class LogIn extends StatelessWidget {
                         Get.to(Register());
                       },
                       child: Text(
-                        "Don't Have an Account? Sign up",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF2661FA)),
+                        "Don't Have an Account? Sign Up",
+                        style: GoogleFonts.lato(
+                          fontSize: 12,
+                          color: colors.hyperlinks,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
