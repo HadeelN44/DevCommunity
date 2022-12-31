@@ -1,6 +1,6 @@
 // ignore_for_file: file_names, unnecessary_new, avoid_unnecessary_containers, sized_box_for_whitespace, avoid_print
 import 'dart:io';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

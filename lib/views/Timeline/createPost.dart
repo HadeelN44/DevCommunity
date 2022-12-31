@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:community_dev/Helper/imagePicker.dart';
 import 'package:community_dev/Helper/utils.dart';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:firebase_storage/firebase_storage.dart';

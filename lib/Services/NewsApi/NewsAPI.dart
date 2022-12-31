@@ -13,7 +13,7 @@ getNews() async {
   var response = await http.get(url);
   var result = json.decode(response.body);
 
-  print(response.statusCode);
+  //print(response.statusCode);
   if (response.statusCode == 200) {
     for (int i = 0; i < 5; i++)
       LatestNews.add({
@@ -22,7 +22,7 @@ getNews() async {
       });
 
     GetStorage().write("LatestNews", LatestNews);
-    print(LatestNews);
+    // print(LatestNews);
     return LatestNews;
   }
   return LatestNews;

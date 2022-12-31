@@ -1,12 +1,18 @@
 //Get full profile
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
-import 'package:community_dev/Servises/GetStorage/userInfo.dart';
+import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Services/GetStorage/userInfo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
 
 getProfileMethod() async {
   String id = await checkusers();
+  var firestore = FirebaseFirestore.instance;
+  var x = await firestore.collection("Users").doc(id).get();
+  return x;
+}
+
+getOtherUserProfile({required String id}) async {
   var firestore = FirebaseFirestore.instance;
   var x = await firestore.collection("Users").doc(id).get();
   return x;

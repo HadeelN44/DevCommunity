@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/Timeline/editPost.dart';
 import 'package:community_dev/views/profile/EditProfile.dart';
+import 'package:community_dev/views/profile/MemberProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,6 +35,10 @@ class _PostItem extends State<PostItem> {
 
   @override
   Widget build(BuildContext context) {
+    Stream<QuerySnapshot<Object?>>? userStream = FirebaseFirestore.instance
+        .collection('Users')
+        .where("userID", isEqualTo: widget.data['posterID'])
+        .snapshots();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Card(
@@ -47,39 +52,59 @@ class _PostItem extends State<PostItem> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
                   Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    maxRadius: 20,
-                    backgroundColor: colors.feedBack,
-                    child: Image.asset(
-                      'assets/user2.png',
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    child: Text(widget.data['posterName'],
-                        style: GoogleFonts.lato(
-                            fontSize: 16,
-                            color: colors.Text,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    child: Text(
-                        Utils.readTimestamp(widget.data['postTimeStamp']),
-                        style: GoogleFonts.lato(
-                            color: colors.icons,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                  )
-                ],
-              ),
-            ),
+            StreamBuilder<QuerySnapshot>(
+                stream: userStream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData)
+                    return LinearProgressIndicator(
+                      color: colors.primary,
+                    );
+
+                  return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.docs.length,
+                      itemBuilder: ((context, index) {
+                        DocumentSnapshot doc = snapshot.data!.docs[index];
+                        return InkWell(
+                          onTap: () {
+                            Get.to(() => MemberProfile(
+                                memberID: doc["userID"],
+                                username: doc["UserName"]));
+                          },
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                maxRadius: 20,
+                                backgroundColor: colors.feedBack,
+                                child: Image.asset(
+                                  'assets/user2.png',
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                ),
+                                child: Text(doc['UserName'],
+                                    style: GoogleFonts.lato(
+                                        fontSize: 16,
+                                        color: colors.Text,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                              Container(
+                                alignment: Alignment.topRight,
+                                child: Text(
+                                    Utils.readTimestamp(
+                                        widget.data['postTimeStamp']),
+                                    style: GoogleFonts.lato(
+                                        color: colors.icons,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold)),
+                              )
+                            ],
+                          ),
+                        );
+                      }));
+                }),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 10, 4, 10),
               child: Text(

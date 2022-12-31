@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
 
 // add team to DB
 SetTeam({

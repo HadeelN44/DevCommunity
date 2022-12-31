@@ -56,7 +56,8 @@ class Challenge extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

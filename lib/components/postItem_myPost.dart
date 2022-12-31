@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

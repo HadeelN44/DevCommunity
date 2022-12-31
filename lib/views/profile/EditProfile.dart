@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Helper/utils.dart';
-import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
-import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/ProfileAuth.dart';
+import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,7 +83,7 @@ class editProfile extends StatelessWidget {
                         },
                         child: doc['imageURL'] != ''
                             ? CircleAvatar(
-                                radius: 50,
+                                radius: 60,
                                 backgroundImage:
                                     NetworkImage(doc['imageURL'], scale: 100))
 
@@ -95,7 +95,7 @@ class editProfile extends StatelessWidget {
                             //     child: Utils.cacheNetworkImageWithEvent(
                             //         context, doc['imageURL'], 200, 200))
                             : CircleAvatar(
-                                maxRadius: 50,
+                                maxRadius: 60,
                                 backgroundColor: colors.feedBack,
                                 child: Image.asset(
                                   'assets/user2.png',

@@ -25,7 +25,7 @@ class HouseScreenState extends State<HouseScreen> {
     TimelineScreen(
       isMyPost: false,
     ),
-    teamss(),
+    TeamsScreen(),
     Profile(),
   ];
 
@@ -50,7 +50,7 @@ class HouseScreenState extends State<HouseScreen> {
                   topRight: Radius.circular(30.0),
                 ),
                 child: BottomNavigationBar(
-                  backgroundColor: colors.fields,
+                  backgroundColor: colors.navigation,
                   showSelectedLabels: false,
                   showUnselectedLabels: false,
                   type: BottomNavigationBarType.fixed,

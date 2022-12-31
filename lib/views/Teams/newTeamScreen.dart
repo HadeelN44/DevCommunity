@@ -1,4 +1,6 @@
+import 'package:community_dev/Services/FireBase/Teams.dart';
 import 'package:community_dev/components/customTextField.dart';
+import 'package:community_dev/components/nameTeam.dart';
 
 import 'package:community_dev/components/primaryButton.dart';
 
@@ -26,7 +28,7 @@ class _newTeamState extends State<newTeam> {
 
   @override
   Widget build(BuildContext context) {
-    String teamName, teamDescription;
+    String teamName = "", teamDescription = "";
     List<String> list = <String>['Swift', 'Java', 'C', 'C++'];
     String dropdownValue = list.first;
 
@@ -91,7 +93,7 @@ class _newTeamState extends State<newTeam> {
                       width: Get.width * 0.87,
                       child: DropdownButton<String>(
                         isExpanded: true,
-                        dropdownColor: colors.fields,
+                        dropdownColor: colors.feedBack,
                         borderRadius: BorderRadius.circular(10),
                         value: dropdownValue,
                         icon: Icon(
@@ -128,9 +130,6 @@ class _newTeamState extends State<newTeam> {
                   name: "Number of Members:",
                   isPass: false,
                   hint: "Enter the number of members ",
-                  onChanged: (value) {
-                    teamName = value;
-                  },
                 ),
                 SizedBox(
                   height: Get.height * 0.05,
@@ -149,7 +148,16 @@ class _newTeamState extends State<newTeam> {
                 primaryButton(
                   width: Get.width * 0.3,
                   title: 'Create',
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (teamName != "" && teamDescription != null) {
+                      await SetTeam(name: teamName, Desc: teamDescription);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Your Team is Created Successfully 🎉'),
+                          backgroundColor: colors.primary));
+
+                      Get.back();
+                    }
+                  },
                 )
               ],
             ),

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
+import 'package:community_dev/Services/FireBase/ProfileAuth.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
