@@ -85,7 +85,11 @@ class Challenge extends StatelessWidget {
                             child: Text(
                               "Complete",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: GoogleFonts.merriweather(
+                                fontSize: 14,
+                                color: colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

@@ -22,69 +22,55 @@ class HouseScreenState extends State<HouseScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
     DashboardSecond(),
-    teamss(),
-    const TimelineScreen(
+    TimelineScreen(
       isMyPost: false,
     ),
+    teamss(),
     Profile(),
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: colors.fields,
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: colors.fields.withOpacity(0.6),
+        //backgroundColor: colors.fields,
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+        bottomNavigationBar: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 2),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-              child: GNav(
-                curve: Curves.easeInBack,
-                gap: 8,
-                activeColor: colors.primary,
-                iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                duration: Duration(milliseconds: 400),
-                color: Colors.white,
-                tabs: [
-                  GButton(
-                    icon: Icons.home_rounded,
-                    // text: 'Home',
-                  ),
-                  GButton(
-                    icon: CupertinoIcons.person_3_fill,
-                    // text: 'Teams',
-                  ),
-                  GButton(
-                    icon: Icons.view_timeline,
-                    //  text: 'TimeLine',
-                  ),
-                  GButton(
-                    icon: CupertinoIcons.person_fill,
-                    //  text: 'Profile',
-                  ),
-                ],
-                selectedIndex: _selectedIndex,
-                onTabChange: (index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                ),
+                child: BottomNavigationBar(
+                  backgroundColor: colors.fields,
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  type: BottomNavigationBarType.fixed,
+                  items: const <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.home_rounded), label: "Home"),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.view_timeline), label: "Timeline"),
+                    BottomNavigationBarItem(
+                        icon: Icon(CupertinoIcons.person_3_fill),
+                        label: "Teams"),
+                    BottomNavigationBarItem(
+                        icon: Icon(CupertinoIcons.person_crop_circle),
+                        label: "Profile"),
+                  ],
+                  currentIndex: _selectedIndex,
+                  elevation: 0,
+                  selectedItemColor: colors.primary,
+                  unselectedItemColor: colors.white,
+                  onTap: _onItemTapped,
+                ))));
   }
 }
