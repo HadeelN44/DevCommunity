@@ -20,7 +20,7 @@ class primaryButton extends StatelessWidget {
       children: [
         Container(
           width:
-              width != null ? width : MediaQuery.of(context).size.width / 1.4,
+              width != null ? width : MediaQuery.of(context).size.width / 1.2,
           height: 45.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -29,15 +29,15 @@ class primaryButton extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(2),
                 elevation: 0,
-                backgroundColor: colors.primary,
+                backgroundColor: colors.primary.withOpacity(0.9),
                 shadowColor: Colors.transparent),
             onPressed: onPressed,
             child: Text(
               title.toString(),
-              style: GoogleFonts.openSans(
+              style: GoogleFonts.merriweather(
                 fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontWeight: FontWeight.w400,
               ),
               textAlign: TextAlign.center,
             ),

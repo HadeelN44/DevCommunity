@@ -15,9 +15,9 @@ class nameTeam extends StatelessWidget {
         children: [
           Text(
             'Creat compleat Application using C++',
-            style: GoogleFonts.openSans(
-              fontSize: 17,
-              color: colors.Text,
+            style: GoogleFonts.almarai(
+              fontSize: 16,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),

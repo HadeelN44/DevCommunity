@@ -4,6 +4,7 @@ import 'package:community_dev/Helper/utils.dart';
 import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 
 import 'package:community_dev/components/ProfileCards.dart';
+import 'package:community_dev/components/logo.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
 import 'package:community_dev/views/profile/EditProfile.dart';
 
@@ -33,14 +34,18 @@ class Profile extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text("${GetStorage().read("username")}",
-            style: GoogleFonts.quicksand(
-                color: colors.Text, fontSize: 20, fontWeight: FontWeight.bold)),
+            style: GoogleFonts.merriweather(
+                color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
             onPressed: () {
               Get.to(() => editProfile());
             },
-            icon: Icon(CupertinoIcons.pen),
+            icon: Icon(
+              CupertinoIcons.pen,
+              color: colors.Text,
+              size: 25,
+            ),
             color: colors.Text,
           )
         ],
@@ -73,21 +78,48 @@ class Profile extends StatelessWidget {
                           : CircleAvatar(
                               maxRadius: 70,
                               backgroundColor: colors.feedBack,
-                              child: Icon(Icons.person,
-                                  color: Colors.white, size: 100)),
+                              child: Image.asset(
+                                'assets/user2.png',
+                              ),
+                            ),
                       SizedBox(
-                        height: Get.height * 0.05,
+                        height: Get.height * 0.01,
+                      ),
+                      Text(
+                        doc['Name'],
+                        style: GoogleFonts.lato(
+                          fontSize: 22,
+                          color: colors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.03,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          logoo(
+                            icon: 'assets/kotlin.png',
+                            press: () {},
+                            text: "KOTLIN",
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          logoo(
+                            icon: 'assets/swift.png',
+                            press: () {},
+                            text: "SWIFT",
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.02,
                       ),
                       profileCard(
                         title: "Bio",
                         value: doc["Bio"],
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.04,
-                      ),
-                      profileCard(
-                        title: "Programming langauges ",
-                        value: "HTML, CSS, PHP, JS",
                       ),
                       SizedBox(
                         height: Get.height * 0.04,
@@ -110,7 +142,6 @@ class Profile extends StatelessWidget {
                         title: "Sign out",
                         icon: Icons.logout_rounded,
                         onTap: () {
-                          GetStorage().erase();
                           SignOutMethod();
                         },
                       ),
@@ -118,6 +149,7 @@ class Profile extends StatelessWidget {
                   );
                 }));
           }),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

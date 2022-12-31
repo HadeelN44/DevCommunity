@@ -31,13 +31,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        theme: ThemeData(
-            scaffoldBackgroundColor: colors.background),
+        // theme: ThemeData(
+        //     scaffoldBackgroundColor: colors.background),
         debugShowCheckedModeBanner: false,
         getPages: routerApp,
         initialRoute: user != null
             ? NameRoute.mainScreen
-            : NameRoute.signIn // check if the user logged in
+            : NameRoute.splash // check if the user logged in
         );
+    // theme: ThemeData(scaffoldBackgroundColor: colors.backgroundcolor),
+
+    //   getPages: routerApp,
+    //   initialRoute: user != null
+    //       ? NameRoute.splash
+    //       : NameRoute.mainScreen, // check if the user logged in
+    // );
   }
 }
