@@ -1,7 +1,7 @@
 import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/cutsomFloatingActionButton.dart';
 import 'package:community_dev/components/postItem.dart';
-import 'package:community_dev/components/postItem_myPost.dart';
+
 import 'package:community_dev/constants/style.dart';
 import 'package:community_dev/views/profile/Mypost.dart';
 import 'package:community_dev/views/Timeline/createPost.dart';

@@ -13,6 +13,7 @@ import 'package:community_dev/views/profile/Settings.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -41,10 +42,10 @@ class Profile extends StatelessWidget {
             onPressed: () {
               Get.to(() => editProfile());
             },
-            icon: Icon(
-              CupertinoIcons.pen,
-              color: colors.Text,
+            icon: FaIcon(
+              FontAwesomeIcons.edit,
               size: 25,
+              color: colors.Text,
             ),
             color: colors.Text,
           )

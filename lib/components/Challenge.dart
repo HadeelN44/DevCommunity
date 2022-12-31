@@ -28,7 +28,7 @@ class Challenge extends StatelessWidget {
         Container(
           height: Get.height * 0.2,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(10),
             color: Color(0xffB4AEE8).withOpacity(0.3),
           ),
           width: MediaQuery.of(context).size.width * 0.9,
