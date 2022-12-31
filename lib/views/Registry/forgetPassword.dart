@@ -1,4 +1,4 @@
-import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/customTextField.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:flutter/cupertino.dart';

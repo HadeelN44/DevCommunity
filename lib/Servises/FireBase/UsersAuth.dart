@@ -4,12 +4,15 @@ getSpecificUser(
     {bool? name, bool? username, bool? email, required String UID}) async {
   var firestore = FirebaseFirestore.instance;
 
-  var x = await firestore.collection("Users").doc(UID).get();
   if (name != null && name) {
+    var x = await firestore.collection("Users").doc(UID).get();
     return x["Name"];
   } else if (username != null && username) {
+    var x = await firestore.collection("Users").doc(UID).get();
+    print("method ${x["UserName"]}");
     return x["UserName"];
   } else if (email != null && email) {
+    var x = await firestore.collection("Users").doc(UID).get();
     return x["Email"];
   }
 }

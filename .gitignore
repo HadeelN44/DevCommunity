@@ -10,7 +10,7 @@
 .svn/
 .windows/
 .linux/
-
+migrate_working_dir/
 
 # IntelliJ related
 *.iml

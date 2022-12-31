@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_dev/Helper/utils.dart';
 
-import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/logo.dart';
@@ -68,7 +68,7 @@ class Profile extends StatelessWidget {
                       ),
                       doc['imageURL'] != ''
                           ? CircleAvatar(
-                              radius: 60,
+                              radius: 70,
                               backgroundImage:
                                   NetworkImage(doc['imageURL'], scale: 100))
                           // Image.network(doc['imageURL']))
@@ -76,7 +76,7 @@ class Profile extends StatelessWidget {
                           // Utils.cacheNetworkImageWithEvent(
                           //     context, doc['imageURL'], 0, 0))
                           : CircleAvatar(
-                              maxRadius: 60,
+                              maxRadius: 70,
                               backgroundColor: colors.feedBack,
                               child: Image.asset(
                                 'assets/user2.png',

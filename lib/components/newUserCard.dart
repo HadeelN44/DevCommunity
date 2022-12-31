@@ -17,10 +17,10 @@ class newUserCard extends StatelessWidget {
       required this.userName,
       required this.userID,
       this.onTap,
-      required this.imageURL});
+      this.imageURL});
   final String userName;
   final String userID;
-  final String imageURL;
+  final String? imageURL;
   final Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class newUserCard extends StatelessWidget {
           ? CircleAvatar(
               backgroundColor: colors.primary,
               radius: 20,
-              backgroundImage: NetworkImage(imageURL, scale: 100))
+              backgroundImage: NetworkImage(imageURL!, scale: 100))
           : CircleAvatar(
               maxRadius: 20,
               backgroundColor: colors.Text,
@@ -45,7 +45,7 @@ class newUserCard extends StatelessWidget {
           Text(
             userName,
             //textAlign: TextAlign.left,
-            style: GoogleFonts.merriweather(
+            style: GoogleFonts.libreBaskerville(
               fontSize: 14,
               color: colors.Text,
               fontWeight: FontWeight.w600,

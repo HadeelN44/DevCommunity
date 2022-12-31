@@ -1,4 +1,4 @@
-import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:community_dev/components/cutsomFloatingActionButton.dart';
 import 'package:community_dev/components/postItem.dart';
 import 'package:community_dev/components/postItem_myPost.dart';

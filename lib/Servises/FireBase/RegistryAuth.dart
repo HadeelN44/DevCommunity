@@ -1,7 +1,7 @@
 //This file contains
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:community_dev/Services/GetStorage/userInfo.dart';
+import 'package:community_dev/Servises/GetStorage/userInfo.dart';
 
 import 'package:community_dev/views/HouseScreen.dart';
 

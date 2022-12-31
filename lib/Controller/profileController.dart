@@ -1,5 +1,5 @@
-import 'package:community_dev/Services/FireBase/ProfileAuth.dart';
-import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
+import 'package:community_dev/Servises/FireBase/ProfileAuth.dart';
+import 'package:community_dev/Servises/FireBase/RegistryAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
