@@ -83,7 +83,7 @@ class editProfile extends StatelessWidget {
                         },
                         child: doc['imageURL'] != ''
                             ? CircleAvatar(
-                                radius: 50,
+                                radius: 60,
                                 backgroundImage:
                                     NetworkImage(doc['imageURL'], scale: 100))
 
@@ -95,7 +95,7 @@ class editProfile extends StatelessWidget {
                             //     child: Utils.cacheNetworkImageWithEvent(
                             //         context, doc['imageURL'], 200, 200))
                             : CircleAvatar(
-                                maxRadius: 50,
+                                maxRadius: 60,
                                 backgroundColor: colors.feedBack,
                                 child: Image.asset(
                                   'assets/user2.png',

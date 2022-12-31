@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        // theme: ThemeData(
-        //     scaffoldBackgroundColor: colors.background),
+        theme: ThemeData(
+          scaffoldBackgroundColor: colors.white,
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: colors.primary),
+        ),
         debugShowCheckedModeBanner: false,
         getPages: routerApp,
         initialRoute: user != null

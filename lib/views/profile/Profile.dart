@@ -68,7 +68,7 @@ class Profile extends StatelessWidget {
                       ),
                       doc['imageURL'] != ''
                           ? CircleAvatar(
-                              radius: 70,
+                              radius: 60,
                               backgroundImage:
                                   NetworkImage(doc['imageURL'], scale: 100))
                           // Image.network(doc['imageURL']))
@@ -76,7 +76,7 @@ class Profile extends StatelessWidget {
                           // Utils.cacheNetworkImageWithEvent(
                           //     context, doc['imageURL'], 0, 0))
                           : CircleAvatar(
-                              maxRadius: 70,
+                              maxRadius: 60,
                               backgroundColor: colors.feedBack,
                               child: Image.asset(
                                 'assets/user2.png',
