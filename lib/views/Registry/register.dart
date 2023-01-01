@@ -26,7 +26,6 @@ class Register extends StatelessWidget {
     return Scaffold(
       body: Background(
         child: Container(
-          color: colors.backgroundcolor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -89,35 +88,35 @@ class Register extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () async {
                     GetStorage().write("password", passcontrol.text);
-                      String result = await SignUpMethod(
+                    String result = await SignUpMethod(
                       emailAddress: emailcontrol.text,
                       password: passcontrol.text,
                       name: nameControl.text,
                       userName: userNamecontrol.text,
                     );
                     if (result != "Success")
-                          return showDialog<void>(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (BuildContext context) => AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              content: Text(result,
-                                  style: GoogleFonts.lato(
-                                      color: colors.icons,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600)),
-                              actions: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    OkButton(),
-                                  ],
-                                )
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          content: Text(result,
+                              style: GoogleFonts.lato(
+                                  color: colors.icons,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600)),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                OkButton(),
                               ],
-                            ),
-                          );
+                            )
+                          ],
+                        ),
+                      );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

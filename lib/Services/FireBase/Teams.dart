@@ -21,7 +21,7 @@ SetTeam({
   await firestore.collection("Teams").doc().set({
     "TeamName": name,
     "TeamID": "#${generateRandom()}",
-    "Description": "",
+    "Description": Desc,
     "CreatorID": userID,
     "CreationDate": DateTime.now(),
     "Members": [userID],

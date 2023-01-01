@@ -38,7 +38,7 @@ class Utils {
           errorWidget: (context, url, error) => new Icon(Icons.error),
           width: 500,
           height: 300,
-          fit: BoxFit.cover,
+          fit: BoxFit.fitHeight,
         ),
       ),
     );

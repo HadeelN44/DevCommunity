@@ -24,7 +24,6 @@ class LogIn extends StatelessWidget {
     return Scaffold(
       body: Background(
         child: Container(
-          color: colors.backgroundcolor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
