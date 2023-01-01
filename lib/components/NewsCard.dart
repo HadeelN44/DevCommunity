@@ -21,7 +21,7 @@ class NewsCard extends StatelessWidget {
         width: Get.width * 0.9,
         height: Get.height * 0.15,
         decoration: BoxDecoration(
-            color: colors.fields, borderRadius: BorderRadius.circular(20)),
+            color: colors.fields, borderRadius: BorderRadius.circular(10)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

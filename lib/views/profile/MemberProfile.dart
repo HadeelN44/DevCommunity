@@ -5,6 +5,7 @@ import 'package:community_dev/Services/FireBase/RegistryAuth.dart';
 
 import 'package:community_dev/components/ProfileCards.dart';
 import 'package:community_dev/components/logo.dart';
+import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/components/profileOptionCard.dart';
 import 'package:community_dev/views/profile/EditProfile.dart';
 
@@ -13,43 +14,41 @@ import 'package:community_dev/views/profile/Settings.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
-
+class MemberProfile extends StatelessWidget {
+  const MemberProfile(
+      {super.key, required this.memberID, required this.username});
+  final String memberID;
+  final String username;
   @override
   Widget build(BuildContext context) {
     Stream<QuerySnapshot<Object?>>? userStream = FirebaseFirestore.instance
         .collection('Users')
-        .where("userID", isEqualTo: GetStorage().read("UID"))
+        .where("userID", isEqualTo: memberID)
         .snapshots();
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: colors.Text,
+            size: 25,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("${GetStorage().read("username")}",
+        title: Text("${username}",
             style: GoogleFonts.merriweather(
                 color: colors.Text, fontSize: 22, fontWeight: FontWeight.bold)),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(() => editProfile());
-            },
-            icon: FaIcon(
-              FontAwesomeIcons.edit,
-              size: 25,
-              color: colors.Text,
-            ),
-            color: colors.Text,
-          )
-        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: userStream,
@@ -116,6 +115,13 @@ class Profile extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
+                        height: Get.height * 0.04,
+                      ),
+                      profileCard(
+                        title: "Email",
+                        value: doc["Email"],
+                      ),
+                      SizedBox(
                         height: Get.height * 0.02,
                       ),
                       profileCard(
@@ -123,29 +129,20 @@ class Profile extends StatelessWidget {
                         value: doc["Bio"],
                       ),
                       SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      profileCard(
+                        title: "City",
+                        value: doc["City"],
+                      ),
+                      SizedBox(
                         height: Get.height * 0.04,
                       ),
-                      profileOptionCard(
-                        title: "Settings",
-                        icon: CupertinoIcons.settings,
-                        onTap: () {
-                          Get.to(() => SettingsScreen());
-                        },
-                      ),
-                      profileOptionCard(
-                        title: "My posts",
-                        icon: CupertinoIcons.list_bullet_indent,
-                        onTap: () {
-                          Get.to(() => Mypost());
-                        },
-                      ),
-                      profileOptionCard(
-                        title: "Sign out",
-                        icon: Icons.logout_rounded,
-                        onTap: () {
-                          SignOutMethod();
-                        },
-                      ),
+                      primaryButton(
+                        width: Get.width * 0.5,
+                        title: "Contact me",
+                        onPressed: () {},
+                      )
                     ],
                   );
                 }));

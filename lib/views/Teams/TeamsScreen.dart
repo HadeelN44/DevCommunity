@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:community_dev/components/cardTeams.dart';
-import 'package:community_dev/views/Teams/detailsTeam/SpecificTeamScreen.dart';
+import 'package:community_dev/views/Teams/SpecificTeamScreen.dart';
 
 import 'package:community_dev/views/Teams/newTeamScreen.dart';
 
@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:community_dev/constants/style.dart';
 
-class teamss extends StatelessWidget {
-  const teamss({super.key});
+class TeamsScreen extends StatelessWidget {
+  const TeamsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,10 @@ class teamss extends StatelessWidget {
                           idTeam: doc["TeamID"],
                           fileed: colors.fields,
                           press: () {
-                            Get.to(() => SpecificTeamScreen());
+                            Get.to(() => SpecificTeamScreen(
+                                  TeamID: doc["TeamID"],
+                                  TeamName: doc["TeamName"],
+                                ));
                           },
                         );
                       }));

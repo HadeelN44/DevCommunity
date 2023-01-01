@@ -1,6 +1,6 @@
 import 'package:community_dev/Router/Router.dart';
-import 'package:community_dev/Servises/FireBase/challenge.dart';
-import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
+import 'package:community_dev/Services/FireBase/challenge.dart';
+import 'package:community_dev/Services/NewsApi/NewsAPI.dart';
 import 'package:community_dev/constants/style.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        // theme: ThemeData(
-        //     scaffoldBackgroundColor: colors.background),
+        theme: ThemeData(
+          scaffoldBackgroundColor: colors.white,
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: colors.primary),
+        ),
         debugShowCheckedModeBanner: false,
         getPages: routerApp,
         initialRoute: user != null

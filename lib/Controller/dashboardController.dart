@@ -1,6 +1,6 @@
-import 'package:community_dev/Servises/FireBase/Statistics.dart';
-import 'package:community_dev/Servises/FireBase/challenge.dart';
-import 'package:community_dev/Servises/NewsApi/NewsAPI.dart';
+import 'package:community_dev/Services/FireBase/Statistics.dart';
+import 'package:community_dev/Services/FireBase/challenge.dart';
+import 'package:community_dev/Services/NewsApi/NewsAPI.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {

@@ -1,13 +1,14 @@
 //This file contains
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:community_dev/Servises/GetStorage/userInfo.dart';
+import 'package:community_dev/Services/GetStorage/userInfo.dart';
 
 import 'package:community_dev/views/HouseScreen.dart';
 
 import 'package:community_dev/views/Registry/login.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //Sign in method
@@ -17,13 +18,17 @@ SignInMethod({required String emailAddress, required String password}) async {
         .signInWithEmailAndPassword(email: emailAddress, password: password);
 
     GetProfile();
+
     Get.to(HouseScreen());
+    return "Success";
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      print('No user found for that email.');
+      return 'No user found for that email.';
     } else if (e.code == 'wrong-password') {
-      print('Wrong password provided for that user.');
+      return 'Wrong password provided for that user.';
     }
+  } catch (e) {
+    return e.toString();
   }
 }
 
@@ -42,14 +47,15 @@ SignUpMethod(
     await SetProfile(email: emailAddress, name: name, userName: userName);
     GetProfile();
     Get.to(HouseScreen());
+    return "Success";
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
+      return 'The password provided is too weak.';
     } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
+      return 'The account already exists for that email.';
     }
   } catch (e) {
-    print(e);
+    return e.toString();
   }
 }
 

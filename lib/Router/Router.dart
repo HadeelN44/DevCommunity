@@ -1,16 +1,14 @@
-import 'package:community_dev/components/logo.dart';
 import 'package:community_dev/views/HouseScreen.dart';
 
 import 'package:community_dev/views/DashboardScreen.dart';
-import 'package:community_dev/views/Members.dart';
+
 import 'package:community_dev/views/Registry/login.dart';
 import 'package:community_dev/views/Registry/register.dart';
+import 'package:community_dev/views/Teams/SpecificTeamScreen.dart';
+import 'package:community_dev/views/Teams/TeamsScreen.dart';
 import 'package:community_dev/views/Timeline/TimelineScreen.dart';
 import 'package:community_dev/views/Registry/forgetPassword.dart';
 import 'package:community_dev/views/profile/Profile.dart';
-
-import 'package:community_dev/views/Team.dart';
-import 'package:community_dev/views/Teams.dart';
 
 import 'package:community_dev/views/Timeline/createPost.dart';
 import 'package:community_dev/views/splashScreen.dart';
@@ -42,11 +40,7 @@ List<GetPage<dynamic>>? routerApp = [
   ),
   GetPage(
     name: NameRoute.teams,
-    page: () => Teams(),
-  ),
-  GetPage(
-    name: NameRoute.team,
-    page: () => Team(),
+    page: () => TeamsScreen(),
   ),
   GetPage(
     name: NameRoute.mainScreen,
@@ -55,10 +49,6 @@ List<GetPage<dynamic>>? routerApp = [
   GetPage(
     name: NameRoute.profile,
     page: () => Profile(),
-  ),
-  GetPage(
-    name: NameRoute.members,
-    page: () => Members(),
   ),
   GetPage(
     name: NameRoute.forgetPass,
@@ -73,7 +63,6 @@ List<GetPage<dynamic>>? routerApp = [
 abstract class NameRoute {
   static String signIn = "/signIn";
   static String signUp = "/signUp";
-
   static String splash = "/splash";
   static String timeline = "/timeline";
   static String newPost = "/newPost";
@@ -82,6 +71,5 @@ abstract class NameRoute {
   static String team = "/team";
   static String mainScreen = "/mainScreen";
   static String profile = "/profile";
-  static String members = "/members";
   static String forgetPass = "/forgetPass";
 }

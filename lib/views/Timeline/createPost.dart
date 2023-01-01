@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:community_dev/Helper/imagePicker.dart';
 import 'package:community_dev/Helper/utils.dart';
-import 'package:community_dev/Servises/FireBase/Timeline.dart';
+import 'package:community_dev/Services/FireBase/Timeline.dart';
 import 'package:community_dev/components/primaryButton.dart';
 import 'package:community_dev/constants/style.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -81,7 +81,7 @@ class WritePostPage extends State<createPost> {
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(right: 16, top: 10),
             child: primaryButton(
               width: Get.width * 0.2,
               title: 'Post',

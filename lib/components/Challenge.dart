@@ -28,7 +28,7 @@ class Challenge extends StatelessWidget {
         Container(
           height: Get.height * 0.2,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(10),
             color: Color(0xffB4AEE8).withOpacity(0.3),
           ),
           width: MediaQuery.of(context).size.width * 0.9,
@@ -56,7 +56,8 @@ class Challenge extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -85,7 +86,11 @@ class Challenge extends StatelessWidget {
                             child: Text(
                               "Complete",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: GoogleFonts.merriweather(
+                                fontSize: 14,
+                                color: colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
